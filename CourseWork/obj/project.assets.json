@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\4 semestr\\ООП\\CourseWork\\CourseWork.csproj",
+      "projectUniqueName": "D:\\4 semestr\\CW_OOP\\CourseWork\\CourseWork.csproj",
       "projectName": "CourseWork",
-      "projectPath": "D:\\4 semestr\\ООП\\CourseWork\\CourseWork.csproj",
+      "projectPath": "D:\\4 semestr\\CW_OOP\\CourseWork\\CourseWork.csproj",
       "packagesPath": "C:\\Users\\Nastya\\.nuget\\packages\\",
-      "outputPath": "D:\\4 semestr\\ООП\\CourseWork\\obj\\",
+      "outputPath": "D:\\4 semestr\\CW_OOP\\CourseWork\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nastya\\AppData\\Roaming\\NuGet\\NuGet.Config",

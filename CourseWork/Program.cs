@@ -8,6 +8,11 @@ namespace CourseWork
         [STAThread]
         static void Main()
         {
+            using (var context = new DataBaseContext())
+            {
+
+            }
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

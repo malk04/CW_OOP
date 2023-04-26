@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CourseWork.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,26 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    internal class DataBase
+    internal class DataBaseContext: DbContext
     {
+        /*public DataBaseContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }*/
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL(@"server=localhost; port=3306; username=root; password=; database=cw_oop");
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        public DbSet<Participant> Participants { get; set; }
+        public DbSet<Poem> Poems { get; set; }
+        public DbSet<Competition> Competitions { get; set; }
+
+
+/*
         private MySqlConnection connection = new MySqlConnection("server=localhost; port=3306; username=root; password=; database=cw_oop");
 
         public void openConnection()
@@ -26,6 +45,6 @@ namespace CourseWork
         public MySqlConnection getConnection()
         {
             return connection;
-        }
+        }*/
     }
 }

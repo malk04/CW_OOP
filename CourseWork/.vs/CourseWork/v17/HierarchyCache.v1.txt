@@ -1,0 +1,205 @@
+﻿++Решение "CourseWork" ‎(проекты: 1 из 1)
+i:{00000000-0000-0000-0000-000000000000}:CourseWork.sln
+++CourseWork
+i:{00000000-0000-0000-0000-000000000000}:CourseWork
+++Зависимости
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:>150
+++CompetitionForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\competitionform.cs
+++InformationForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\informationform.cs
+++NavigationForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\navigationform.cs
+++ParticipantForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\participantform.cs
+++PoemForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\poemform.cs
+++Program.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\program.cs
+++StatisticsForm.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\statisticsform.cs
+++Анализаторы
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:анализаторы
+++Платформы
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:платформы
+++CompetitionForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\competitionform.designer.cs
+++CompetitionForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\competitionform.resx
+++InformationForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\informationform.designer.cs
+++InformationForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\informationform.resx
+++NavigationForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\navigationform.designer.cs
+++NavigationForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\navigationform.resx
+++ParticipantForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\participantform.designer.cs
+++ParticipantForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\participantform.resx
+++PoemForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\poemform.designer.cs
+++PoemForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\poemform.resx
+++StatisticsForm.Designer.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\statisticsform.designer.cs
+++StatisticsForm.resx
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\statisticsform.resx
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files\dotnet\sdk\6.0.200\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++System.Text.Json.SourceGeneration
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.2\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++System.Windows.Forms.Analyzers
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files\dotnet\packs\microsoft.windowsdesktop.app.ref\6.0.2\analyzers\dotnet\system.windows.forms.analyzers.dll
+++System.Windows.Forms.Analyzers.CSharp
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files\dotnet\packs\microsoft.windowsdesktop.app.ref\6.0.2\analyzers\dotnet\cs\system.windows.forms.analyzers.csharp.dll
+++Microsoft.NETCore.App
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\microsoft.netcore.app
+++Microsoft.WindowsDesktop.App.WindowsForms
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\microsoft.windowsdesktop.app.windowsforms
+++Сборки
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:сборки
+++MySql.Data
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:c:\program files (x86)\mysql\mysql connector net 8.0.33\mysql.data.dll
+++CourseWork.sln
+++Импортирует
+++Sdk.props
+++Sdk.targets
+++Microsoft.Common.props
+++Microsoft.NET.Sdk.props
+++Microsoft.NET.Sdk.BeforeCommon.targets
+++Microsoft.CSharp.targets
+++Microsoft.NET.Sdk.targets
+++Microsoft.NET.Compatibility.targets
+++NuGet.Build.Tasks.Pack.targets
+++CourseWork.csproj.nuget.g.props
+++Microsoft.NuGet.ImportBefore.props
+++NuGet.props
+++Microsoft.NET.Sdk.DefaultItems.props
+++Microsoft.NET.Sdk.ImportWorkloads.props
+++Microsoft.NET.SupportedTargetFrameworks.props
+++Microsoft.NET.SupportedPlatforms.props
+++Microsoft.NET.WindowsSdkSupportedTargetPlatforms.props
+++Microsoft.NET.Sdk.CSharp.props
+++Microsoft.NET.ILLink.props
+++Microsoft.NET.Compatibility.props
+++Microsoft.NET.PackTool.props
+++Microsoft.NET.PackProjectTool.props
+++Microsoft.NET.Sdk.WindowsDesktop.props
+++Microsoft.NET.Windows.props
+++Microsoft.NET.DefaultAssemblyInfo.targets
+++Microsoft.NET.DefaultOutputPaths.targets
+++Microsoft.NET.Sdk.ImportPublishProfile.targets
+++Microsoft.NET.TargetFrameworkInference.targets
+++Microsoft.NET.Sdk.ImportWorkloads.targets
+++Microsoft.NET.RuntimeIdentifierInference.targets
+++Microsoft.NET.EolTargetFrameworks.targets
+++Microsoft.NET.NuGetOfflineCache.targets
+++Microsoft.Managed.Before.targets
+++Microsoft.CSharp.CurrentVersion.targets
+++Microsoft.Managed.After.targets
+++Microsoft.NET.Sdk.Common.targets
+++Microsoft.PackageDependencyResolution.targets
+++Microsoft.NET.Sdk.DefaultItems.targets
+++Microsoft.NET.Sdk.FrameworkReferenceResolution.targets
+++Microsoft.NET.Sdk.Shared.targets
+++Microsoft.NET.DisableStandardFrameworkResolution.targets
+++Microsoft.NET.DesignerSupport.targets
+++Microsoft.NET.GenerateAssemblyInfo.targets
+++Microsoft.NET.GenerateGlobalUsings.targets
+++Microsoft.NET.GenerateSupportedRuntime.targets
+++Microsoft.NET.ComposeStore.targets
+++Microsoft.NET.CrossGen.targets
+++Microsoft.NET.ObsoleteReferences.targets
+++Microsoft.NET.Publish.targets
+++Microsoft.NET.PackTool.targets
+++Microsoft.NET.PackProjectTool.targets
+++Microsoft.NET.PreserveCompilationContext.targets
+++Microsoft.NET.ConflictResolution.targets
+++Microsoft.NET.Sdk.CSharp.targets
+++Microsoft.NET.ILLink.targets
+++Microsoft.NET.Sdk.Analyzers.targets
+++Microsoft.NET.Windows.targets
+++Microsoft.NET.Sdk.WindowsDesktop.targets
+++Microsoft.NET.Compatibility.Common.targets
+++Microsoft.NuGet.props
+++Microsoft.NETCoreSdk.BundledVersions.props
+++Microsoft.NET.Sdk.WindowsDesktop.WindowsForms.props
+++Microsoft.NET.Sdk.WindowsDesktop.WPF.props
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.android)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.ios)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.maccatalyst)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.macos)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.maui)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.sdk.tvos)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.workload.emscripten)
+++WorkloadManifest.targets (C:\Program Files\dotnet\sdk-manifests\6.0.200\microsoft.net.workload.mono.toolchain)
+++Microsoft.CSharp.Core.targets
+++Microsoft.CSharp.DesignTime.targets
+++Microsoft.Common.targets
+++Microsoft.ServiceModel.targets
+++Microsoft.NET.Sdk.DefaultItems.Shared.targets
+++Microsoft.NETCoreSdk.BundledCliTools.props
+++Microsoft.NET.DefaultPackageConflictOverrides.targets
+++Microsoft.CodeAnalysis.NetAnalyzers.props
+++Microsoft.CodeAnalysis.NetAnalyzers.targets
+++Microsoft.NET.Sdk.WindowsDesktop.WindowsForms.targets
+++Microsoft.WinFX.targets
+++Microsoft.NET.ILLink.Tasks.props
+++System.Windows.Forms.Analyzers.props
+++Microsoft.Managed.Core.targets
+++Microsoft.Managed.DesignTime.targets
+++Microsoft.Common.CurrentVersion.targets
+++CourseWork.csproj.nuget.g.targets
+++Microsoft.Managed.Core.CurrentVersions.targets
+++CourseWork.csproj.user
+++Microsoft.NET.props
+++Microsoft.CodeAnalysis.targets
+++Microsoft.Xaml.targets
+++Microsoft.WorkflowBuildExtensions.targets
+++Microsoft.TeamTest.targets
+++NuGet.targets
+++Microsoft.NET.Build.Extensions.targets
+++Microsoft.NuGet.ImportAfter.targets
+++Microsoft.Web.ImportAfter.targets
+++bin
+++Debug
+++net6.0-windows
+++CourseWork.deps.json
+++CourseWork.dll
+++CourseWork.exe
+++CourseWork.pdb
+++CourseWork.runtimeconfig.json
+++obj
+++CourseWork.csproj.nuget.dgspec.json
+++project.assets.json
+++project.nuget.cache
+++ref
+++refint
+++.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+++apphost.exe
+++CourseWork.AssemblyInfo.cs
+++CourseWork.AssemblyInfoInputs.cache
+++CourseWork.assets.cache
+++CourseWork.CompetitionForm.resources
+++CourseWork.csproj.AssemblyReference.cache
+++CourseWork.csproj.BuildWithSkipAnalyzers
+++CourseWork.csproj.CoreCompileInputs.cache
+++CourseWork.csproj.FileListAbsolute.txt
+++CourseWork.csproj.GenerateResource.cache
+++CourseWork.designer.deps.json
+++CourseWork.designer.runtimeconfig.json
+++CourseWork.GeneratedMSBuildEditorConfig.editorconfig
+++CourseWork.genruntimeconfig.cache
+++CourseWork.GlobalUsings.g.cs
+++CourseWork.InformationForm.resources
+++CourseWork.NavigationForm.resources
+++CourseWork.ParticipantForm.resources
+++CourseWork.PoemForm.resources
+++CourseWork.StatisticsForm.resources
+++Properties
+++DataBase.cs
+i:{afe280c5-a8d3-4276-a81b-d3ef34f7a475}:d:\4 semestr\cw_oop\coursework\database.cs

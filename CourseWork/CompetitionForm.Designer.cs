@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCompetition = new System.Windows.Forms.TabControl();
             this.SeeDelCompetition = new System.Windows.Forms.TabPage();
             this.groupBoxDelCompetition = new System.Windows.Forms.GroupBox();
@@ -41,11 +41,6 @@
             this.comboBoxYearCompetition = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridViewCompetition = new System.Windows.Forms.DataGridView();
-            this.IDCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDWinner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxDeleteParticipant = new System.Windows.Forms.GroupBox();
             this.numericUpDownIDDel = new System.Windows.Forms.NumericUpDown();
             this.buttonDeleteParticipant = new System.Windows.Forms.Button();
@@ -64,12 +59,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxEditNameCompetition = new System.Windows.Forms.TextBox();
-            this.groupBoxDelWinner = new System.Windows.Forms.GroupBox();
-            this.numericUpDownDelIDWinner = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDownDelIDCompetitionWinner = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.buttonDelWinner = new System.Windows.Forms.Button();
             this.groupBoxAddWinner = new System.Windows.Forms.GroupBox();
             this.numericUpDownAddIDWinner = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -98,6 +87,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.IDCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDWinner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCompetition.SuspendLayout();
             this.SeeDelCompetition.SuspendLayout();
             this.groupBoxDelCompetition.SuspendLayout();
@@ -110,9 +104,6 @@
             this.CreateEditCompetition.SuspendLayout();
             this.groupBoxCreateEditCompetition.SuspendLayout();
             this.groupBoxEditCompetition.SuspendLayout();
-            this.groupBoxDelWinner.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDWinner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetitionWinner)).BeginInit();
             this.groupBoxAddWinner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDWinner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDCompetitionWinner)).BeginInit();
@@ -249,14 +240,14 @@
             this.dataGridViewCompetition.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCompetition.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewCompetition.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCompetition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCompetition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCompetition,
@@ -273,49 +264,6 @@
             this.dataGridViewCompetition.RowTemplate.Height = 29;
             this.dataGridViewCompetition.Size = new System.Drawing.Size(819, 309);
             this.dataGridViewCompetition.TabIndex = 4;
-            // 
-            // IDCompetition
-            // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle8;
-            this.IDCompetition.FillWeight = 50F;
-            this.IDCompetition.HeaderText = "ID";
-            this.IDCompetition.MinimumWidth = 6;
-            this.IDCompetition.Name = "IDCompetition";
-            this.IDCompetition.ReadOnly = true;
-            // 
-            // nameCompetition
-            // 
-            this.nameCompetition.FillWeight = 87.91444F;
-            this.nameCompetition.HeaderText = "Название";
-            this.nameCompetition.MinimumWidth = 6;
-            this.nameCompetition.Name = "nameCompetition";
-            this.nameCompetition.ReadOnly = true;
-            // 
-            // dateCompetition
-            // 
-            this.dateCompetition.FillWeight = 87.91444F;
-            this.dateCompetition.HeaderText = "Дата проведения";
-            this.dateCompetition.MinimumWidth = 6;
-            this.dateCompetition.Name = "dateCompetition";
-            this.dateCompetition.ReadOnly = true;
-            // 
-            // IDParticipant
-            // 
-            this.IDParticipant.FillWeight = 87.91444F;
-            this.IDParticipant.HeaderText = "ID участников";
-            this.IDParticipant.MinimumWidth = 6;
-            this.IDParticipant.Name = "IDParticipant";
-            this.IDParticipant.ReadOnly = true;
-            // 
-            // IDWinner
-            // 
-            this.IDWinner.FillWeight = 87.91444F;
-            this.IDWinner.HeaderText = "ID победителей";
-            this.IDWinner.MinimumWidth = 6;
-            this.IDWinner.Name = "IDWinner";
-            this.IDWinner.ReadOnly = true;
             // 
             // groupBoxDeleteParticipant
             // 
@@ -437,7 +385,6 @@
             // groupBoxCreateEditCompetition
             // 
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxEditCompetition);
-            this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxDelWinner);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxAddWinner);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxDelParticipant);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxAddParticipant);
@@ -508,66 +455,6 @@
             this.textBoxEditNameCompetition.Size = new System.Drawing.Size(194, 27);
             this.textBoxEditNameCompetition.TabIndex = 0;
             // 
-            // groupBoxDelWinner
-            // 
-            this.groupBoxDelWinner.Controls.Add(this.numericUpDownDelIDWinner);
-            this.groupBoxDelWinner.Controls.Add(this.label8);
-            this.groupBoxDelWinner.Controls.Add(this.numericUpDownDelIDCompetitionWinner);
-            this.groupBoxDelWinner.Controls.Add(this.label9);
-            this.groupBoxDelWinner.Controls.Add(this.buttonDelWinner);
-            this.groupBoxDelWinner.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxDelWinner.Location = new System.Drawing.Point(818, 171);
-            this.groupBoxDelWinner.Name = "groupBoxDelWinner";
-            this.groupBoxDelWinner.Size = new System.Drawing.Size(381, 151);
-            this.groupBoxDelWinner.TabIndex = 6;
-            this.groupBoxDelWinner.TabStop = false;
-            this.groupBoxDelWinner.Text = "Удалить участника из конкурса";
-            // 
-            // numericUpDownDelIDWinner
-            // 
-            this.numericUpDownDelIDWinner.Location = new System.Drawing.Point(176, 64);
-            this.numericUpDownDelIDWinner.Name = "numericUpDownDelIDWinner";
-            this.numericUpDownDelIDWinner.Size = new System.Drawing.Size(194, 27);
-            this.numericUpDownDelIDWinner.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(16, 66);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 25);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "ID конкурсанта";
-            // 
-            // numericUpDownDelIDCompetitionWinner
-            // 
-            this.numericUpDownDelIDCompetitionWinner.Location = new System.Drawing.Point(176, 32);
-            this.numericUpDownDelIDCompetitionWinner.Name = "numericUpDownDelIDCompetitionWinner";
-            this.numericUpDownDelIDCompetitionWinner.Size = new System.Drawing.Size(194, 27);
-            this.numericUpDownDelIDCompetitionWinner.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(16, 34);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 25);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "ID конкурса";
-            // 
-            // buttonDelWinner
-            // 
-            this.buttonDelWinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonDelWinner.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDelWinner.Location = new System.Drawing.Point(16, 109);
-            this.buttonDelWinner.Name = "buttonDelWinner";
-            this.buttonDelWinner.Size = new System.Drawing.Size(354, 37);
-            this.buttonDelWinner.TabIndex = 8;
-            this.buttonDelWinner.Text = "Удалить победителя";
-            this.buttonDelWinner.UseVisualStyleBackColor = false;
-            // 
             // groupBoxAddWinner
             // 
             this.groupBoxAddWinner.Controls.Add(this.numericUpDownAddIDWinner);
@@ -581,7 +468,7 @@
             this.groupBoxAddWinner.Size = new System.Drawing.Size(381, 151);
             this.groupBoxAddWinner.TabIndex = 5;
             this.groupBoxAddWinner.TabStop = false;
-            this.groupBoxAddWinner.Text = "Добавить победителя конкурса";
+            this.groupBoxAddWinner.Text = "Добавить/изменить победителя конкурса";
             // 
             // numericUpDownAddIDWinner
             // 
@@ -625,7 +512,7 @@
             this.buttonAddWinner.Name = "buttonAddWinner";
             this.buttonAddWinner.Size = new System.Drawing.Size(354, 37);
             this.buttonAddWinner.TabIndex = 8;
-            this.buttonAddWinner.Text = "Добавить победителя";
+            this.buttonAddWinner.Text = "Сохранить победителя";
             this.buttonAddWinner.UseVisualStyleBackColor = false;
             // 
             // groupBoxDelParticipant
@@ -860,6 +747,49 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // IDCompetition
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle2;
+            this.IDCompetition.FillWeight = 50F;
+            this.IDCompetition.HeaderText = "ID";
+            this.IDCompetition.MinimumWidth = 6;
+            this.IDCompetition.Name = "IDCompetition";
+            this.IDCompetition.ReadOnly = true;
+            // 
+            // nameCompetition
+            // 
+            this.nameCompetition.FillWeight = 87.91444F;
+            this.nameCompetition.HeaderText = "Название";
+            this.nameCompetition.MinimumWidth = 6;
+            this.nameCompetition.Name = "nameCompetition";
+            this.nameCompetition.ReadOnly = true;
+            // 
+            // dateCompetition
+            // 
+            this.dateCompetition.FillWeight = 87.91444F;
+            this.dateCompetition.HeaderText = "Дата проведения";
+            this.dateCompetition.MinimumWidth = 6;
+            this.dateCompetition.Name = "dateCompetition";
+            this.dateCompetition.ReadOnly = true;
+            // 
+            // IDParticipant
+            // 
+            this.IDParticipant.FillWeight = 87.91444F;
+            this.IDParticipant.HeaderText = "ID участников";
+            this.IDParticipant.MinimumWidth = 6;
+            this.IDParticipant.Name = "IDParticipant";
+            this.IDParticipant.ReadOnly = true;
+            // 
+            // IDWinner
+            // 
+            this.IDWinner.FillWeight = 87.91444F;
+            this.IDWinner.HeaderText = "ID победителя";
+            this.IDWinner.MinimumWidth = 6;
+            this.IDWinner.Name = "IDWinner";
+            this.IDWinner.ReadOnly = true;
+            // 
             // CompetitionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -891,10 +821,6 @@
             this.groupBoxCreateEditCompetition.ResumeLayout(false);
             this.groupBoxEditCompetition.ResumeLayout(false);
             this.groupBoxEditCompetition.PerformLayout();
-            this.groupBoxDelWinner.ResumeLayout(false);
-            this.groupBoxDelWinner.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDWinner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetitionWinner)).EndInit();
             this.groupBoxAddWinner.ResumeLayout(false);
             this.groupBoxAddWinner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDWinner)).EndInit();
@@ -952,11 +878,6 @@
         private Button buttonFilterCompetition;
         private ComboBox comboBoxYearCompetition;
         private Label label15;
-        private DataGridViewTextBoxColumn IDCompetition;
-        private DataGridViewTextBoxColumn nameCompetition;
-        private DataGridViewTextBoxColumn dateCompetition;
-        private DataGridViewTextBoxColumn IDParticipant;
-        private DataGridViewTextBoxColumn IDWinner;
         private GroupBox groupBoxDelParticipant;
         private NumericUpDown numericUpDownDelIDParticipant;
         private Label label3;
@@ -965,12 +886,6 @@
         private Button buttonDelParticipant;
         private NumericUpDown numericUpDownAddIDParticipant;
         private Label label2;
-        private GroupBox groupBoxDelWinner;
-        private NumericUpDown numericUpDownDelIDWinner;
-        private Label label8;
-        private NumericUpDown numericUpDownDelIDCompetitionWinner;
-        private Label label9;
-        private Button buttonDelWinner;
         private GroupBox groupBoxAddWinner;
         private NumericUpDown numericUpDownAddIDWinner;
         private Label label10;
@@ -983,5 +898,10 @@
         private Label label16;
         private Label label17;
         private TextBox textBoxEditNameCompetition;
+        private DataGridViewTextBoxColumn IDCompetition;
+        private DataGridViewTextBoxColumn nameCompetition;
+        private DataGridViewTextBoxColumn dateCompetition;
+        private DataGridViewTextBoxColumn IDParticipant;
+        private DataGridViewTextBoxColumn IDWinner;
     }
 }

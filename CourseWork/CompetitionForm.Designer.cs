@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCompetition = new System.Windows.Forms.TabControl();
             this.SeeDelCompetition = new System.Windows.Forms.TabPage();
             this.groupBoxDelCompetition = new System.Windows.Forms.GroupBox();
@@ -54,6 +54,8 @@
             this.CreateEditCompetition = new System.Windows.Forms.TabPage();
             this.groupBoxCreateEditCompetition = new System.Windows.Forms.GroupBox();
             this.groupBoxEditCompetition = new System.Windows.Forms.GroupBox();
+            this.numericUpDownEditID = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.buttonEditCompetition = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,6 +80,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonAddParticipant = new System.Windows.Forms.Button();
             this.groupBoxCreateCompetition = new System.Windows.Forms.GroupBox();
+            this.numericUpDownMinAge = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.buttonCreateCompetition = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,6 +94,7 @@
             this.IDCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCompetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDWinner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCompetition.SuspendLayout();
@@ -104,6 +109,7 @@
             this.CreateEditCompetition.SuspendLayout();
             this.groupBoxCreateEditCompetition.SuspendLayout();
             this.groupBoxEditCompetition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEditID)).BeginInit();
             this.groupBoxAddWinner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDWinner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDCompetitionWinner)).BeginInit();
@@ -114,6 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDParticipant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDCompetitionParticipant)).BeginInit();
             this.groupBoxCreateCompetition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinAge)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlCompetition
@@ -126,7 +133,7 @@
             this.tabControlCompetition.Location = new System.Drawing.Point(6, 12);
             this.tabControlCompetition.Name = "tabControlCompetition";
             this.tabControlCompetition.SelectedIndex = 0;
-            this.tabControlCompetition.Size = new System.Drawing.Size(1225, 366);
+            this.tabControlCompetition.Size = new System.Drawing.Size(1225, 446);
             this.tabControlCompetition.TabIndex = 1;
             // 
             // SeeDelCompetition
@@ -139,7 +146,7 @@
             this.SeeDelCompetition.Location = new System.Drawing.Point(4, 29);
             this.SeeDelCompetition.Name = "SeeDelCompetition";
             this.SeeDelCompetition.Padding = new System.Windows.Forms.Padding(3);
-            this.SeeDelCompetition.Size = new System.Drawing.Size(1217, 333);
+            this.SeeDelCompetition.Size = new System.Drawing.Size(1217, 413);
             this.SeeDelCompetition.TabIndex = 0;
             this.SeeDelCompetition.Text = "Просмотр/удаление конкурса";
             this.SeeDelCompetition.UseVisualStyleBackColor = true;
@@ -162,9 +169,19 @@
             // 
             this.numericUpDownDelIDCompetition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownDelIDCompetition.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownDelIDCompetition.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownDelIDCompetition.Name = "numericUpDownDelIDCompetition";
             this.numericUpDownDelIDCompetition.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownDelIDCompetition.TabIndex = 10;
+            this.numericUpDownDelIDCompetition.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonDelCompetition
             // 
@@ -176,6 +193,7 @@
             this.buttonDelCompetition.TabIndex = 9;
             this.buttonDelCompetition.Text = "Удалить";
             this.buttonDelCompetition.UseVisualStyleBackColor = false;
+            this.buttonDelCompetition.Click += new System.EventHandler(this.buttonDelCompetition_Click);
             // 
             // label13
             // 
@@ -240,19 +258,20 @@
             this.dataGridViewCompetition.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCompetition.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewCompetition.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewCompetition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCompetition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCompetition,
             this.nameCompetition,
             this.dateCompetition,
+            this.MinAge,
             this.IDParticipant,
             this.IDWinner});
             this.dataGridViewCompetition.EnableHeadersVisualStyles = false;
@@ -262,7 +281,7 @@
             this.dataGridViewCompetition.RowHeadersVisible = false;
             this.dataGridViewCompetition.RowHeadersWidth = 51;
             this.dataGridViewCompetition.RowTemplate.Height = 29;
-            this.dataGridViewCompetition.Size = new System.Drawing.Size(819, 309);
+            this.dataGridViewCompetition.Size = new System.Drawing.Size(819, 361);
             this.dataGridViewCompetition.TabIndex = 4;
             // 
             // groupBoxDeleteParticipant
@@ -377,7 +396,7 @@
             this.CreateEditCompetition.Location = new System.Drawing.Point(4, 29);
             this.CreateEditCompetition.Name = "CreateEditCompetition";
             this.CreateEditCompetition.Padding = new System.Windows.Forms.Padding(3);
-            this.CreateEditCompetition.Size = new System.Drawing.Size(1217, 333);
+            this.CreateEditCompetition.Size = new System.Drawing.Size(1217, 413);
             this.CreateEditCompetition.TabIndex = 1;
             this.CreateEditCompetition.Text = "Добавить/редактировать конкурс";
             this.CreateEditCompetition.UseVisualStyleBackColor = true;
@@ -391,39 +410,71 @@
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxCreateCompetition);
             this.groupBoxCreateEditCompetition.Location = new System.Drawing.Point(6, 3);
             this.groupBoxCreateEditCompetition.Name = "groupBoxCreateEditCompetition";
-            this.groupBoxCreateEditCompetition.Size = new System.Drawing.Size(1205, 326);
+            this.groupBoxCreateEditCompetition.Size = new System.Drawing.Size(1205, 399);
             this.groupBoxCreateEditCompetition.TabIndex = 3;
             this.groupBoxCreateEditCompetition.TabStop = false;
             // 
             // groupBoxEditCompetition
             // 
+            this.groupBoxEditCompetition.Controls.Add(this.numericUpDownEditID);
+            this.groupBoxEditCompetition.Controls.Add(this.label9);
             this.groupBoxEditCompetition.Controls.Add(this.buttonEditCompetition);
             this.groupBoxEditCompetition.Controls.Add(this.dateTimePicker2);
             this.groupBoxEditCompetition.Controls.Add(this.label16);
             this.groupBoxEditCompetition.Controls.Add(this.label17);
             this.groupBoxEditCompetition.Controls.Add(this.textBoxEditNameCompetition);
             this.groupBoxEditCompetition.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxEditCompetition.Location = new System.Drawing.Point(6, 171);
+            this.groupBoxEditCompetition.Location = new System.Drawing.Point(412, 16);
             this.groupBoxEditCompetition.Name = "groupBoxEditCompetition";
-            this.groupBoxEditCompetition.Size = new System.Drawing.Size(381, 151);
+            this.groupBoxEditCompetition.Size = new System.Drawing.Size(386, 184);
             this.groupBoxEditCompetition.TabIndex = 7;
             this.groupBoxEditCompetition.TabStop = false;
             this.groupBoxEditCompetition.Text = "Редактировать конкурс";
+            // 
+            // numericUpDownEditID
+            // 
+            this.numericUpDownEditID.Location = new System.Drawing.Point(175, 32);
+            this.numericUpDownEditID.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownEditID.Name = "numericUpDownEditID";
+            this.numericUpDownEditID.Size = new System.Drawing.Size(194, 27);
+            this.numericUpDownEditID.TabIndex = 12;
+            this.numericUpDownEditID.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(15, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 25);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "ID конкурса";
             // 
             // buttonEditCompetition
             // 
             this.buttonEditCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonEditCompetition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonEditCompetition.Location = new System.Drawing.Point(15, 109);
+            this.buttonEditCompetition.Location = new System.Drawing.Point(15, 141);
             this.buttonEditCompetition.Name = "buttonEditCompetition";
             this.buttonEditCompetition.Size = new System.Drawing.Size(354, 37);
             this.buttonEditCompetition.TabIndex = 8;
             this.buttonEditCompetition.Text = "Изменить";
             this.buttonEditCompetition.UseVisualStyleBackColor = false;
+            this.buttonEditCompetition.Click += new System.EventHandler(this.buttonEditCompetition_Click);
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(175, 64);
+            this.dateTimePicker2.CustomFormat = "\"MM/dd/yyyy HH:mm\"";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(175, 99);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(194, 27);
             this.dateTimePicker2.TabIndex = 7;
@@ -432,7 +483,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(15, 64);
+            this.label16.Location = new System.Drawing.Point(15, 99);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(153, 25);
             this.label16.TabIndex = 6;
@@ -442,7 +493,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(15, 30);
+            this.label17.Location = new System.Drawing.Point(15, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(90, 25);
             this.label17.TabIndex = 1;
@@ -450,7 +501,7 @@
             // 
             // textBoxEditNameCompetition
             // 
-            this.textBoxEditNameCompetition.Location = new System.Drawing.Point(175, 31);
+            this.textBoxEditNameCompetition.Location = new System.Drawing.Point(175, 65);
             this.textBoxEditNameCompetition.Name = "textBoxEditNameCompetition";
             this.textBoxEditNameCompetition.Size = new System.Drawing.Size(194, 27);
             this.textBoxEditNameCompetition.TabIndex = 0;
@@ -463,25 +514,35 @@
             this.groupBoxAddWinner.Controls.Add(this.label11);
             this.groupBoxAddWinner.Controls.Add(this.buttonAddWinner);
             this.groupBoxAddWinner.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxAddWinner.Location = new System.Drawing.Point(818, 14);
+            this.groupBoxAddWinner.Location = new System.Drawing.Point(818, 16);
             this.groupBoxAddWinner.Name = "groupBoxAddWinner";
-            this.groupBoxAddWinner.Size = new System.Drawing.Size(381, 151);
+            this.groupBoxAddWinner.Size = new System.Drawing.Size(381, 184);
             this.groupBoxAddWinner.TabIndex = 5;
             this.groupBoxAddWinner.TabStop = false;
             this.groupBoxAddWinner.Text = "Добавить/изменить победителя конкурса";
             // 
             // numericUpDownAddIDWinner
             // 
-            this.numericUpDownAddIDWinner.Location = new System.Drawing.Point(176, 64);
+            this.numericUpDownAddIDWinner.Location = new System.Drawing.Point(176, 99);
+            this.numericUpDownAddIDWinner.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAddIDWinner.Name = "numericUpDownAddIDWinner";
             this.numericUpDownAddIDWinner.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownAddIDWinner.TabIndex = 12;
+            this.numericUpDownAddIDWinner.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(16, 66);
+            this.label10.Location = new System.Drawing.Point(16, 95);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 25);
             this.label10.TabIndex = 11;
@@ -489,16 +550,26 @@
             // 
             // numericUpDownAddIDCompetitionWinner
             // 
-            this.numericUpDownAddIDCompetitionWinner.Location = new System.Drawing.Point(176, 32);
+            this.numericUpDownAddIDCompetitionWinner.Location = new System.Drawing.Point(176, 62);
+            this.numericUpDownAddIDCompetitionWinner.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAddIDCompetitionWinner.Name = "numericUpDownAddIDCompetitionWinner";
             this.numericUpDownAddIDCompetitionWinner.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownAddIDCompetitionWinner.TabIndex = 10;
+            this.numericUpDownAddIDCompetitionWinner.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(16, 34);
+            this.label11.Location = new System.Drawing.Point(16, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(111, 25);
             this.label11.TabIndex = 9;
@@ -508,12 +579,13 @@
             // 
             this.buttonAddWinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonAddWinner.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonAddWinner.Location = new System.Drawing.Point(16, 109);
+            this.buttonAddWinner.Location = new System.Drawing.Point(16, 141);
             this.buttonAddWinner.Name = "buttonAddWinner";
             this.buttonAddWinner.Size = new System.Drawing.Size(354, 37);
             this.buttonAddWinner.TabIndex = 8;
             this.buttonAddWinner.Text = "Сохранить победителя";
             this.buttonAddWinner.UseVisualStyleBackColor = false;
+            this.buttonAddWinner.Click += new System.EventHandler(this.buttonAddWinner_Click);
             // 
             // groupBoxDelParticipant
             // 
@@ -523,9 +595,9 @@
             this.groupBoxDelParticipant.Controls.Add(this.label7);
             this.groupBoxDelParticipant.Controls.Add(this.buttonDelParticipant);
             this.groupBoxDelParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxDelParticipant.Location = new System.Drawing.Point(412, 171);
+            this.groupBoxDelParticipant.Location = new System.Drawing.Point(411, 215);
             this.groupBoxDelParticipant.Name = "groupBoxDelParticipant";
-            this.groupBoxDelParticipant.Size = new System.Drawing.Size(381, 151);
+            this.groupBoxDelParticipant.Size = new System.Drawing.Size(387, 151);
             this.groupBoxDelParticipant.TabIndex = 4;
             this.groupBoxDelParticipant.TabStop = false;
             this.groupBoxDelParticipant.Text = "Удалить участника из конкурса";
@@ -533,9 +605,19 @@
             // numericUpDownDelIDParticipant
             // 
             this.numericUpDownDelIDParticipant.Location = new System.Drawing.Point(176, 64);
+            this.numericUpDownDelIDParticipant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownDelIDParticipant.Name = "numericUpDownDelIDParticipant";
             this.numericUpDownDelIDParticipant.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownDelIDParticipant.TabIndex = 12;
+            this.numericUpDownDelIDParticipant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -550,9 +632,19 @@
             // numericUpDownDelIDCompetitionParticipant
             // 
             this.numericUpDownDelIDCompetitionParticipant.Location = new System.Drawing.Point(176, 32);
+            this.numericUpDownDelIDCompetitionParticipant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownDelIDCompetitionParticipant.Name = "numericUpDownDelIDCompetitionParticipant";
             this.numericUpDownDelIDCompetitionParticipant.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownDelIDCompetitionParticipant.TabIndex = 10;
+            this.numericUpDownDelIDCompetitionParticipant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
@@ -574,6 +666,7 @@
             this.buttonDelParticipant.TabIndex = 8;
             this.buttonDelParticipant.Text = "Удалить участника";
             this.buttonDelParticipant.UseVisualStyleBackColor = false;
+            this.buttonDelParticipant.Click += new System.EventHandler(this.buttonDelParticipant_Click);
             // 
             // groupBoxAddParticipant
             // 
@@ -583,9 +676,9 @@
             this.groupBoxAddParticipant.Controls.Add(this.label12);
             this.groupBoxAddParticipant.Controls.Add(this.buttonAddParticipant);
             this.groupBoxAddParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxAddParticipant.Location = new System.Drawing.Point(412, 16);
+            this.groupBoxAddParticipant.Location = new System.Drawing.Point(6, 215);
             this.groupBoxAddParticipant.Name = "groupBoxAddParticipant";
-            this.groupBoxAddParticipant.Size = new System.Drawing.Size(381, 151);
+            this.groupBoxAddParticipant.Size = new System.Drawing.Size(387, 151);
             this.groupBoxAddParticipant.TabIndex = 3;
             this.groupBoxAddParticipant.TabStop = false;
             this.groupBoxAddParticipant.Text = "Добавить участника в конкурс";
@@ -593,9 +686,19 @@
             // numericUpDownAddIDParticipant
             // 
             this.numericUpDownAddIDParticipant.Location = new System.Drawing.Point(176, 64);
+            this.numericUpDownAddIDParticipant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAddIDParticipant.Name = "numericUpDownAddIDParticipant";
             this.numericUpDownAddIDParticipant.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownAddIDParticipant.TabIndex = 12;
+            this.numericUpDownAddIDParticipant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
@@ -610,9 +713,19 @@
             // numericUpDownAddIDCompetitionParticipant
             // 
             this.numericUpDownAddIDCompetitionParticipant.Location = new System.Drawing.Point(176, 32);
+            this.numericUpDownAddIDCompetitionParticipant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAddIDCompetitionParticipant.Name = "numericUpDownAddIDCompetitionParticipant";
             this.numericUpDownAddIDCompetitionParticipant.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownAddIDCompetitionParticipant.TabIndex = 10;
+            this.numericUpDownAddIDCompetitionParticipant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label12
             // 
@@ -634,9 +747,12 @@
             this.buttonAddParticipant.TabIndex = 8;
             this.buttonAddParticipant.Text = "Добавить участника";
             this.buttonAddParticipant.UseVisualStyleBackColor = false;
+            this.buttonAddParticipant.Click += new System.EventHandler(this.buttonAddParticipant_Click);
             // 
             // groupBoxCreateCompetition
             // 
+            this.groupBoxCreateCompetition.Controls.Add(this.numericUpDownMinAge);
+            this.groupBoxCreateCompetition.Controls.Add(this.label8);
             this.groupBoxCreateCompetition.Controls.Add(this.buttonCreateCompetition);
             this.groupBoxCreateCompetition.Controls.Add(this.dateTimePicker1);
             this.groupBoxCreateCompetition.Controls.Add(this.label4);
@@ -645,24 +761,44 @@
             this.groupBoxCreateCompetition.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxCreateCompetition.Location = new System.Drawing.Point(6, 16);
             this.groupBoxCreateCompetition.Name = "groupBoxCreateCompetition";
-            this.groupBoxCreateCompetition.Size = new System.Drawing.Size(381, 151);
+            this.groupBoxCreateCompetition.Size = new System.Drawing.Size(386, 184);
             this.groupBoxCreateCompetition.TabIndex = 2;
             this.groupBoxCreateCompetition.TabStop = false;
             this.groupBoxCreateCompetition.Text = "Добавить конкурс";
+            // 
+            // numericUpDownMinAge
+            // 
+            this.numericUpDownMinAge.Location = new System.Drawing.Point(175, 97);
+            this.numericUpDownMinAge.Name = "numericUpDownMinAge";
+            this.numericUpDownMinAge.Size = new System.Drawing.Size(194, 27);
+            this.numericUpDownMinAge.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(15, 99);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 25);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Мин. возраст";
             // 
             // buttonCreateCompetition
             // 
             this.buttonCreateCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonCreateCompetition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateCompetition.Location = new System.Drawing.Point(15, 109);
+            this.buttonCreateCompetition.Location = new System.Drawing.Point(15, 141);
             this.buttonCreateCompetition.Name = "buttonCreateCompetition";
             this.buttonCreateCompetition.Size = new System.Drawing.Size(354, 37);
             this.buttonCreateCompetition.TabIndex = 8;
             this.buttonCreateCompetition.Text = "Добавить";
             this.buttonCreateCompetition.UseVisualStyleBackColor = false;
+            this.buttonCreateCompetition.Click += new System.EventHandler(this.buttonCreateCompetition_Click);
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "\"MM/dd/yyyy HH:mm\"";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(175, 64);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(194, 27);
@@ -700,7 +836,7 @@
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(1038, 389);
+            this.button4.Location = new System.Drawing.Point(1038, 469);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(192, 37);
             this.button4.TabIndex = 17;
@@ -713,7 +849,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(575, 389);
+            this.button3.Location = new System.Drawing.Point(575, 469);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(269, 37);
             this.button3.TabIndex = 16;
@@ -726,7 +862,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(291, 389);
+            this.button2.Location = new System.Drawing.Point(291, 469);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(269, 37);
             this.button2.TabIndex = 15;
@@ -739,7 +875,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(9, 389);
+            this.button1.Location = new System.Drawing.Point(9, 469);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(269, 37);
             this.button1.TabIndex = 14;
@@ -749,9 +885,9 @@
             // 
             // IDCompetition
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle10;
             this.IDCompetition.FillWeight = 50F;
             this.IDCompetition.HeaderText = "ID";
             this.IDCompetition.MinimumWidth = 6;
@@ -774,6 +910,13 @@
             this.dateCompetition.Name = "dateCompetition";
             this.dateCompetition.ReadOnly = true;
             // 
+            // MinAge
+            // 
+            this.MinAge.HeaderText = "Мин. возраст";
+            this.MinAge.MinimumWidth = 6;
+            this.MinAge.Name = "MinAge";
+            this.MinAge.ReadOnly = true;
+            // 
             // IDParticipant
             // 
             this.IDParticipant.FillWeight = 87.91444F;
@@ -794,7 +937,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 438);
+            this.ClientSize = new System.Drawing.Size(1243, 518);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -821,6 +964,7 @@
             this.groupBoxCreateEditCompetition.ResumeLayout(false);
             this.groupBoxEditCompetition.ResumeLayout(false);
             this.groupBoxEditCompetition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEditID)).EndInit();
             this.groupBoxAddWinner.ResumeLayout(false);
             this.groupBoxAddWinner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDWinner)).EndInit();
@@ -835,6 +979,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddIDCompetitionParticipant)).EndInit();
             this.groupBoxCreateCompetition.ResumeLayout(false);
             this.groupBoxCreateCompetition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinAge)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -898,9 +1043,14 @@
         private Label label16;
         private Label label17;
         private TextBox textBoxEditNameCompetition;
+        private NumericUpDown numericUpDownMinAge;
+        private Label label8;
+        private NumericUpDown numericUpDownEditID;
+        private Label label9;
         private DataGridViewTextBoxColumn IDCompetition;
         private DataGridViewTextBoxColumn nameCompetition;
         private DataGridViewTextBoxColumn dateCompetition;
+        private DataGridViewTextBoxColumn MinAge;
         private DataGridViewTextBoxColumn IDParticipant;
         private DataGridViewTextBoxColumn IDWinner;
     }

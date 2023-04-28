@@ -20,5 +20,40 @@ namespace CourseWork.Entities
         public string Text { get; set; }
         public int ParticipantId { get; set; }
         public Participant Participant { get; set; }
+
+        public Poem(string name, string theme, DateTime year, string text, int participantId)
+        {
+            Name = name;
+            Theme = theme;
+            Year = year;
+            Text = text;
+            ParticipantId = participantId;
+        }
+
+        internal void AddToDataBase()
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                db.Poems.Add(this);
+                db.SaveChanges();
+            }
+        }
+
+        internal static Poem? FindById(int id)
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                return db.Poems.Find(id);
+            }
+        }
+
+        internal void DeleteFromDataBase()
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                db.Poems.Remove(this);
+                db.SaveChanges();
+            }
+        }
     }
 }

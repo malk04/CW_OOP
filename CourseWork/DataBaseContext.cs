@@ -18,7 +18,7 @@ namespace CourseWork
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(@"server=localhost; port=3306; username=root; password=; database=cw_oop");
+            optionsBuilder.UseMySQL(@"server=localhost; port=3306; username=root; password=; database=cw_oop; charset=utf8");
             base.OnConfiguring(optionsBuilder);
         }
 

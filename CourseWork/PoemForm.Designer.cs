@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPoem = new System.Windows.Forms.TabControl();
             this.SeeDelPoem = new System.Windows.Forms.TabPage();
             this.dataGridViewPoem = new System.Windows.Forms.DataGridView();
@@ -63,27 +63,27 @@
             this.CreateEditPrintPoem = new System.Windows.Forms.TabPage();
             this.groupBoxPrintPoem = new System.Windows.Forms.GroupBox();
             this.textBoxPrintPoem = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownViewId = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.buttonPrintPoem = new System.Windows.Forms.Button();
             this.groupBoxEditPoem = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.textBoxEditName = new System.Windows.Forms.TextBox();
+            this.numericUpDownEditId = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.buttonEditParticipant = new System.Windows.Forms.Button();
             this.groupBoxCreatePoem = new System.Windows.Forms.GroupBox();
+            this.comboBoxPoemTheme = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBoxTextCreate = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDownYearCreate = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAvtorID = new System.Windows.Forms.NumericUpDown();
             this.buttonCreateParticipant = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxPoemName = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -99,11 +99,10 @@
             this.groupBoxFilterParticipant.SuspendLayout();
             this.CreateEditPrintPoem.SuspendLayout();
             this.groupBoxPrintPoem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewId)).BeginInit();
             this.groupBoxEditPoem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEditId)).BeginInit();
             this.groupBoxCreatePoem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYearCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAvtorID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,14 +144,14 @@
             this.dataGridViewPoem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPoem.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewPoem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPoem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPoem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewPoem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPoem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPoem,
@@ -172,9 +171,9 @@
             // 
             // IDPoem
             // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            this.IDPoem.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            this.IDPoem.DefaultCellStyle = dataGridViewCellStyle6;
             this.IDPoem.FillWeight = 50F;
             this.IDPoem.HeaderText = "ID";
             this.IDPoem.MinimumWidth = 6;
@@ -231,9 +230,19 @@
             // 
             this.numericUpDownDelIDPoem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownDelIDPoem.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownDelIDPoem.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownDelIDPoem.Name = "numericUpDownDelIDPoem";
             this.numericUpDownDelIDPoem.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownDelIDPoem.TabIndex = 10;
+            this.numericUpDownDelIDPoem.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonDelPoem
             // 
@@ -245,6 +254,7 @@
             this.buttonDelPoem.TabIndex = 9;
             this.buttonDelPoem.Text = "Удалить";
             this.buttonDelPoem.UseVisualStyleBackColor = false;
+            this.buttonDelPoem.Click += new System.EventHandler(this.buttonDelPoem_Click);
             // 
             // label17
             // 
@@ -277,6 +287,17 @@
             // comboBoxTheme
             // 
             this.comboBoxTheme.FormattingEnabled = true;
+            this.comboBoxTheme.Items.AddRange(new object[] {
+            "Все",
+            "О любви",
+            "О природе",
+            "О Родине",
+            "О дружбе",
+            "О войне",
+            "О зиме",
+            "О весне",
+            "О лете",
+            "Об осени"});
             this.comboBoxTheme.Location = new System.Drawing.Point(175, 117);
             this.comboBoxTheme.Name = "comboBoxTheme";
             this.comboBoxTheme.Size = new System.Drawing.Size(194, 28);
@@ -463,7 +484,7 @@
             this.groupBoxPrintPoem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxPrintPoem.Controls.Add(this.textBoxPrintPoem);
-            this.groupBoxPrintPoem.Controls.Add(this.numericUpDown1);
+            this.groupBoxPrintPoem.Controls.Add(this.numericUpDownViewId);
             this.groupBoxPrintPoem.Controls.Add(this.label9);
             this.groupBoxPrintPoem.Controls.Add(this.buttonPrintPoem);
             this.groupBoxPrintPoem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -487,13 +508,23 @@
             this.textBoxPrintPoem.Size = new System.Drawing.Size(413, 60);
             this.textBoxPrintPoem.TabIndex = 13;
             // 
-            // numericUpDown1
+            // numericUpDownViewId
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown1.Location = new System.Drawing.Point(181, 39);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(413, 27);
-            this.numericUpDown1.TabIndex = 11;
+            this.numericUpDownViewId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDownViewId.Location = new System.Drawing.Point(181, 39);
+            this.numericUpDownViewId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownViewId.Name = "numericUpDownViewId";
+            this.numericUpDownViewId.Size = new System.Drawing.Size(413, 27);
+            this.numericUpDownViewId.TabIndex = 11;
+            this.numericUpDownViewId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label9
             // 
@@ -517,12 +548,13 @@
             this.buttonPrintPoem.TabIndex = 8;
             this.buttonPrintPoem.Text = "Вывести";
             this.buttonPrintPoem.UseVisualStyleBackColor = false;
+            this.buttonPrintPoem.Click += new System.EventHandler(this.buttonPrintPoem_Click);
             // 
             // groupBoxEditPoem
             // 
             this.groupBoxEditPoem.Controls.Add(this.label7);
-            this.groupBoxEditPoem.Controls.Add(this.textBox1);
-            this.groupBoxEditPoem.Controls.Add(this.numericUpDown2);
+            this.groupBoxEditPoem.Controls.Add(this.textBoxEditName);
+            this.groupBoxEditPoem.Controls.Add(this.numericUpDownEditId);
             this.groupBoxEditPoem.Controls.Add(this.label12);
             this.groupBoxEditPoem.Controls.Add(this.buttonEditParticipant);
             this.groupBoxEditPoem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -543,24 +575,34 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Название";
             // 
-            // textBox1
+            // textBoxEditName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxEditName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(181, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(413, 27);
-            this.textBox1.TabIndex = 12;
+            this.textBoxEditName.Location = new System.Drawing.Point(181, 72);
+            this.textBoxEditName.Name = "textBoxEditName";
+            this.textBoxEditName.Size = new System.Drawing.Size(413, 27);
+            this.textBoxEditName.TabIndex = 12;
             // 
-            // numericUpDown2
+            // numericUpDownEditId
             // 
-            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.numericUpDownEditId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown2.Location = new System.Drawing.Point(181, 39);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(413, 27);
-            this.numericUpDown2.TabIndex = 11;
+            this.numericUpDownEditId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDownEditId.Location = new System.Drawing.Point(181, 39);
+            this.numericUpDownEditId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownEditId.Name = "numericUpDownEditId";
+            this.numericUpDownEditId.Size = new System.Drawing.Size(413, 27);
+            this.numericUpDownEditId.TabIndex = 11;
+            this.numericUpDownEditId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label12
             // 
@@ -584,22 +626,23 @@
             this.buttonEditParticipant.TabIndex = 8;
             this.buttonEditParticipant.Text = "Редактировать";
             this.buttonEditParticipant.UseVisualStyleBackColor = false;
+            this.buttonEditParticipant.Click += new System.EventHandler(this.buttonEditParticipant_Click);
             // 
             // groupBoxCreatePoem
             // 
             this.groupBoxCreatePoem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxCreatePoem.Controls.Add(this.comboBoxPoemTheme);
+            this.groupBoxCreatePoem.Controls.Add(this.dateTimePicker1);
             this.groupBoxCreatePoem.Controls.Add(this.textBoxTextCreate);
             this.groupBoxCreatePoem.Controls.Add(this.label11);
-            this.groupBoxCreatePoem.Controls.Add(this.numericUpDownYearCreate);
             this.groupBoxCreatePoem.Controls.Add(this.numericUpDownAvtorID);
             this.groupBoxCreatePoem.Controls.Add(this.buttonCreateParticipant);
             this.groupBoxCreatePoem.Controls.Add(this.label4);
             this.groupBoxCreatePoem.Controls.Add(this.label3);
             this.groupBoxCreatePoem.Controls.Add(this.label2);
-            this.groupBoxCreatePoem.Controls.Add(this.textBoxName);
             this.groupBoxCreatePoem.Controls.Add(this.label1);
-            this.groupBoxCreatePoem.Controls.Add(this.textBoxSurname);
+            this.groupBoxCreatePoem.Controls.Add(this.textBoxPoemName);
             this.groupBoxCreatePoem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxCreatePoem.Location = new System.Drawing.Point(6, 6);
             this.groupBoxCreatePoem.Name = "groupBoxCreatePoem";
@@ -607,6 +650,33 @@
             this.groupBoxCreatePoem.TabIndex = 2;
             this.groupBoxCreatePoem.TabStop = false;
             this.groupBoxCreatePoem.Text = "Добавить стихотворение";
+            // 
+            // comboBoxPoemTheme
+            // 
+            this.comboBoxPoemTheme.FormattingEnabled = true;
+            this.comboBoxPoemTheme.Items.AddRange(new object[] {
+            "О любви",
+            "О природе",
+            "О Родине",
+            "О дружбе",
+            "О войне",
+            "О зиме",
+            "О весне",
+            "О лете",
+            "Об осени"});
+            this.comboBoxPoemTheme.Location = new System.Drawing.Point(180, 70);
+            this.comboBoxPoemTheme.Name = "comboBoxPoemTheme";
+            this.comboBoxPoemTheme.Size = new System.Drawing.Size(413, 28);
+            this.comboBoxPoemTheme.TabIndex = 14;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(181, 139);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(412, 27);
+            this.dateTimePicker1.TabIndex = 13;
             // 
             // textBoxTextCreate
             // 
@@ -631,25 +701,25 @@
             this.label11.TabIndex = 11;
             this.label11.Text = "Текст";
             // 
-            // numericUpDownYearCreate
-            // 
-            this.numericUpDownYearCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownYearCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDownYearCreate.Location = new System.Drawing.Point(181, 139);
-            this.numericUpDownYearCreate.Name = "numericUpDownYearCreate";
-            this.numericUpDownYearCreate.Size = new System.Drawing.Size(412, 27);
-            this.numericUpDownYearCreate.TabIndex = 10;
-            // 
             // numericUpDownAvtorID
             // 
             this.numericUpDownAvtorID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAvtorID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownAvtorID.Location = new System.Drawing.Point(181, 104);
+            this.numericUpDownAvtorID.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAvtorID.Name = "numericUpDownAvtorID";
             this.numericUpDownAvtorID.Size = new System.Drawing.Size(412, 27);
             this.numericUpDownAvtorID.TabIndex = 9;
+            this.numericUpDownAvtorID.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonCreateParticipant
             // 
@@ -663,6 +733,7 @@
             this.buttonCreateParticipant.TabIndex = 8;
             this.buttonCreateParticipant.Text = "Добавить";
             this.buttonCreateParticipant.UseVisualStyleBackColor = false;
+            this.buttonCreateParticipant.Click += new System.EventHandler(this.buttonCreateParticipant_Click);
             // 
             // label4
             // 
@@ -694,15 +765,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Тема";
             // 
-            // textBoxName
-            // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Location = new System.Drawing.Point(181, 70);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(412, 27);
-            this.textBoxName.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -713,14 +775,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Название";
             // 
-            // textBoxSurname
+            // textBoxPoemName
             // 
-            this.textBoxSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxPoemName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSurname.Location = new System.Drawing.Point(181, 37);
-            this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(412, 27);
-            this.textBoxSurname.TabIndex = 0;
+            this.textBoxPoemName.Location = new System.Drawing.Point(181, 37);
+            this.textBoxPoemName.Name = "textBoxPoemName";
+            this.textBoxPoemName.Size = new System.Drawing.Size(412, 27);
+            this.textBoxPoemName.TabIndex = 0;
             // 
             // button4
             // 
@@ -804,13 +866,12 @@
             this.CreateEditPrintPoem.ResumeLayout(false);
             this.groupBoxPrintPoem.ResumeLayout(false);
             this.groupBoxPrintPoem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewId)).EndInit();
             this.groupBoxEditPoem.ResumeLayout(false);
             this.groupBoxEditPoem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEditId)).EndInit();
             this.groupBoxCreatePoem.ResumeLayout(false);
             this.groupBoxCreatePoem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYearCreate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAvtorID)).EndInit();
             this.ResumeLayout(false);
 
@@ -839,9 +900,8 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBoxName;
         private Label label1;
-        private TextBox textBoxSurname;
+        private TextBox textBoxPoemName;
         private GroupBox groupBoxFilterPoem;
         private ComboBox comboBoxTheme;
         private Label label13;
@@ -866,15 +926,16 @@
         private Button button5;
         private TextBox textBoxTextCreate;
         private Label label11;
-        private NumericUpDown numericUpDownYearCreate;
         private NumericUpDown numericUpDownAvtorID;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown numericUpDownEditId;
         private GroupBox groupBoxPrintPoem;
         private TextBox textBoxPrintPoem;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDownViewId;
         private Label label9;
         private Button buttonPrintPoem;
         private Label label7;
-        private TextBox textBox1;
+        private TextBox textBoxEditName;
+        private DateTimePicker dateTimePicker1;
+        private ComboBox comboBoxPoemTheme;
     }
 }

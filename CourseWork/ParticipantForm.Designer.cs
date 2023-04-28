@@ -222,9 +222,19 @@
             // 
             this.numericUpDownIDDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownIDDel.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownIDDel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownIDDel.Name = "numericUpDownIDDel";
             this.numericUpDownIDDel.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownIDDel.TabIndex = 10;
+            this.numericUpDownIDDel.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonDeleteParticipant
             // 
@@ -236,6 +246,7 @@
             this.buttonDeleteParticipant.TabIndex = 9;
             this.buttonDeleteParticipant.Text = "Удалить";
             this.buttonDeleteParticipant.UseVisualStyleBackColor = false;
+            this.buttonDeleteParticipant.Click += new System.EventHandler(this.buttonDeleteParticipant_Click);
             // 
             // label14
             // 
@@ -355,9 +366,19 @@
             // numericUpDownIDEdit
             // 
             this.numericUpDownIDEdit.Location = new System.Drawing.Point(176, 32);
+            this.numericUpDownIDEdit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownIDEdit.Name = "numericUpDownIDEdit";
             this.numericUpDownIDEdit.Size = new System.Drawing.Size(194, 27);
             this.numericUpDownIDEdit.TabIndex = 10;
+            this.numericUpDownIDEdit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label12
             // 
@@ -379,6 +400,7 @@
             this.buttonEditParticipant.TabIndex = 8;
             this.buttonEditParticipant.Text = "Редактировать";
             this.buttonEditParticipant.UseVisualStyleBackColor = false;
+            this.buttonEditParticipant.Click += new System.EventHandler(this.buttonEditParticipant_Click);
             // 
             // dateTimePicker2
             // 
@@ -413,6 +435,7 @@
             this.textBoxSecondNameEdit.Name = "textBoxSecondNameEdit";
             this.textBoxSecondNameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxSecondNameEdit.TabIndex = 4;
+            this.textBoxSecondNameEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSecondNameEdit_KeyPress);
             // 
             // label9
             // 
@@ -430,6 +453,7 @@
             this.textBoxNameEdit.Name = "textBoxNameEdit";
             this.textBoxNameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxNameEdit.TabIndex = 2;
+            this.textBoxNameEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNameEdit_KeyPress);
             // 
             // label10
             // 
@@ -447,6 +471,7 @@
             this.textBoxSurnameEdit.Name = "textBoxSurnameEdit";
             this.textBoxSurnameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxSurnameEdit.TabIndex = 0;
+            this.textBoxSurnameEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSurnameEdit_KeyPress);
             // 
             // groupBoxCreateParticipant
             // 
@@ -474,9 +499,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(15, 34);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(173, 25);
+            this.label11.Size = new System.Drawing.Size(301, 25);
             this.label11.TabIndex = 9;
-            this.label11.Text = "Заполните все поля";
+            this.label11.Text = "Заполните все поля (без пробелов)";
             // 
             // buttonCreateParticipant
             // 
@@ -488,6 +513,7 @@
             this.buttonCreateParticipant.TabIndex = 8;
             this.buttonCreateParticipant.Text = "Добавить";
             this.buttonCreateParticipant.UseVisualStyleBackColor = false;
+            this.buttonCreateParticipant.Click += new System.EventHandler(this.buttonCreateParticipant_Click);
             // 
             // dateTimePicker1
             // 
@@ -522,6 +548,7 @@
             this.textBoxSecondName.Name = "textBoxSecondName";
             this.textBoxSecondName.Size = new System.Drawing.Size(194, 27);
             this.textBoxSecondName.TabIndex = 4;
+            this.textBoxSecondName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSecondName_KeyPress);
             // 
             // label2
             // 
@@ -539,6 +566,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(194, 27);
             this.textBoxName.TabIndex = 2;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             // 
             // label1
             // 
@@ -556,6 +584,7 @@
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(194, 27);
             this.textBoxSurname.TabIndex = 0;
+            this.textBoxSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSurname_KeyPress);
             // 
             // button1
             // 

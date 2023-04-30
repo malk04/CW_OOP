@@ -1,9 +1,11 @@
 ﻿using CourseWork.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -66,8 +68,10 @@ namespace CourseWork
 
         private void buttonCreateCompetition_Click(object sender, EventArgs e)
         {
+            CultureInfo provider = new CultureInfo("en-US");
+
             string _name = textBoxNameCompetition.Text;
-            DateTime _date = DateTime.Parse(dateTimePicker1.Text);
+            DateTime _date = DateTime.ParseExact(dateTimePicker1.Text, "dd/MM/yyyy HH:mm", provider);
             int minAge = (int)numericUpDownMinAge.Value;
 
             if (!string.IsNullOrEmpty(_name))
@@ -91,35 +95,40 @@ namespace CourseWork
         private void buttonEditCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditID.Value;
-            Competition? competition = Competition.FindById(_id);
-            if (competition == null)
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
                 return;
             }
 
             string _name = textBoxEditNameCompetition.Text;
-            DateTime _date = DateTime.Parse(dateTimePicker2.Text);
+            CultureInfo provider = new CultureInfo("en-US");
+            DateTime _date = DateTime.ParseExact(dateTimePicker2.Text, "dd/MM/yyyy HH:mm", provider);
 
             if (!string.IsNullOrEmpty(_name))
             {
-                if ((DateTime.Now - _date).TotalHours < 1)
+                if ((competition.Date - _date).TotalDays >= 1)
                 {
-                    MessageBox(0, "Выбрана сегодняшняя дата. Вы уверены, что дата и время проведения введены верно?", "Предупреждение", 0);
+                    MessageBox(0, "При переносе конкурса на более раннюю дату возраст уже добавленных участников может не соответствовать минимальному возрасту.", "Предупреждение", 0);
                 }
 
                 using (DataBaseContext db = new DataBaseContext())
                 {
                     competition.Name = _name;
                     competition.Date = _date;
-                    db.Competitions.Update(competition);
+                    db.Entry(competition).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 //updateTable();
 
                 textBoxEditNameCompetition.Text = "";
                 dateTimePicker2.Text = DateTime.Now.ToString();
-                MessageBox(0, "Название стихотворения отредактировано", "Успешно", 0);
+                MessageBox(0, "Конкурс отредактирован", "Успешно", 0);
             }
             else
             {
@@ -131,8 +140,12 @@ namespace CourseWork
         private void buttonDelCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDCompetition.Value;
-            Competition? competition = Competition.FindById(_id);
-            if (competition == null)
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -145,31 +158,46 @@ namespace CourseWork
         private void buttonAddParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownAddIDCompetitionParticipant.Value;
-            Competition? competition = Competition.FindById(_idComp);
-            if (competition == null)
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_idComp);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
                 return;
             }
 
-            int _idPar = (int)numericUpDownAddIDCompetitionParticipant.Value;
-            Participant? participant = Participant.FindById(_idPar);
-            if (participant == null)
+            int _idPar = (int)numericUpDownAddIDParticipant.Value;
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_idPar);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
                 return;
             }
 
-            if (competition.Participants.Contains(participant))
+            if (competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
                 MessageBox(0, $"Конкурсант с id: {_idPar} уже добавлен в конкурс с id: {_idComp}", "Ошибка", 0);
+                return;
+            }
+
+            decimal DaysInAYear = 365.242M;
+            if ((decimal)(competition.Date - participant.DateOfBirth).TotalDays / DaysInAYear < competition.MinAge)
+            {
+                MessageBox(0, $"Возраст конкурсанта с id: {_idPar} меньше допустимого. Минимальный возраст для конкурса с id: {_idComp} = {competition.MinAge}", "Ошибка", 0);
                 return;
             }
 
             using (DataBaseContext db = new DataBaseContext())
             {
                 competition.Participants.Add(participant);
-                db.Competitions.Update(competition);
+                db.Entry(competition).State = EntityState.Modified;
                 db.SaveChanges();
             }
 
@@ -179,22 +207,30 @@ namespace CourseWork
         private void buttonDelParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
-            Competition? competition = Competition.FindById(_idComp);
-            if (competition == null)
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_idComp);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
                 return;
             }
 
-            int _idPar = (int)numericUpDownDelIDParticipant.Value;
-            Participant? participant = Participant.FindById(_idPar);
-            if (participant == null)
+            int _idPar = (int)numericUpDownAddIDParticipant.Value;
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_idPar);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
                 return;
             }
 
-            if (!competition.Participants.Contains(participant))
+            if (!competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
                 MessageBox(0, $"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", 0);
                 return;
@@ -202,8 +238,13 @@ namespace CourseWork
 
             using (DataBaseContext db = new DataBaseContext())
             {
+                competition = db.Competitions.Include(c => c.Participants).First(c => c.CompetitionId == _idComp);
+                participant = db.Participants.First(p => p.ParticipantId == _idPar);
                 competition.Participants.Remove(participant);
-                db.Competitions.Update(competition);
+                if (competition.WinnerId == participant.ParticipantId)
+                {
+                    competition.WinnerId = null;
+                }
                 db.SaveChanges();
             }
 
@@ -213,22 +254,30 @@ namespace CourseWork
         private void buttonAddWinner_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
-            Competition? competition = Competition.FindById(_idComp);
-            if (competition == null)
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_idComp);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
                 return;
             }
 
-            int _idPar = (int)numericUpDownDelIDParticipant.Value;
-            Participant? participant = Participant.FindById(_idPar);
-            if (participant == null)
+            int _idPar = (int)numericUpDownAddIDParticipant.Value;
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_idPar);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
                 return;
             }
 
-            if (!competition.Participants.Contains(participant))
+            if (!competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
                 MessageBox(0, $"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", 0);
                 return;
@@ -236,12 +285,31 @@ namespace CourseWork
 
             using (DataBaseContext db = new DataBaseContext())
             {
+                competition = db.Competitions.Include(c => c.Participants).First(c => c.CompetitionId == _idComp);
+                participant = db.Participants.First(p => p.ParticipantId == _idPar);
                 competition.WinnerId = participant.ParticipantId;
-                db.Competitions.Update(competition);
                 db.SaveChanges();
             }
 
             MessageBox(0, "Победитель конкурса добавлен/изменен", "Успешно", 0);
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            int _id = (int)numericUpDownEditID.Value;
+            Competition competition;
+            try
+            {
+                competition = Competition.FindById(_id);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
+                return;
+            }
+           
+            textBoxEditNameCompetition.Text = competition.Name;
+            dateTimePicker2.Text = competition.Date.ToString();
         }
     }
 }

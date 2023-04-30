@@ -19,9 +19,10 @@ namespace CourseWork.Entities
 
         [Column(TypeName = "varchar(255)")]
         public string SecondName { get; set; }
+        [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
-        public ICollection<Poem>? Poems { get; set; }
-        public ICollection<Competition>? Competitions { get; set; }
+        public ICollection<Poem> Poems { get; set; }
+        public ICollection<Competition> Competitions { get; set; }
 
         public Participant(string surname, string name, string secondName, DateTime dateOfBirth)
         {
@@ -42,11 +43,11 @@ namespace CourseWork.Entities
             }
         }
 
-        internal static Participant? FindById(int id)
+        internal static Participant FindById(int id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                return db.Participants.Find(id);
+                return db.Participants.First(p => p.ParticipantId == id);
             }
         }
 

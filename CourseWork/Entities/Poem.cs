@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace CourseWork.Entities
 
         [Column(TypeName = "varchar(255)")]
         public string Theme { get; set; }
+        [Column(TypeName = "date")]
         public DateTime Year { get; set; }
         public string Text { get; set; }
         public int ParticipantId { get; set; }
@@ -39,11 +41,11 @@ namespace CourseWork.Entities
             }
         }
 
-        internal static Poem? FindById(int id)
+        internal static Poem FindById(int id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                return db.Poems.Find(id);
+                return db.Poems.First(p => p.PoemId == id);
             }
         }
 

@@ -1,4 +1,5 @@
 using CourseWork.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 
 namespace CourseWork
@@ -92,45 +93,49 @@ namespace CourseWork
 
         private void textBoxSurname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void textBoxSecondName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void textBoxSurnameEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void textBoxNameEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void textBoxSecondNameEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Space)
+            if (e.KeyChar == (int)Keys.Space || Char.IsDigit(e.KeyChar))
                 e.KeyChar = '\0';
         }
 
         private void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDEdit.Value;
-            Participant? participant = Participant.FindById(_id);
-            if (participant == null)
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -158,7 +163,7 @@ namespace CourseWork
                 if (!string.IsNullOrEmpty(_name)) participant.Name = _name;
                 if (!string.IsNullOrEmpty(_secondName)) participant.SecondName = _secondName;
                 participant.DateOfBirth = _birhday;
-                db.Participants.Update(participant);
+                db.Entry(participant).State = EntityState.Modified;
                 db.SaveChanges();
             }
             //updateTable();
@@ -174,8 +179,12 @@ namespace CourseWork
         private void buttonDeleteParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDDel.Value;
-            Participant? participant = Participant.FindById(_id);
-            if (participant == null)
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -184,6 +193,26 @@ namespace CourseWork
             participant.DeleteFromDataBase();
             MessageBox(0, "Конкурсант удален", "Успешно", 0);
             //updateTable();
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            int _id = (int)numericUpDownIDEdit.Value;
+            Participant participant;
+            try
+            {
+                participant = Participant.FindById(_id);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
+                return;
+            }
+
+            textBoxSurnameEdit.Text = participant.Surname;
+            textBoxNameEdit.Text = participant.Name;
+            textBoxSecondNameEdit.Text = participant.SecondName;
+            dateTimePicker2.Text = participant.DateOfBirth.ToString();
         }
     }
 }

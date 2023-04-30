@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPoem = new System.Windows.Forms.TabControl();
             this.SeeDelPoem = new System.Windows.Forms.TabPage();
             this.dataGridViewPoem = new System.Windows.Forms.DataGridView();
@@ -67,6 +67,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.buttonPrintPoem = new System.Windows.Forms.Button();
             this.groupBoxEditPoem = new System.Windows.Forms.GroupBox();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxEditName = new System.Windows.Forms.TextBox();
             this.numericUpDownEditId = new System.Windows.Forms.NumericUpDown();
@@ -144,14 +145,14 @@
             this.dataGridViewPoem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPoem.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewPoem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPoem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPoem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPoem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPoem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPoem,
@@ -171,9 +172,9 @@
             // 
             // IDPoem
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            this.IDPoem.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            this.IDPoem.DefaultCellStyle = dataGridViewCellStyle2;
             this.IDPoem.FillWeight = 50F;
             this.IDPoem.HeaderText = "ID";
             this.IDPoem.MinimumWidth = 6;
@@ -512,19 +513,9 @@
             // 
             this.numericUpDownViewId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownViewId.Location = new System.Drawing.Point(181, 39);
-            this.numericUpDownViewId.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownViewId.Name = "numericUpDownViewId";
             this.numericUpDownViewId.Size = new System.Drawing.Size(413, 27);
             this.numericUpDownViewId.TabIndex = 11;
-            this.numericUpDownViewId.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label9
             // 
@@ -552,6 +543,7 @@
             // 
             // groupBoxEditPoem
             // 
+            this.groupBoxEditPoem.Controls.Add(this.buttonLoad);
             this.groupBoxEditPoem.Controls.Add(this.label7);
             this.groupBoxEditPoem.Controls.Add(this.textBoxEditName);
             this.groupBoxEditPoem.Controls.Add(this.numericUpDownEditId);
@@ -564,6 +556,20 @@
             this.groupBoxEditPoem.TabIndex = 3;
             this.groupBoxEditPoem.TabStop = false;
             this.groupBoxEditPoem.Text = "Редактировать стихотворение";
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonLoad.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLoad.Location = new System.Drawing.Point(8, 114);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(290, 37);
+            this.buttonLoad.TabIndex = 14;
+            this.buttonLoad.Text = "Загрузить данные";
+            this.buttonLoad.UseVisualStyleBackColor = false;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // label7
             // 
@@ -620,9 +626,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonEditParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonEditParticipant.Location = new System.Drawing.Point(6, 114);
+            this.buttonEditParticipant.Location = new System.Drawing.Point(304, 114);
             this.buttonEditParticipant.Name = "buttonEditParticipant";
-            this.buttonEditParticipant.Size = new System.Drawing.Size(588, 37);
+            this.buttonEditParticipant.Size = new System.Drawing.Size(290, 37);
             this.buttonEditParticipant.TabIndex = 8;
             this.buttonEditParticipant.Text = "Редактировать";
             this.buttonEditParticipant.UseVisualStyleBackColor = false;
@@ -847,6 +853,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.tabControlPoem);
             this.Name = "PoemForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно стихотворений";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PoemForm_FormClosing);
             this.Resize += new System.EventHandler(this.PoemForm_Resize);
@@ -937,5 +944,6 @@
         private TextBox textBoxEditName;
         private DateTimePicker dateTimePicker1;
         private ComboBox comboBoxPoemTheme;
+        private Button buttonLoad;
     }
 }

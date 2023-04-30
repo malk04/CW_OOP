@@ -129,6 +129,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "StatisticsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно статистики";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatisticsForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYearStatistics)).EndInit();

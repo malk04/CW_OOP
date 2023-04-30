@@ -10,15 +10,16 @@ namespace CourseWork
 {
     internal class DataBaseContext: DbContext
     {
-        /*public DataBaseContext()
+        //public DataBaseContext() { }
+        public DataBaseContext()
         {
-            Database.EnsureDeleted();
+            // Database.EnsureDeleted();
             Database.EnsureCreated();
-        }*/
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(@"server=localhost; port=3306; username=root; password=; database=cw_oop; charset=utf8");
+            optionsBuilder.UseMySql(@"server=localhost; port=3306; username=root; password=; database=cw_oop; charset=utf8", new MySqlServerVersion(new Version(8, 0, 30)));
             base.OnConfiguring(optionsBuilder);
         }
 

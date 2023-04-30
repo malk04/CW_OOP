@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,6 +58,20 @@ namespace CourseWork
         private void button4_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void NavigationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Вы уверены, что хотите выйти?", "", MessageBoxButtons.YesNo);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    Environment.Exit(0);
+                    return;
+                case DialogResult.No:
+                    e.Cancel = true;
+                    return;
+            }
         }
     }
 }

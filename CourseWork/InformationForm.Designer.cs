@@ -110,6 +110,7 @@
             this.ClientSize = new System.Drawing.Size(813, 405);
             this.Controls.Add(this.groupBoxInformation);
             this.Name = "InformationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация";
             this.Load += new System.EventHandler(this.InformationForm_Load);
             this.Resize += new System.EventHandler(this.InformationForm_Resize);

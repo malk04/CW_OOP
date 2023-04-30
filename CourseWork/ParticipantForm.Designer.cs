@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlParticipant = new System.Windows.Forms.TabControl();
             this.SeeDelParticipant = new System.Windows.Forms.TabPage();
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
@@ -52,6 +52,7 @@
             this.CreateEditParticipant = new System.Windows.Forms.TabPage();
             this.groupBoxCreateEditParticipant = new System.Windows.Forms.GroupBox();
             this.groupBoxEditParticipant = new System.Windows.Forms.GroupBox();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.numericUpDownIDEdit = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.buttonEditParticipant = new System.Windows.Forms.Button();
@@ -127,14 +128,14 @@
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewParticipant.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewParticipant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewParticipant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDParticipant,
@@ -155,9 +156,9 @@
             // 
             // IDParticipant
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            this.IDParticipant.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            this.IDParticipant.DefaultCellStyle = dataGridViewCellStyle6;
             this.IDParticipant.FillWeight = 50F;
             this.IDParticipant.HeaderText = "ID";
             this.IDParticipant.MinimumWidth = 6;
@@ -336,14 +337,15 @@
             // 
             this.groupBoxCreateEditParticipant.Controls.Add(this.groupBoxEditParticipant);
             this.groupBoxCreateEditParticipant.Controls.Add(this.groupBoxCreateParticipant);
-            this.groupBoxCreateEditParticipant.Location = new System.Drawing.Point(209, 13);
+            this.groupBoxCreateEditParticipant.Location = new System.Drawing.Point(176, 13);
             this.groupBoxCreateEditParticipant.Name = "groupBoxCreateEditParticipant";
-            this.groupBoxCreateEditParticipant.Size = new System.Drawing.Size(799, 303);
+            this.groupBoxCreateEditParticipant.Size = new System.Drawing.Size(865, 303);
             this.groupBoxCreateEditParticipant.TabIndex = 3;
             this.groupBoxCreateEditParticipant.TabStop = false;
             // 
             // groupBoxEditParticipant
             // 
+            this.groupBoxEditParticipant.Controls.Add(this.buttonLoad);
             this.groupBoxEditParticipant.Controls.Add(this.numericUpDownIDEdit);
             this.groupBoxEditParticipant.Controls.Add(this.label12);
             this.groupBoxEditParticipant.Controls.Add(this.buttonEditParticipant);
@@ -356,16 +358,28 @@
             this.groupBoxEditParticipant.Controls.Add(this.label10);
             this.groupBoxEditParticipant.Controls.Add(this.textBoxSurnameEdit);
             this.groupBoxEditParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxEditParticipant.Location = new System.Drawing.Point(403, 16);
+            this.groupBoxEditParticipant.Location = new System.Drawing.Point(435, 16);
             this.groupBoxEditParticipant.Name = "groupBoxEditParticipant";
-            this.groupBoxEditParticipant.Size = new System.Drawing.Size(381, 276);
+            this.groupBoxEditParticipant.Size = new System.Drawing.Size(424, 276);
             this.groupBoxEditParticipant.TabIndex = 3;
             this.groupBoxEditParticipant.TabStop = false;
             this.groupBoxEditParticipant.Text = "Редактировать конкурсанта";
             // 
+            // buttonLoad
+            // 
+            this.buttonLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonLoad.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLoad.Location = new System.Drawing.Point(16, 228);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(191, 37);
+            this.buttonLoad.TabIndex = 11;
+            this.buttonLoad.Text = "Загрузить данные";
+            this.buttonLoad.UseVisualStyleBackColor = false;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            // 
             // numericUpDownIDEdit
             // 
-            this.numericUpDownIDEdit.Location = new System.Drawing.Point(176, 32);
+            this.numericUpDownIDEdit.Location = new System.Drawing.Point(213, 32);
             this.numericUpDownIDEdit.Minimum = new decimal(new int[] {
             1,
             0,
@@ -394,9 +408,9 @@
             // 
             this.buttonEditParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonEditParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonEditParticipant.Location = new System.Drawing.Point(16, 228);
+            this.buttonEditParticipant.Location = new System.Drawing.Point(213, 228);
             this.buttonEditParticipant.Name = "buttonEditParticipant";
-            this.buttonEditParticipant.Size = new System.Drawing.Size(354, 37);
+            this.buttonEditParticipant.Size = new System.Drawing.Size(194, 37);
             this.buttonEditParticipant.TabIndex = 8;
             this.buttonEditParticipant.Text = "Редактировать";
             this.buttonEditParticipant.UseVisualStyleBackColor = false;
@@ -404,7 +418,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(176, 176);
+            this.dateTimePicker2.Location = new System.Drawing.Point(213, 176);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(194, 27);
             this.dateTimePicker2.TabIndex = 7;
@@ -431,7 +445,7 @@
             // 
             // textBoxSecondNameEdit
             // 
-            this.textBoxSecondNameEdit.Location = new System.Drawing.Point(176, 142);
+            this.textBoxSecondNameEdit.Location = new System.Drawing.Point(213, 142);
             this.textBoxSecondNameEdit.Name = "textBoxSecondNameEdit";
             this.textBoxSecondNameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxSecondNameEdit.TabIndex = 4;
@@ -449,7 +463,7 @@
             // 
             // textBoxNameEdit
             // 
-            this.textBoxNameEdit.Location = new System.Drawing.Point(176, 109);
+            this.textBoxNameEdit.Location = new System.Drawing.Point(213, 108);
             this.textBoxNameEdit.Name = "textBoxNameEdit";
             this.textBoxNameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxNameEdit.TabIndex = 2;
@@ -467,7 +481,7 @@
             // 
             // textBoxSurnameEdit
             // 
-            this.textBoxSurnameEdit.Location = new System.Drawing.Point(176, 76);
+            this.textBoxSurnameEdit.Location = new System.Drawing.Point(213, 76);
             this.textBoxSurnameEdit.Name = "textBoxSurnameEdit";
             this.textBoxSurnameEdit.Size = new System.Drawing.Size(194, 27);
             this.textBoxSurnameEdit.TabIndex = 0;
@@ -488,7 +502,7 @@
             this.groupBoxCreateParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxCreateParticipant.Location = new System.Drawing.Point(6, 16);
             this.groupBoxCreateParticipant.Name = "groupBoxCreateParticipant";
-            this.groupBoxCreateParticipant.Size = new System.Drawing.Size(381, 276);
+            this.groupBoxCreateParticipant.Size = new System.Drawing.Size(423, 276);
             this.groupBoxCreateParticipant.TabIndex = 2;
             this.groupBoxCreateParticipant.TabStop = false;
             this.groupBoxCreateParticipant.Text = "Добавить конкурсанта";
@@ -509,7 +523,7 @@
             this.buttonCreateParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCreateParticipant.Location = new System.Drawing.Point(15, 228);
             this.buttonCreateParticipant.Name = "buttonCreateParticipant";
-            this.buttonCreateParticipant.Size = new System.Drawing.Size(354, 37);
+            this.buttonCreateParticipant.Size = new System.Drawing.Size(392, 37);
             this.buttonCreateParticipant.TabIndex = 8;
             this.buttonCreateParticipant.Text = "Добавить";
             this.buttonCreateParticipant.UseVisualStyleBackColor = false;
@@ -517,7 +531,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(175, 176);
+            this.dateTimePicker1.Location = new System.Drawing.Point(213, 176);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(194, 27);
             this.dateTimePicker1.TabIndex = 7;
@@ -544,7 +558,7 @@
             // 
             // textBoxSecondName
             // 
-            this.textBoxSecondName.Location = new System.Drawing.Point(175, 142);
+            this.textBoxSecondName.Location = new System.Drawing.Point(213, 142);
             this.textBoxSecondName.Name = "textBoxSecondName";
             this.textBoxSecondName.Size = new System.Drawing.Size(194, 27);
             this.textBoxSecondName.TabIndex = 4;
@@ -562,7 +576,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(175, 109);
+            this.textBoxName.Location = new System.Drawing.Point(213, 109);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(194, 27);
             this.textBoxName.TabIndex = 2;
@@ -580,7 +594,7 @@
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(175, 76);
+            this.textBoxSurname.Location = new System.Drawing.Point(213, 76);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(194, 27);
             this.textBoxSurname.TabIndex = 0;
@@ -649,6 +663,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlParticipant);
             this.Name = "ParticipantForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно участников";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParticipantForm_FormClosing);
             this.Resize += new System.EventHandler(this.ParticipantForm_Resize);
@@ -721,5 +736,6 @@
         private DataGridViewTextBoxColumn middleNameParticipant;
         private DataGridViewTextBoxColumn DateOfBirthParticipant;
         private DataGridViewTextBoxColumn idsOfPoemsParticipant;
+        private Button buttonLoad;
     }
 }

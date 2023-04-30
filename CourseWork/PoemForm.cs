@@ -1,4 +1,5 @@
 ﻿using CourseWork.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,7 +81,11 @@ namespace CourseWork
             DateTime _year = DateTime.ParseExact(dateTimePicker1.Text, "yyyy", provider);
             string _text = textBoxTextCreate.Text;
 
-            if (Participant.FindById(_idAvtor) == null)
+            try
+            {
+                Participant.FindById(_idAvtor);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Конкурсанта с id: {_idAvtor} не существует", "Объект не найден", 0);
                 return;
@@ -99,7 +104,7 @@ namespace CourseWork
 
                 textBoxPoemName.Text = "";
                 comboBoxPoemTheme.SelectedIndex = 0;
-                numericUpDownAvtorID.Value = 0;
+                numericUpDownAvtorID.Value = 1;
                 dateTimePicker1.Text = DateTime.Now.ToString();
                 textBoxTextCreate.Text = "";
                 MessageBox(0, "Стихотворение добавлено", "Успешно", 0);
@@ -114,8 +119,12 @@ namespace CourseWork
         private void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditId.Value;
-            Poem? poem = Poem.FindById(_id);
-            if (poem == null)
+            Poem poem;
+            try
+            {
+                poem = Poem.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -128,7 +137,7 @@ namespace CourseWork
                 using (DataBaseContext db = new DataBaseContext())
                 {
                     poem.Name = _name;
-                    db.Poems.Update(poem);
+                    db.Entry(poem).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 //updateTable();
@@ -146,8 +155,12 @@ namespace CourseWork
         private void buttonPrintPoem_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownViewId.Value;
-            Poem? poem = Poem.FindById(_id);
-            if (poem == null)
+            Poem poem;
+            try
+            {
+                poem = Poem.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -159,8 +172,12 @@ namespace CourseWork
         private void buttonDelPoem_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDPoem.Value;
-            Poem? poem = Poem.FindById(_id);
-            if (poem == null)
+            Poem poem;
+            try
+            {
+                poem = Poem.FindById(_id);
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
                 return;
@@ -168,6 +185,23 @@ namespace CourseWork
 
             poem.DeleteFromDataBase();
             MessageBox(0, "Стихотворение удалено", "Успешно", 0);
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            int _id = (int)numericUpDownEditId.Value;
+            Poem poem;
+            try
+            {
+                poem = Poem.FindById(_id);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
+                return;
+            }
+
+            textBoxEditName.Text = poem.Name;
         }
     }
 }

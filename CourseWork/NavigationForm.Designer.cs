@@ -117,7 +117,9 @@
             this.ClientSize = new System.Drawing.Size(623, 290);
             this.Controls.Add(this.groupBoxNavigation);
             this.Name = "NavigationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно навигации";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NavigationForm_FormClosing);
             this.Resize += new System.EventHandler(this.NavigationForm_Resize);
             this.groupBoxNavigation.ResumeLayout(false);
             this.ResumeLayout(false);

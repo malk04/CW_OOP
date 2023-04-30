@@ -16,7 +16,7 @@ namespace CourseWork.Entities
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int  MinAge { get; set; }
-        public ICollection<Participant>? Participants { get; set; }
+        public ICollection<Participant> Participants { get; set; }
         public int? WinnerId { get; set; }
 
         public Competition(string name, DateTime date, int minAge, int? winnerId)
@@ -37,11 +37,11 @@ namespace CourseWork.Entities
             }
         }
 
-        internal static Competition? FindById(int id)
+        internal static Competition FindById(int id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                return db.Competitions.Include(c => c.Participants).FirstOrDefault(c => c.CompetitionId == id);
+                return db.Competitions.Include(c => c.Participants).First(c => c.CompetitionId == id);
             }
         }
 

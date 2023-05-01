@@ -17,9 +17,11 @@ namespace CourseWork
     public partial class PoemForm : Form
     {
         private List<Form> forms;
+        private IEnumerable<Poem> poems;
 
         public PoemForm()
         {
+            updateFromDataBase();
             InitializeComponent();
             comboBoxTheme.SelectedIndex = 0;
             comboBoxPoemTheme.SelectedIndex = 0;
@@ -27,6 +29,43 @@ namespace CourseWork
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
+
+        private async Task updateFromDataBase()
+        {
+            DataBaseContext db = new DataBaseContext();
+            poems = await db.Poems.Include(p => p.Participant).AsNoTracking().ToListAsync();
+            updateAvtorComboBox();
+            updateYearComboBox();
+        }
+
+        private void updateAvtorComboBox()
+        {
+            string chosen = string.IsNullOrEmpty(comboBoxAvtor.Text) ? "Все" : comboBoxAvtor.Text;
+            comboBoxAvtor.Items.Clear();
+            comboBoxAvtor.Items.Add("Все");
+            foreach (var poem in poems)
+            {
+                comboBoxAvtor.Items.Add("id: " + poem.ParticipantId.ToString() + ". " + poem.Participant.Surname + " " + poem.Participant.Name + " " + poem.Participant.SecondName);
+            }
+            comboBoxAvtor.Text = chosen;
+        }
+
+        private void updateYearComboBox()
+        {
+            string chosen = string.IsNullOrEmpty(comboBoxYearWrite.Text) ? "Любой" : comboBoxYearWrite.Text;
+            comboBoxYearWrite.Items.Clear();
+            comboBoxYearWrite.Items.Add("Любой");
+            SortedSet<int> years = new SortedSet<int>();
+            foreach (var poem in poems)
+            {
+                years.Add(poem.Year.Year);
+            }
+            foreach (int year in years)
+            {
+                comboBoxYearWrite.Items.Add(year.ToString());
+            }
+            comboBoxYearWrite.Text = chosen;
+        }
 
         private void PoemForm_Resize(object sender, EventArgs e)
         {

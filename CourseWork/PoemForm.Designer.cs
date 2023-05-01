@@ -46,7 +46,7 @@
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.buttonFilterPoem = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxYearWrite = new System.Windows.Forms.ComboBox();
             this.comboBoxAvtor = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -273,7 +273,7 @@
             this.groupBoxFilterPoem.Controls.Add(this.comboBoxTheme);
             this.groupBoxFilterPoem.Controls.Add(this.label13);
             this.groupBoxFilterPoem.Controls.Add(this.buttonFilterPoem);
-            this.groupBoxFilterPoem.Controls.Add(this.comboBox1);
+            this.groupBoxFilterPoem.Controls.Add(this.comboBoxYearWrite);
             this.groupBoxFilterPoem.Controls.Add(this.comboBoxAvtor);
             this.groupBoxFilterPoem.Controls.Add(this.label15);
             this.groupBoxFilterPoem.Controls.Add(this.label16);
@@ -325,16 +325,17 @@
             this.buttonFilterPoem.Text = "Применить";
             this.buttonFilterPoem.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // comboBoxYearWrite
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(175, 74);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(194, 28);
-            this.comboBox1.TabIndex = 3;
+            this.comboBoxYearWrite.FormattingEnabled = true;
+            this.comboBoxYearWrite.Location = new System.Drawing.Point(175, 74);
+            this.comboBoxYearWrite.Name = "comboBoxYearWrite";
+            this.comboBoxYearWrite.Size = new System.Drawing.Size(194, 28);
+            this.comboBoxYearWrite.TabIndex = 3;
             // 
             // comboBoxAvtor
             // 
+            this.comboBoxAvtor.DropDownWidth = 300;
             this.comboBoxAvtor.FormattingEnabled = true;
             this.comboBoxAvtor.Location = new System.Drawing.Point(175, 32);
             this.comboBoxAvtor.Name = "comboBoxAvtor";
@@ -913,7 +914,7 @@
         private ComboBox comboBoxTheme;
         private Label label13;
         private Button buttonFilterPoem;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxYearWrite;
         private ComboBox comboBoxAvtor;
         private Label label15;
         private Label label16;

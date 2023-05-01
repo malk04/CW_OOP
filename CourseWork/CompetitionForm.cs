@@ -17,14 +17,40 @@ namespace CourseWork
     public partial class CompetitionForm : Form
     {
         private List<Form> forms;
+        private IEnumerable<Competition> competitions;
 
         public CompetitionForm()
         {
+            updateFromDataBase();
             InitializeComponent();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
+
+        private async Task updateFromDataBase()
+        {
+            DataBaseContext db = new DataBaseContext();
+            competitions = await db.Competitions.Include(c => c.Participants).AsNoTracking().ToListAsync();
+            updateYearComboBox();
+        }
+
+        private void updateYearComboBox()
+        {
+            string chosen = string.IsNullOrEmpty(comboBoxYearCompetition.Text) ? "Любой" : comboBoxYearCompetition.Text;
+            comboBoxYearCompetition.Items.Clear();
+            comboBoxYearCompetition.Items.Add("Любой");
+            SortedSet<int> years = new SortedSet<int>();
+            foreach (var competition in competitions)
+            {
+                years.Add(competition.Date.Year);
+            }
+            foreach (int year in years)
+            {
+                comboBoxYearCompetition.Items.Add(year.ToString());
+            }
+            comboBoxYearCompetition.Text = chosen;
+        }
 
         private void CompetitionForm_Resize(object sender, EventArgs e)
         {

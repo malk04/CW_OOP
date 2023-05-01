@@ -9,15 +9,53 @@ namespace CourseWork
         private List<Form> forms;
         private IEnumerable<Participant> participants;
         private IEnumerable<Competition> competitions;
-        private IEnumerable<Poem> poems;
 
         public ParticipantForm()
         {
+            updateFromDataBase();
             InitializeComponent();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
+        public static extern IntPtr MessageBox(int hWnd, string text, string caption, uint type);
+
+        private async Task updateFromDataBase()
+        {
+            DataBaseContext db = new DataBaseContext();
+            participants = await db.Participants.Include(p => p.Poems).AsNoTracking().ToListAsync();
+            competitions = await db.Competitions.AsNoTracking().ToListAsync();
+            updateCompetitionComboBox();
+            updateYearComboBox();
+        }
+
+        private void updateCompetitionComboBox()
+        {
+            string chosen = string.IsNullOrEmpty(comboBoxCompitition.Text) ? "Все" : comboBoxCompitition.Text;
+            comboBoxCompitition.Items.Clear();
+            comboBoxCompitition.Items.Add("Все");
+            foreach (var competition in competitions)
+            {
+                comboBoxCompitition.Items.Add("id: " + competition.CompetitionId.ToString() + ". " + competition.Name);
+            }
+            comboBoxCompitition.Text = chosen;
+        }
+
+        private void updateYearComboBox()
+        {
+            string chosen = string.IsNullOrEmpty(comboBoxYear.Text) ? "Любой" : comboBoxYear.Text;
+            comboBoxYear.Items.Clear();
+            comboBoxYear.Items.Add("Любой");
+            SortedSet<int> years = new SortedSet<int>();
+            foreach (var participant in participants)
+            {
+                years.Add(participant.DateOfBirth.Year);
+            }
+            foreach (int year in years)
+            {
+                comboBoxYear.Items.Add(year.ToString());
+            }
+            comboBoxYear.Text = chosen;
+        }
 
         private void ParticipantForm_Resize(object sender, EventArgs e)
         {

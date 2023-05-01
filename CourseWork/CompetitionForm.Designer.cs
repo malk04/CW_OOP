@@ -230,6 +230,7 @@
             this.buttonFilterCompetition.TabIndex = 9;
             this.buttonFilterCompetition.Text = "Применить";
             this.buttonFilterCompetition.UseVisualStyleBackColor = false;
+            this.buttonFilterCompetition.Click += new System.EventHandler(this.buttonFilterCompetition_Click);
             // 
             // comboBoxYearCompetition
             // 

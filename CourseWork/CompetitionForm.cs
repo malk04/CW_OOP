@@ -33,6 +33,7 @@ namespace CourseWork
             DataBaseContext db = new DataBaseContext();
             competitions = await db.Competitions.Include(c => c.Participants).AsNoTracking().ToListAsync();
             updateYearComboBox();
+            updateTableCompetitions();
         }
 
         private void updateYearComboBox()
@@ -50,6 +51,42 @@ namespace CourseWork
                 comboBoxYearCompetition.Items.Add(year.ToString());
             }
             comboBoxYearCompetition.Text = chosen;
+        }
+
+        private void updateTableCompetitions()
+        {
+            string chosenYear = comboBoxYearCompetition.Text;
+            List<Competition> competitionsForTable = new List<Competition>();
+
+            competitionsForTable = competitions.ToList();
+
+            if (chosenYear != "Любой")
+            {
+                competitionsForTable = competitionsForTable.Where((x => x.Date.Year == Int32.Parse(chosenYear))).ToList();
+            }
+
+
+            dataGridViewCompetition.RowCount = 0;
+            int i = 0;
+            foreach (Competition competition in competitionsForTable)
+            {
+                StringBuilder participantIds = new StringBuilder("");
+                foreach (Participant participant in competition.Participants)
+                {
+                    participantIds.Append(participant.ParticipantId.ToString() + ", ");
+                };
+                if (participantIds.Length > 0) participantIds.Remove(participantIds.Length - 2, 2);
+
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewCompetition.Rows.Add(row);
+                dataGridViewCompetition.Rows[i].Cells[0].Value = competition.CompetitionId.ToString();
+                dataGridViewCompetition.Rows[i].Cells[1].Value = competition.Name;
+                dataGridViewCompetition.Rows[i].Cells[2].Value = competition.Date.ToString();
+                dataGridViewCompetition.Rows[i].Cells[3].Value = competition.MinAge.ToString();
+                dataGridViewCompetition.Rows[i].Cells[4].Value = participantIds;
+                dataGridViewCompetition.Rows[i].Cells[5].Value = competition.WinnerId.ToString();
+                i++;
+            }
         }
 
         private void CompetitionForm_Resize(object sender, EventArgs e)
@@ -104,7 +141,7 @@ namespace CourseWork
             {
                 Competition competitionNew = new Competition(_name, _date, minAge, null);
                 competitionNew.AddToDataBase();
-                //updateTable();
+                updateFromDataBase();
 
                 textBoxNameCompetition.Text = "";
                 dateTimePicker1.Text = DateTime.Now.ToString();
@@ -150,7 +187,7 @@ namespace CourseWork
                     db.Entry(competition).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                //updateTable();
+                updateFromDataBase();
 
                 textBoxEditNameCompetition.Text = "";
                 dateTimePicker2.Text = DateTime.Now.ToString();
@@ -178,6 +215,7 @@ namespace CourseWork
             }
 
             competition.DeleteFromDataBase();
+            updateFromDataBase();
             MessageBox(0, "Конкурс удален", "Успешно", 0);
         }
 
@@ -226,7 +264,7 @@ namespace CourseWork
                 db.Entry(competition).State = EntityState.Modified;
                 db.SaveChanges();
             }
-
+            updateFromDataBase();
             MessageBox(0, "Участник добавлен в конкурс", "Успешно", 0);
         }
 
@@ -274,6 +312,7 @@ namespace CourseWork
                 db.SaveChanges();
             }
 
+            updateFromDataBase();
             MessageBox(0, "Участник удален из конкурса", "Успешно", 0);
         }
 
@@ -317,6 +356,7 @@ namespace CourseWork
                 db.SaveChanges();
             }
 
+            updateFromDataBase();
             MessageBox(0, "Победитель конкурса добавлен/изменен", "Успешно", 0);
         }
 
@@ -336,6 +376,11 @@ namespace CourseWork
            
             textBoxEditNameCompetition.Text = competition.Name;
             dateTimePicker2.Text = competition.Date.ToString();
+        }
+
+        private void buttonFilterCompetition_Click(object sender, EventArgs e)
+        {
+            updateTableCompetitions();
         }
     }
 }

@@ -1,6 +1,7 @@
 using CourseWork.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace CourseWork
 {
@@ -26,6 +27,7 @@ namespace CourseWork
             competitions = await db.Competitions.AsNoTracking().ToListAsync();
             updateCompetitionComboBox();
             updateYearComboBox();
+            updateTableParticipants();
         }
 
         private void updateCompetitionComboBox()
@@ -55,6 +57,49 @@ namespace CourseWork
                 comboBoxYear.Items.Add(year.ToString());
             }
             comboBoxYear.Text = chosen;
+        }
+
+        private void updateTableParticipants()
+        {
+            string chosenCompetition = comboBoxCompitition.Text;
+            string chosenYear = comboBoxYear.Text;
+            List<Participant> participantsForTable = new List<Participant>();
+
+            participantsForTable = participants.ToList();
+            if (chosenCompetition != "Все")
+            {
+                chosenCompetition.Remove(0, 4);
+                string strID = chosenCompetition.Split().First();
+                participantsForTable = participantsForTable.Where(x => x.Competitions.ToList().Exists(x => x.CompetitionId == Int32.Parse(strID))).ToList();
+            }
+
+            if (chosenYear != "Любой")
+            {
+                participantsForTable = participantsForTable.Where((x => x.DateOfBirth.Year == Int32.Parse(chosenYear))).ToList();
+            }
+
+
+            dataGridViewParticipant.RowCount = 0;
+            int i = 0;
+            foreach (Participant participant in participantsForTable)
+            {
+                StringBuilder poemIds = new StringBuilder("");
+                foreach (Poem poem in participant.Poems)
+                {
+                    poemIds.Append(poem.PoemId.ToString() + ", ");
+                };
+                if (poemIds.Length > 0) poemIds.Remove(poemIds.Length - 2, 2);
+
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewParticipant.Rows.Add(row);
+                dataGridViewParticipant.Rows[i].Cells[0].Value = participant.ParticipantId.ToString();
+                dataGridViewParticipant.Rows[i].Cells[1].Value = participant.Surname;
+                dataGridViewParticipant.Rows[i].Cells[2].Value = participant.Name;
+                dataGridViewParticipant.Rows[i].Cells[3].Value = participant.SecondName;
+                dataGridViewParticipant.Rows[i].Cells[4].Value = participant.DateOfBirth.ToString("dd/MM/yyyy");
+                dataGridViewParticipant.Rows[i].Cells[5].Value = poemIds;
+                i++;
+            }
         }
 
         private void ParticipantForm_Resize(object sender, EventArgs e)
@@ -114,7 +159,7 @@ namespace CourseWork
 
                 Participant participantNew = new Participant(_surname, _name, _secondName, _birhday);
                 participantNew.AddToDataBase();
-                //updateTable();
+                updateFromDataBase();
 
                 textBoxSurname.Text = "";
                 textBoxName.Text = "";
@@ -204,7 +249,7 @@ namespace CourseWork
                 db.Entry(participant).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            //updateTable();
+            updateFromDataBase();
 
             textBoxSurnameEdit.Text = "";
             textBoxNameEdit.Text = "";
@@ -230,7 +275,7 @@ namespace CourseWork
 
             participant.DeleteFromDataBase();
             MessageBox(0, "Конкурсант удален", "Успешно", 0);
-            //updateTable();
+            updateFromDataBase();
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -251,6 +296,11 @@ namespace CourseWork
             textBoxNameEdit.Text = participant.Name;
             textBoxSecondNameEdit.Text = participant.SecondName;
             dateTimePicker2.Text = participant.DateOfBirth.ToString();
+        }
+
+        private void buttonFilterParticipant_Click(object sender, EventArgs e)
+        {
+            updateTableParticipants();
         }
     }
 }

@@ -21,10 +21,10 @@ namespace CourseWork
 
         public PoemForm()
         {
-            updateFromDataBase();
             InitializeComponent();
             comboBoxTheme.SelectedIndex = 0;
             comboBoxPoemTheme.SelectedIndex = 0;
+            updateFromDataBase();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -36,6 +36,7 @@ namespace CourseWork
             poems = await db.Poems.Include(p => p.Participant).AsNoTracking().ToListAsync();
             updateAvtorComboBox();
             updateYearComboBox();
+            updateTablePoems();
         }
 
         private void updateAvtorComboBox()
@@ -65,6 +66,47 @@ namespace CourseWork
                 comboBoxYearWrite.Items.Add(year.ToString());
             }
             comboBoxYearWrite.Text = chosen;
+        }
+
+        private void updateTablePoems()
+        {
+            string chosenAvtor = comboBoxAvtor.Text;
+            string chosenYear = comboBoxYearWrite.Text;
+            string chosenTheme = comboBoxTheme.Text;
+            List<Poem> poemsForTable = new List<Poem>();
+
+            poemsForTable = poems.ToList();
+            if (chosenAvtor != "Все")
+            {
+                chosenAvtor.Remove(0, 4);
+                string strID = chosenAvtor.Split().First();
+                poemsForTable = poemsForTable.Where(x => x.ParticipantId == Int32.Parse(strID)).ToList();
+            }
+
+            if (chosenYear != "Любой")
+            {
+                poemsForTable = poemsForTable.Where(x => x.Year.Year == Int32.Parse(chosenYear)).ToList();
+            }
+
+            if (chosenTheme != "Все")
+            {
+                poemsForTable = poemsForTable.Where(x => x.Theme == chosenTheme).ToList();
+            }
+
+
+            dataGridViewPoem.RowCount = 0;
+            int i = 0;
+            foreach (Poem poem in poemsForTable)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewPoem.Rows.Add(row);
+                dataGridViewPoem.Rows[i].Cells[0].Value = poem.PoemId.ToString();
+                dataGridViewPoem.Rows[i].Cells[1].Value = poem.Name;
+                dataGridViewPoem.Rows[i].Cells[2].Value = poem.Theme;
+                dataGridViewPoem.Rows[i].Cells[3].Value = poem.Year.ToString("yyyy");
+                dataGridViewPoem.Rows[i].Cells[4].Value = poem.ParticipantId.ToString();
+                i++;
+            }
         }
 
         private void PoemForm_Resize(object sender, EventArgs e)
@@ -139,7 +181,7 @@ namespace CourseWork
                 }
                 Poem poemNew = new Poem(_name, _theme, _year, _text, _idAvtor);
                 poemNew.AddToDataBase();
-                //updateTable();
+                updateFromDataBase();
 
                 textBoxPoemName.Text = "";
                 comboBoxPoemTheme.SelectedIndex = 0;
@@ -179,7 +221,7 @@ namespace CourseWork
                     db.Entry(poem).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                //updateTable();
+                updateFromDataBase();
 
                 textBoxEditName.Text = "";
                 MessageBox(0, "Название стихотворения отредактировано", "Успешно", 0);
@@ -223,6 +265,7 @@ namespace CourseWork
             }
 
             poem.DeleteFromDataBase();
+            updateFromDataBase();
             MessageBox(0, "Стихотворение удалено", "Успешно", 0);
         }
 
@@ -241,6 +284,11 @@ namespace CourseWork
             }
 
             textBoxEditName.Text = poem.Name;
+        }
+
+        private void buttonFilterPoem_Click(object sender, EventArgs e)
+        {
+            updateTablePoems();
         }
     }
 }

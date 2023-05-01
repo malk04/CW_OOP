@@ -324,6 +324,7 @@
             this.buttonFilterPoem.TabIndex = 9;
             this.buttonFilterPoem.Text = "Применить";
             this.buttonFilterPoem.UseVisualStyleBackColor = false;
+            this.buttonFilterPoem.Click += new System.EventHandler(this.buttonFilterPoem_Click);
             // 
             // comboBoxYearWrite
             // 

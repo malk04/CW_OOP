@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCompetition = new System.Windows.Forms.TabControl();
             this.SeeDelCompetition = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.groupBoxDelCompetition = new System.Windows.Forms.GroupBox();
             this.numericUpDownDelIDCompetition = new System.Windows.Forms.NumericUpDown();
             this.buttonDelCompetition = new System.Windows.Forms.Button();
@@ -100,6 +102,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControlCompetition.SuspendLayout();
             this.SeeDelCompetition.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBoxDelCompetition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetition)).BeginInit();
             this.groupBoxFilterCompetition.SuspendLayout();
@@ -139,6 +142,7 @@
             // 
             // SeeDelCompetition
             // 
+            this.SeeDelCompetition.Controls.Add(this.groupBox1);
             this.SeeDelCompetition.Controls.Add(this.groupBoxDelCompetition);
             this.SeeDelCompetition.Controls.Add(this.groupBoxFilterCompetition);
             this.SeeDelCompetition.Controls.Add(this.dataGridViewCompetition);
@@ -151,6 +155,29 @@
             this.SeeDelCompetition.TabIndex = 0;
             this.SeeDelCompetition.Text = "Просмотр/удаление конкурса";
             this.SeeDelCompetition.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.buttonUpdate);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(831, 263);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(381, 59);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUpdate.Location = new System.Drawing.Point(13, 15);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(356, 37);
+            this.buttonUpdate.TabIndex = 9;
+            this.buttonUpdate.Text = "Обновить данные";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // groupBoxDelCompetition
             // 
@@ -498,6 +525,8 @@
             // 
             // numericUpDownEditID
             // 
+            this.numericUpDownEditID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownEditID.Location = new System.Drawing.Point(213, 32);
             this.numericUpDownEditID.Minimum = new decimal(new int[] {
             1,
@@ -537,6 +566,8 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(213, 99);
@@ -566,6 +597,8 @@
             // 
             // textBoxEditNameCompetition
             // 
+            this.textBoxEditNameCompetition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxEditNameCompetition.Location = new System.Drawing.Point(213, 66);
             this.textBoxEditNameCompetition.Name = "textBoxEditNameCompetition";
             this.textBoxEditNameCompetition.Size = new System.Drawing.Size(194, 27);
@@ -588,6 +621,8 @@
             // 
             // numericUpDownAddIDWinner
             // 
+            this.numericUpDownAddIDWinner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDWinner.Location = new System.Drawing.Point(176, 99);
             this.numericUpDownAddIDWinner.Minimum = new decimal(new int[] {
             1,
@@ -615,6 +650,8 @@
             // 
             // numericUpDownAddIDCompetitionWinner
             // 
+            this.numericUpDownAddIDCompetitionWinner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDCompetitionWinner.Location = new System.Drawing.Point(176, 62);
             this.numericUpDownAddIDCompetitionWinner.Minimum = new decimal(new int[] {
             1,
@@ -669,6 +706,8 @@
             // 
             // numericUpDownDelIDParticipant
             // 
+            this.numericUpDownDelIDParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownDelIDParticipant.Location = new System.Drawing.Point(213, 64);
             this.numericUpDownDelIDParticipant.Minimum = new decimal(new int[] {
             1,
@@ -696,6 +735,8 @@
             // 
             // numericUpDownDelIDCompetitionParticipant
             // 
+            this.numericUpDownDelIDCompetitionParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownDelIDCompetitionParticipant.Location = new System.Drawing.Point(213, 31);
             this.numericUpDownDelIDCompetitionParticipant.Minimum = new decimal(new int[] {
             1,
@@ -750,6 +791,8 @@
             // 
             // numericUpDownAddIDParticipant
             // 
+            this.numericUpDownAddIDParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDParticipant.Location = new System.Drawing.Point(212, 64);
             this.numericUpDownAddIDParticipant.Minimum = new decimal(new int[] {
             1,
@@ -777,6 +820,8 @@
             // 
             // numericUpDownAddIDCompetitionParticipant
             // 
+            this.numericUpDownAddIDCompetitionParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDCompetitionParticipant.Location = new System.Drawing.Point(212, 32);
             this.numericUpDownAddIDCompetitionParticipant.Minimum = new decimal(new int[] {
             1,
@@ -833,6 +878,8 @@
             // 
             // numericUpDownMinAge
             // 
+            this.numericUpDownMinAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownMinAge.Location = new System.Drawing.Point(212, 99);
             this.numericUpDownMinAge.Name = "numericUpDownMinAge";
             this.numericUpDownMinAge.Size = new System.Drawing.Size(194, 27);
@@ -862,6 +909,8 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(212, 66);
@@ -891,6 +940,8 @@
             // 
             // textBoxNameCompetition
             // 
+            this.textBoxNameCompetition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNameCompetition.Location = new System.Drawing.Point(212, 31);
             this.textBoxNameCompetition.Name = "textBoxNameCompetition";
             this.textBoxNameCompetition.Size = new System.Drawing.Size(194, 27);
@@ -962,9 +1013,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно конкурса";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CompetitionForm_FormClosing);
+            this.Load += new System.EventHandler(this.CompetitionForm_Load);
             this.Resize += new System.EventHandler(this.CompetitionForm_Resize);
             this.tabControlCompetition.ResumeLayout(false);
             this.SeeDelCompetition.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBoxDelCompetition.ResumeLayout(false);
             this.groupBoxDelCompetition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetition)).EndInit();
@@ -1070,5 +1123,7 @@
         private DataGridViewTextBoxColumn IDParticipant;
         private DataGridViewTextBoxColumn IDWinner;
         private Button buttonLoad;
+        private GroupBox groupBox1;
+        private Button buttonUpdate;
     }
 }

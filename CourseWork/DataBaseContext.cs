@@ -10,7 +10,6 @@ namespace CourseWork
 {
     internal class DataBaseContext: DbContext
     {
-        //public DataBaseContext() { }
         public DataBaseContext()
         {
             // Database.EnsureDeleted();
@@ -19,33 +18,13 @@ namespace CourseWork
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(@"server=localhost; port=3306; username=root; password=; database=cw_oop; charset=utf8", new MySqlServerVersion(new Version(8, 0, 30)));
+            optionsBuilder.UseSqlite("Data Source=cw_oop.db");
             base.OnConfiguring(optionsBuilder);
         }
 
-        public DbSet<Participant> Participants { get; set; }
-        public DbSet<Poem> Poems { get; set; }
-        public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Participant> Participants { get; set; } = null!;
+        public DbSet<Poem> Poems { get; set; } = null!;
+        public DbSet<Competition> Competitions { get; set; } = null!;
 
-
-/*
-        private MySqlConnection connection = new MySqlConnection("server=localhost; port=3306; username=root; password=; database=cw_oop");
-
-        public void openConnection()
-        {
-            if (connection.State == System.Data.ConnectionState.Closed)
-                connection.Open();
-        }
-
-        public void closeConnection()
-        {
-            if (connection.State == System.Data.ConnectionState.Open)
-                connection.Close();
-        }
-
-        public MySqlConnection getConnection()
-        {
-            return connection;
-        }*/
     }
 }

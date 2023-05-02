@@ -33,10 +33,21 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDownYearStatistics = new System.Windows.Forms.NumericUpDown();
             this.groupBoxStatistics = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYearStatistics)).BeginInit();
+            this.groupBoxFlex = new System.Windows.Forms.GroupBox();
+            this.buttonDeleteParticipant = new System.Windows.Forms.Button();
+            this.comboBoxYear = new System.Windows.Forms.ComboBox();
+            this.textBoxAverageAge = new System.Windows.Forms.TextBox();
+            this.textBoxCountPoems = new System.Windows.Forms.TextBox();
+            this.textBoxCountParticipants = new System.Windows.Forms.TextBox();
+            this.textBoxCountCompetitions = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxStatistics.SuspendLayout();
+            this.groupBoxFlex.SuspendLayout();
             this.SuspendLayout();
             // 
             // button4
@@ -95,28 +106,142 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(12, 24);
+            this.label6.Location = new System.Drawing.Point(73, 105);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 25);
+            this.label6.Size = new System.Drawing.Size(175, 25);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Интересующий год";
-            // 
-            // numericUpDownYearStatistics
-            // 
-            this.numericUpDownYearStatistics.Location = new System.Drawing.Point(203, 26);
-            this.numericUpDownYearStatistics.Name = "numericUpDownYearStatistics";
-            this.numericUpDownYearStatistics.Size = new System.Drawing.Size(175, 27);
-            this.numericUpDownYearStatistics.TabIndex = 23;
+            this.label6.Text = "Интересующий год:";
             // 
             // groupBoxStatistics
             // 
-            this.groupBoxStatistics.Controls.Add(this.numericUpDownYearStatistics);
-            this.groupBoxStatistics.Controls.Add(this.label6);
+            this.groupBoxStatistics.Controls.Add(this.groupBoxFlex);
             this.groupBoxStatistics.Location = new System.Drawing.Point(12, 12);
             this.groupBoxStatistics.Name = "groupBoxStatistics";
             this.groupBoxStatistics.Size = new System.Drawing.Size(1219, 353);
             this.groupBoxStatistics.TabIndex = 24;
             this.groupBoxStatistics.TabStop = false;
+            // 
+            // groupBoxFlex
+            // 
+            this.groupBoxFlex.Controls.Add(this.buttonDeleteParticipant);
+            this.groupBoxFlex.Controls.Add(this.comboBoxYear);
+            this.groupBoxFlex.Controls.Add(this.textBoxAverageAge);
+            this.groupBoxFlex.Controls.Add(this.textBoxCountPoems);
+            this.groupBoxFlex.Controls.Add(this.textBoxCountParticipants);
+            this.groupBoxFlex.Controls.Add(this.textBoxCountCompetitions);
+            this.groupBoxFlex.Controls.Add(this.label5);
+            this.groupBoxFlex.Controls.Add(this.label4);
+            this.groupBoxFlex.Controls.Add(this.label3);
+            this.groupBoxFlex.Controls.Add(this.label2);
+            this.groupBoxFlex.Controls.Add(this.label1);
+            this.groupBoxFlex.Controls.Add(this.label6);
+            this.groupBoxFlex.Location = new System.Drawing.Point(6, 13);
+            this.groupBoxFlex.Name = "groupBoxFlex";
+            this.groupBoxFlex.Size = new System.Drawing.Size(1207, 334);
+            this.groupBoxFlex.TabIndex = 24;
+            this.groupBoxFlex.TabStop = false;
+            // 
+            // buttonDeleteParticipant
+            // 
+            this.buttonDeleteParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonDeleteParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeleteParticipant.Location = new System.Drawing.Point(73, 146);
+            this.buttonDeleteParticipant.Name = "buttonDeleteParticipant";
+            this.buttonDeleteParticipant.Size = new System.Drawing.Size(349, 37);
+            this.buttonDeleteParticipant.TabIndex = 34;
+            this.buttonDeleteParticipant.Text = "Получить результаты";
+            this.buttonDeleteParticipant.UseVisualStyleBackColor = false;
+            this.buttonDeleteParticipant.Click += new System.EventHandler(this.buttonDeleteParticipant_Click);
+            // 
+            // comboBoxYear
+            // 
+            this.comboBoxYear.FormattingEnabled = true;
+            this.comboBoxYear.Location = new System.Drawing.Point(263, 104);
+            this.comboBoxYear.Name = "comboBoxYear";
+            this.comboBoxYear.Size = new System.Drawing.Size(159, 28);
+            this.comboBoxYear.TabIndex = 33;
+            // 
+            // textBoxAverageAge
+            // 
+            this.textBoxAverageAge.Location = new System.Drawing.Point(846, 231);
+            this.textBoxAverageAge.Name = "textBoxAverageAge";
+            this.textBoxAverageAge.ReadOnly = true;
+            this.textBoxAverageAge.Size = new System.Drawing.Size(291, 27);
+            this.textBoxAverageAge.TabIndex = 32;
+            // 
+            // textBoxCountPoems
+            // 
+            this.textBoxCountPoems.Location = new System.Drawing.Point(846, 189);
+            this.textBoxCountPoems.Name = "textBoxCountPoems";
+            this.textBoxCountPoems.ReadOnly = true;
+            this.textBoxCountPoems.Size = new System.Drawing.Size(291, 27);
+            this.textBoxCountPoems.TabIndex = 31;
+            // 
+            // textBoxCountParticipants
+            // 
+            this.textBoxCountParticipants.Location = new System.Drawing.Point(846, 146);
+            this.textBoxCountParticipants.Name = "textBoxCountParticipants";
+            this.textBoxCountParticipants.ReadOnly = true;
+            this.textBoxCountParticipants.Size = new System.Drawing.Size(291, 27);
+            this.textBoxCountParticipants.TabIndex = 30;
+            // 
+            // textBoxCountCompetitions
+            // 
+            this.textBoxCountCompetitions.Location = new System.Drawing.Point(846, 104);
+            this.textBoxCountCompetitions.Name = "textBoxCountCompetitions";
+            this.textBoxCountCompetitions.ReadOnly = true;
+            this.textBoxCountCompetitions.Size = new System.Drawing.Size(291, 27);
+            this.textBoxCountCompetitions.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(484, 230);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(250, 25);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Средний возраст участников";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(484, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(292, 25);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Общее кол-во написанных стихов";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(484, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(266, 25);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Общее количество участников";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(484, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(318, 25);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Количество проведенный конкурсов";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(511, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(187, 31);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Годовой анализ";
             // 
             // StatisticsForm
             // 
@@ -132,9 +257,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно статистики";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatisticsForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYearStatistics)).EndInit();
+            this.Load += new System.EventHandler(this.StatisticsForm_Load);
             this.groupBoxStatistics.ResumeLayout(false);
-            this.groupBoxStatistics.PerformLayout();
+            this.groupBoxFlex.ResumeLayout(false);
+            this.groupBoxFlex.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -146,7 +272,18 @@
         private Button button2;
         private Button button1;
         private Label label6;
-        private NumericUpDown numericUpDownYearStatistics;
         private GroupBox groupBoxStatistics;
+        private GroupBox groupBoxFlex;
+        private ComboBox comboBoxYear;
+        private TextBox textBoxAverageAge;
+        private TextBox textBoxCountPoems;
+        private TextBox textBoxCountParticipants;
+        private TextBox textBoxCountCompetitions;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Button buttonDeleteParticipant;
     }
 }

@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlParticipant = new System.Windows.Forms.TabControl();
             this.SeeDelParticipant = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
             this.IDParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameParticipant = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +83,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.tabControlParticipant.SuspendLayout();
             this.SeeDelParticipant.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.groupBoxDeleteParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIDDel)).BeginInit();
@@ -102,21 +105,45 @@
             this.tabControlParticipant.Location = new System.Drawing.Point(12, 12);
             this.tabControlParticipant.Name = "tabControlParticipant";
             this.tabControlParticipant.SelectedIndex = 0;
-            this.tabControlParticipant.Size = new System.Drawing.Size(1225, 358);
+            this.tabControlParticipant.Size = new System.Drawing.Size(1225, 420);
             this.tabControlParticipant.TabIndex = 0;
             // 
             // SeeDelParticipant
             // 
+            this.SeeDelParticipant.Controls.Add(this.groupBox1);
             this.SeeDelParticipant.Controls.Add(this.dataGridViewParticipant);
             this.SeeDelParticipant.Controls.Add(this.groupBoxDeleteParticipant);
             this.SeeDelParticipant.Controls.Add(this.groupBoxFilterParticipant);
             this.SeeDelParticipant.Location = new System.Drawing.Point(4, 29);
             this.SeeDelParticipant.Name = "SeeDelParticipant";
             this.SeeDelParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.SeeDelParticipant.Size = new System.Drawing.Size(1217, 325);
+            this.SeeDelParticipant.Size = new System.Drawing.Size(1217, 387);
             this.SeeDelParticipant.TabIndex = 0;
             this.SeeDelParticipant.Text = "Просмотр/удаление участников";
             this.SeeDelParticipant.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.buttonUpdate);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(830, 324);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(381, 59);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUpdate.Location = new System.Drawing.Point(13, 15);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(356, 37);
+            this.buttonUpdate.TabIndex = 9;
+            this.buttonUpdate.Text = "Обновить данные";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // dataGridViewParticipant
             // 
@@ -151,7 +178,7 @@
             this.dataGridViewParticipant.RowHeadersVisible = false;
             this.dataGridViewParticipant.RowHeadersWidth = 51;
             this.dataGridViewParticipant.RowTemplate.Height = 29;
-            this.dataGridViewParticipant.Size = new System.Drawing.Size(819, 309);
+            this.dataGridViewParticipant.Size = new System.Drawing.Size(819, 329);
             this.dataGridViewParticipant.TabIndex = 4;
             // 
             // IDParticipant
@@ -329,7 +356,7 @@
             this.CreateEditParticipant.Location = new System.Drawing.Point(4, 29);
             this.CreateEditParticipant.Name = "CreateEditParticipant";
             this.CreateEditParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.CreateEditParticipant.Size = new System.Drawing.Size(1217, 325);
+            this.CreateEditParticipant.Size = new System.Drawing.Size(1217, 387);
             this.CreateEditParticipant.TabIndex = 1;
             this.CreateEditParticipant.Text = "Добавить/редактировать участника";
             this.CreateEditParticipant.UseVisualStyleBackColor = true;
@@ -338,7 +365,7 @@
             // 
             this.groupBoxCreateEditParticipant.Controls.Add(this.groupBoxEditParticipant);
             this.groupBoxCreateEditParticipant.Controls.Add(this.groupBoxCreateParticipant);
-            this.groupBoxCreateEditParticipant.Location = new System.Drawing.Point(176, 13);
+            this.groupBoxCreateEditParticipant.Location = new System.Drawing.Point(176, 42);
             this.groupBoxCreateEditParticipant.Name = "groupBoxCreateEditParticipant";
             this.groupBoxCreateEditParticipant.Size = new System.Drawing.Size(865, 303);
             this.groupBoxCreateEditParticipant.TabIndex = 3;
@@ -606,7 +633,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(12, 381);
+            this.button1.Location = new System.Drawing.Point(12, 443);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(269, 37);
             this.button1.TabIndex = 10;
@@ -619,7 +646,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(294, 381);
+            this.button2.Location = new System.Drawing.Point(294, 443);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(269, 37);
             this.button2.TabIndex = 11;
@@ -632,7 +659,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(578, 381);
+            this.button3.Location = new System.Drawing.Point(578, 443);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(269, 37);
             this.button3.TabIndex = 12;
@@ -645,7 +672,7 @@
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(1041, 381);
+            this.button4.Location = new System.Drawing.Point(1041, 443);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(192, 37);
             this.button4.TabIndex = 13;
@@ -657,7 +684,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 430);
+            this.ClientSize = new System.Drawing.Size(1243, 492);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -667,9 +694,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно участников";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParticipantForm_FormClosing);
+            this.Load += new System.EventHandler(this.ParticipantForm_Load);
             this.Resize += new System.EventHandler(this.ParticipantForm_Resize);
             this.tabControlParticipant.ResumeLayout(false);
             this.SeeDelParticipant.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).EndInit();
             this.groupBoxDeleteParticipant.ResumeLayout(false);
             this.groupBoxDeleteParticipant.PerformLayout();
@@ -738,5 +767,7 @@
         private DataGridViewTextBoxColumn DateOfBirthParticipant;
         private DataGridViewTextBoxColumn idsOfPoemsParticipant;
         private Button buttonLoad;
+        private GroupBox groupBox1;
+        private Button buttonUpdate;
     }
 }

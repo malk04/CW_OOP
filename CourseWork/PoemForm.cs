@@ -16,19 +16,24 @@ namespace CourseWork
 {
     public partial class PoemForm : Form
     {
-        private List<Form> forms;
-        private IEnumerable<Poem> poems;
+        private List<Form>? forms;
+        private IEnumerable<Poem>? poems;
 
         public PoemForm()
         {
             InitializeComponent();
             comboBoxTheme.SelectedIndex = 0;
             comboBoxPoemTheme.SelectedIndex = 0;
-            updateFromDataBase();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
+
+
+        private async void PoemForm_Load(object sender, EventArgs e)
+        {
+            await updateFromDataBase();
+        }
 
         private async Task updateFromDataBase()
         {
@@ -289,6 +294,12 @@ namespace CourseWork
         private void buttonFilterPoem_Click(object sender, EventArgs e)
         {
             updateTablePoems();
+        }
+
+        private async void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            await updateFromDataBase();
+            MessageBox(0, "Загружены последние данные", "", 0);
         }
     }
 }

@@ -16,18 +16,21 @@ namespace CourseWork
 {
     public partial class CompetitionForm : Form
     {
-        private List<Form> forms;
-        private IEnumerable<Competition> competitions;
+        private List<Form>? forms;
+        private IEnumerable<Competition>? competitions;
 
         public CompetitionForm()
         {
-            updateFromDataBase();
             InitializeComponent();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
 
+        private async void CompetitionForm_Load(object sender, EventArgs e)
+        {
+            await updateFromDataBase();
+        }
         private async Task updateFromDataBase()
         {
             DataBaseContext db = new DataBaseContext();
@@ -381,6 +384,12 @@ namespace CourseWork
         private void buttonFilterCompetition_Click(object sender, EventArgs e)
         {
             updateTableCompetitions();
+        }
+
+        private async void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            await updateFromDataBase();
+            MessageBox(0, "Загружены последние данные", "", 0);
         }
     }
 }

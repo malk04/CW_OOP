@@ -13,7 +13,7 @@ namespace CourseWork
 {
     public partial class NavigationForm : Form
     {
-        private List<Form> forms;
+        private List<Form>? forms;
 
         public NavigationForm()
         {

@@ -88,7 +88,7 @@ namespace CourseWork
                 textBoxCountCompetitions.Text = competitionsByYear.Count.ToString();
                 textBoxCountParticipants.Text = participantsByYear.Count.ToString();
                 textBoxCountPoems.Text = poemsByYear.Count.ToString();
-                textBoxAverageAge.Text = averageAge.ToString();
+                textBoxAverageAge.Text = averageAge != -1? averageAge.ToString() : "-";
             }
             else
             {
@@ -138,5 +138,10 @@ namespace CourseWork
             updateResults();
         }
 
+        private void StatisticsForm_Resize(object sender, EventArgs e)
+        {
+            groupBoxFlex.Top = groupBoxStatistics.Height / 2 - groupBoxFlex.Height / 2;
+            groupBoxFlex.Left = groupBoxStatistics.Width / 2 - groupBoxFlex.Width / 2;
+        }
     }
 }

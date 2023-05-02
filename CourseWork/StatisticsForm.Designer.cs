@@ -114,6 +114,10 @@
             // 
             // groupBoxStatistics
             // 
+            this.groupBoxStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxStatistics.BackColor = System.Drawing.SystemColors.Window;
             this.groupBoxStatistics.Controls.Add(this.groupBoxFlex);
             this.groupBoxStatistics.Location = new System.Drawing.Point(12, 12);
             this.groupBoxStatistics.Name = "groupBoxStatistics";
@@ -123,6 +127,7 @@
             // 
             // groupBoxFlex
             // 
+            this.groupBoxFlex.BackColor = System.Drawing.SystemColors.Window;
             this.groupBoxFlex.Controls.Add(this.buttonDeleteParticipant);
             this.groupBoxFlex.Controls.Add(this.comboBoxYear);
             this.groupBoxFlex.Controls.Add(this.textBoxAverageAge);
@@ -155,6 +160,9 @@
             // 
             // comboBoxYear
             // 
+            this.comboBoxYear.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboBoxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxYear.FormattingEnabled = true;
             this.comboBoxYear.Location = new System.Drawing.Point(263, 104);
             this.comboBoxYear.Name = "comboBoxYear";
@@ -163,6 +171,8 @@
             // 
             // textBoxAverageAge
             // 
+            this.textBoxAverageAge.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxAverageAge.Enabled = false;
             this.textBoxAverageAge.Location = new System.Drawing.Point(846, 231);
             this.textBoxAverageAge.Name = "textBoxAverageAge";
             this.textBoxAverageAge.ReadOnly = true;
@@ -171,6 +181,8 @@
             // 
             // textBoxCountPoems
             // 
+            this.textBoxCountPoems.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxCountPoems.Enabled = false;
             this.textBoxCountPoems.Location = new System.Drawing.Point(846, 189);
             this.textBoxCountPoems.Name = "textBoxCountPoems";
             this.textBoxCountPoems.ReadOnly = true;
@@ -179,6 +191,8 @@
             // 
             // textBoxCountParticipants
             // 
+            this.textBoxCountParticipants.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxCountParticipants.Enabled = false;
             this.textBoxCountParticipants.Location = new System.Drawing.Point(846, 146);
             this.textBoxCountParticipants.Name = "textBoxCountParticipants";
             this.textBoxCountParticipants.ReadOnly = true;
@@ -187,6 +201,8 @@
             // 
             // textBoxCountCompetitions
             // 
+            this.textBoxCountCompetitions.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxCountCompetitions.Enabled = false;
             this.textBoxCountCompetitions.Location = new System.Drawing.Point(846, 104);
             this.textBoxCountCompetitions.Name = "textBoxCountCompetitions";
             this.textBoxCountCompetitions.ReadOnly = true;
@@ -258,6 +274,7 @@
             this.Text = "Окно статистики";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatisticsForm_FormClosing);
             this.Load += new System.EventHandler(this.StatisticsForm_Load);
+            this.Resize += new System.EventHandler(this.StatisticsForm_Resize);
             this.groupBoxStatistics.ResumeLayout(false);
             this.groupBoxFlex.ResumeLayout(false);
             this.groupBoxFlex.PerformLayout();

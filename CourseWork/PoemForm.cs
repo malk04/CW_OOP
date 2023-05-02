@@ -83,8 +83,9 @@ namespace CourseWork
             poemsForTable = poems.ToList();
             if (chosenAvtor != "Все")
             {
-                chosenAvtor.Remove(0, 4);
+                chosenAvtor = chosenAvtor.Remove(0, 4);
                 string strID = chosenAvtor.Split().First();
+                strID = strID.Remove(strID.Length - 1, 1);
                 poemsForTable = poemsForTable.Where(x => x.ParticipantId == Int32.Parse(strID)).ToList();
             }
 
@@ -157,12 +158,12 @@ namespace CourseWork
             Environment.Exit(0);
         }
 
-        private void buttonCreateParticipant_Click(object sender, EventArgs e)
+        private async void buttonCreateParticipant_Click(object sender, EventArgs e)
         {
             CultureInfo provider = new CultureInfo("en-US");
 
             string _name = textBoxPoemName.Text;
-            string _theme = comboBoxPoemTheme.SelectedItem.ToString();
+            string? _theme = comboBoxPoemTheme.SelectedItem.ToString();
             int _idAvtor = (int)numericUpDownAvtorID.Value;
             DateTime _year = DateTime.ParseExact(dateTimePicker1.Text, "yyyy", provider);
             string _text = textBoxTextCreate.Text;
@@ -186,7 +187,7 @@ namespace CourseWork
                 }
                 Poem poemNew = new Poem(_name, _theme, _year, _text, _idAvtor);
                 poemNew.AddToDataBase();
-                updateFromDataBase();
+                await updateFromDataBase();
 
                 textBoxPoemName.Text = "";
                 comboBoxPoemTheme.SelectedIndex = 0;
@@ -202,7 +203,7 @@ namespace CourseWork
             }
         }
 
-        private void buttonEditParticipant_Click(object sender, EventArgs e)
+        private async void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditId.Value;
             Poem poem;
@@ -226,7 +227,7 @@ namespace CourseWork
                     db.Entry(poem).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                updateFromDataBase();
+                await updateFromDataBase();
 
                 textBoxEditName.Text = "";
                 MessageBox(0, "Название стихотворения отредактировано", "Успешно", 0);
@@ -255,7 +256,7 @@ namespace CourseWork
             textBoxPrintPoem.Text = poem.Text;
         }
 
-        private void buttonDelPoem_Click(object sender, EventArgs e)
+        private async void buttonDelPoem_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDPoem.Value;
             Poem poem;
@@ -270,7 +271,7 @@ namespace CourseWork
             }
 
             poem.DeleteFromDataBase();
-            updateFromDataBase();
+            await updateFromDataBase();
             MessageBox(0, "Стихотворение удалено", "Успешно", 0);
         }
 
@@ -300,6 +301,40 @@ namespace CourseWork
         {
             await updateFromDataBase();
             MessageBox(0, "Загружены последние данные", "", 0);
+        }
+
+        private void dataGridViewPoem_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewPoem.ClearSelection();
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            string strFind = textBoxFindByName.Text.ToLower();
+            List<Poem> poemsForTable = new List<Poem>();
+
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                poemsForTable = poems.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
+            }
+            else
+            {
+                poemsForTable = poems.ToList();
+            }
+
+            dataGridViewPoem.RowCount = 0;
+            int i = 0;
+            foreach (Poem poem in poemsForTable)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewPoem.Rows.Add(row);
+                dataGridViewPoem.Rows[i].Cells[0].Value = poem.PoemId.ToString();
+                dataGridViewPoem.Rows[i].Cells[1].Value = poem.Name;
+                dataGridViewPoem.Rows[i].Cells[2].Value = poem.Theme;
+                dataGridViewPoem.Rows[i].Cells[3].Value = poem.Year.ToString("yyyy");
+                dataGridViewPoem.Rows[i].Cells[4].Value = poem.ParticipantId.ToString();
+                i++;
+            }
         }
     }
 }

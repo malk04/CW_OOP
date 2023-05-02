@@ -72,8 +72,9 @@ namespace CourseWork
             participantsForTable = participants.ToList();
             if (chosenCompetition != "Все")
             {
-                chosenCompetition.Remove(0, 4);
+                chosenCompetition = chosenCompetition.Remove(0, 4);
                 string strID = chosenCompetition.Split().First();
+                strID = strID.Remove(strID.Length - 1, 1);
                 participantsForTable = participantsForTable.Where(x => x.Competitions.ToList().Exists(x => x.CompetitionId == Int32.Parse(strID))).ToList();
             }
 
@@ -108,8 +109,8 @@ namespace CourseWork
 
         private void ParticipantForm_Resize(object sender, EventArgs e)
         {
-            groupBoxCreateEditParticipant.Top = tabControlParticipant.Height / 2 - groupBoxCreateEditParticipant.Height / 2;
-            groupBoxCreateEditParticipant.Left = tabControlParticipant.Width / 2 - groupBoxCreateEditParticipant.Width / 2;
+            groupBoxCreateEditParticipant.Top = CreateEditParticipant.Height / 2 - groupBoxCreateEditParticipant.Height / 2;
+            groupBoxCreateEditParticipant.Left = CreateEditParticipant.Width / 2 - groupBoxCreateEditParticipant.Width / 2;
         }
 
         public void Add_Forms_List(List<Form> _forms)
@@ -146,7 +147,7 @@ namespace CourseWork
             forms[3].Show();
         }
 
-        private void buttonCreateParticipant_Click(object sender, EventArgs e)
+        private async void buttonCreateParticipant_Click(object sender, EventArgs e)
         {
             string _surname = textBoxSurname.Text;
             string _name = textBoxName.Text;
@@ -163,7 +164,7 @@ namespace CourseWork
 
                 Participant participantNew = new Participant(_surname, _name, _secondName, _birhday);
                 participantNew.AddToDataBase();
-                updateFromDataBase();
+                await updateFromDataBase();
 
                 textBoxSurname.Text = "";
                 textBoxName.Text = "";
@@ -214,7 +215,7 @@ namespace CourseWork
                 e.KeyChar = '\0';
         }
 
-        private void buttonEditParticipant_Click(object sender, EventArgs e)
+        private async void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDEdit.Value;
             Participant participant;
@@ -253,7 +254,7 @@ namespace CourseWork
                 db.Entry(participant).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            updateFromDataBase();
+            await updateFromDataBase();
 
             textBoxSurnameEdit.Text = "";
             textBoxNameEdit.Text = "";
@@ -263,7 +264,7 @@ namespace CourseWork
 
         }
 
-        private void buttonDeleteParticipant_Click(object sender, EventArgs e)
+        private async void buttonDeleteParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDDel.Value;
             Participant participant;
@@ -279,7 +280,7 @@ namespace CourseWork
 
             participant.DeleteFromDataBase();
             MessageBox(0, "Конкурсант удален", "Успешно", 0);
-            updateFromDataBase();
+            await updateFromDataBase();
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -311,6 +312,48 @@ namespace CourseWork
         {
             await updateFromDataBase();
             MessageBox(0, "Загружены последние данные", "", 0);
+        }
+
+        private void dataGridViewParticipant_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewParticipant.ClearSelection();
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            string strFind = textBoxFindBySurname.Text.ToLower();
+            List<Participant> participantsForTable = new List<Participant>();
+
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                participantsForTable = participants.Where(x => x.Surname.ToLower().Contains(strFind)).ToList();
+            }
+            else
+            {
+                participantsForTable = participants.ToList();
+            }
+
+            dataGridViewParticipant.RowCount = 0;
+            int i = 0;
+            foreach (Participant participant in participantsForTable)
+            {
+                StringBuilder poemIds = new StringBuilder("");
+                foreach (Poem poem in participant.Poems)
+                {
+                    poemIds.Append(poem.PoemId.ToString() + ", ");
+                };
+                if (poemIds.Length > 0) poemIds.Remove(poemIds.Length - 2, 2);
+
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewParticipant.Rows.Add(row);
+                dataGridViewParticipant.Rows[i].Cells[0].Value = participant.ParticipantId.ToString();
+                dataGridViewParticipant.Rows[i].Cells[1].Value = participant.Surname;
+                dataGridViewParticipant.Rows[i].Cells[2].Value = participant.Name;
+                dataGridViewParticipant.Rows[i].Cells[3].Value = participant.SecondName;
+                dataGridViewParticipant.Rows[i].Cells[4].Value = participant.DateOfBirth.ToString("dd/MM/yyyy");
+                dataGridViewParticipant.Rows[i].Cells[5].Value = poemIds;
+                i++;
+            }
         }
     }
 }

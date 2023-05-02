@@ -65,7 +65,7 @@ namespace CourseWork
 
             if (chosenYear != "Любой")
             {
-                competitionsForTable = competitionsForTable.Where((x => x.Date.Year == Int32.Parse(chosenYear))).ToList();
+                competitionsForTable = competitionsForTable.Where(x => x.Date.Year == Int32.Parse(chosenYear)).ToList();
             }
 
 
@@ -94,8 +94,8 @@ namespace CourseWork
 
         private void CompetitionForm_Resize(object sender, EventArgs e)
         {
-            groupBoxCreateEditCompetition.Top = tabControlCompetition.Height / 2 - groupBoxCreateEditCompetition.Height / 2;
-            groupBoxCreateEditCompetition.Left = tabControlCompetition.Width / 2 - groupBoxCreateEditCompetition.Width / 2;
+            groupBoxCreateEditCompetition.Top = CreateEditCompetition.Height / 2 - groupBoxCreateEditCompetition.Height / 2;
+            groupBoxCreateEditCompetition.Left = CreateEditCompetition.Width / 2 - groupBoxCreateEditCompetition.Width / 2;
         }
 
         public void Add_Forms_List(List<Form> _forms)
@@ -132,7 +132,7 @@ namespace CourseWork
             Environment.Exit(0);
         }
 
-        private void buttonCreateCompetition_Click(object sender, EventArgs e)
+        private async void buttonCreateCompetition_Click(object sender, EventArgs e)
         {
             CultureInfo provider = new CultureInfo("en-US");
 
@@ -144,7 +144,7 @@ namespace CourseWork
             {
                 Competition competitionNew = new Competition(_name, _date, minAge, null);
                 competitionNew.AddToDataBase();
-                updateFromDataBase();
+                await updateFromDataBase();
 
                 textBoxNameCompetition.Text = "";
                 dateTimePicker1.Text = DateTime.Now.ToString();
@@ -158,7 +158,7 @@ namespace CourseWork
             }
         }
 
-        private void buttonEditCompetition_Click(object sender, EventArgs e)
+        private async void buttonEditCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditID.Value;
             Competition competition;
@@ -190,7 +190,7 @@ namespace CourseWork
                     db.Entry(competition).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                updateFromDataBase();
+                await updateFromDataBase();
 
                 textBoxEditNameCompetition.Text = "";
                 dateTimePicker2.Text = DateTime.Now.ToString();
@@ -203,7 +203,7 @@ namespace CourseWork
             }
         }
 
-        private void buttonDelCompetition_Click(object sender, EventArgs e)
+        private async void buttonDelCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDCompetition.Value;
             Competition competition;
@@ -218,11 +218,11 @@ namespace CourseWork
             }
 
             competition.DeleteFromDataBase();
-            updateFromDataBase();
+            await updateFromDataBase();
             MessageBox(0, "Конкурс удален", "Успешно", 0);
         }
 
-        private void buttonAddParticipant_Click(object sender, EventArgs e)
+        private async void buttonAddParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownAddIDCompetitionParticipant.Value;
             Competition competition;
@@ -263,15 +263,15 @@ namespace CourseWork
 
             using (DataBaseContext db = new DataBaseContext())
             {
+                competition = db.Competitions.Include(c => c.Participants).First(c => c.CompetitionId == _idComp);
                 competition.Participants.Add(participant);
-                db.Entry(competition).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            updateFromDataBase();
+            await updateFromDataBase();
             MessageBox(0, "Участник добавлен в конкурс", "Успешно", 0);
         }
 
-        private void buttonDelParticipant_Click(object sender, EventArgs e)
+        private async void buttonDelParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
             Competition competition;
@@ -315,11 +315,11 @@ namespace CourseWork
                 db.SaveChanges();
             }
 
-            updateFromDataBase();
+            await updateFromDataBase();
             MessageBox(0, "Участник удален из конкурса", "Успешно", 0);
         }
 
-        private void buttonAddWinner_Click(object sender, EventArgs e)
+        private async void buttonAddWinner_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
             Competition competition;
@@ -359,7 +359,7 @@ namespace CourseWork
                 db.SaveChanges();
             }
 
-            updateFromDataBase();
+            await updateFromDataBase();
             MessageBox(0, "Победитель конкурса добавлен/изменен", "Успешно", 0);
         }
 
@@ -390,6 +390,49 @@ namespace CourseWork
         {
             await updateFromDataBase();
             MessageBox(0, "Загружены последние данные", "", 0);
+        }
+
+        private void dataGridViewCompetition_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewCompetition.ClearSelection();
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            string strFind = textBoxFindByName.Text.ToLower();
+            List<Competition> competitionsForTable = new List<Competition>();
+
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                competitionsForTable = competitions.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
+            }
+            else
+            {
+                competitionsForTable = competitions.ToList();
+            }
+
+
+            dataGridViewCompetition.RowCount = 0;
+            int i = 0;
+            foreach (Competition competition in competitionsForTable)
+            {
+                StringBuilder participantIds = new StringBuilder("");
+                foreach (Participant participant in competition.Participants)
+                {
+                    participantIds.Append(participant.ParticipantId.ToString() + ", ");
+                };
+                if (participantIds.Length > 0) participantIds.Remove(participantIds.Length - 2, 2);
+
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridViewCompetition.Rows.Add(row);
+                dataGridViewCompetition.Rows[i].Cells[0].Value = competition.CompetitionId.ToString();
+                dataGridViewCompetition.Rows[i].Cells[1].Value = competition.Name;
+                dataGridViewCompetition.Rows[i].Cells[2].Value = competition.Date.ToString();
+                dataGridViewCompetition.Rows[i].Cells[3].Value = competition.MinAge.ToString();
+                dataGridViewCompetition.Rows[i].Cells[4].Value = participantIds;
+                dataGridViewCompetition.Rows[i].Cells[5].Value = competition.WinnerId.ToString();
+                i++;
+            }
         }
     }
 }

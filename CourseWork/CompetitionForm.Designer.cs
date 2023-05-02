@@ -32,7 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCompetition = new System.Windows.Forms.TabControl();
             this.SeeDelCompetition = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxFind = new System.Windows.Forms.GroupBox();
+            this.textBoxFindByName = new System.Windows.Forms.TextBox();
+            this.buttonFind = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.groupBoxDelCompetition = new System.Windows.Forms.GroupBox();
             this.numericUpDownDelIDCompetition = new System.Windows.Forms.NumericUpDown();
@@ -102,7 +105,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControlCompetition.SuspendLayout();
             this.SeeDelCompetition.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxFind.SuspendLayout();
             this.groupBoxDelCompetition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetition)).BeginInit();
             this.groupBoxFilterCompetition.SuspendLayout();
@@ -137,12 +140,13 @@
             this.tabControlCompetition.Location = new System.Drawing.Point(6, 12);
             this.tabControlCompetition.Name = "tabControlCompetition";
             this.tabControlCompetition.SelectedIndex = 0;
-            this.tabControlCompetition.Size = new System.Drawing.Size(1225, 421);
+            this.tabControlCompetition.Size = new System.Drawing.Size(1225, 416);
             this.tabControlCompetition.TabIndex = 1;
             // 
             // SeeDelCompetition
             // 
-            this.SeeDelCompetition.Controls.Add(this.groupBox1);
+            this.SeeDelCompetition.Controls.Add(this.groupBoxFind);
+            this.SeeDelCompetition.Controls.Add(this.buttonUpdate);
             this.SeeDelCompetition.Controls.Add(this.groupBoxDelCompetition);
             this.SeeDelCompetition.Controls.Add(this.groupBoxFilterCompetition);
             this.SeeDelCompetition.Controls.Add(this.dataGridViewCompetition);
@@ -151,29 +155,62 @@
             this.SeeDelCompetition.Location = new System.Drawing.Point(4, 29);
             this.SeeDelCompetition.Name = "SeeDelCompetition";
             this.SeeDelCompetition.Padding = new System.Windows.Forms.Padding(3);
-            this.SeeDelCompetition.Size = new System.Drawing.Size(1217, 388);
+            this.SeeDelCompetition.Size = new System.Drawing.Size(1217, 383);
             this.SeeDelCompetition.TabIndex = 0;
             this.SeeDelCompetition.Text = "Просмотр/удаление конкурса";
             this.SeeDelCompetition.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxFind
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.buttonUpdate);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(831, 263);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 59);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
+            this.groupBoxFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFind.Controls.Add(this.textBoxFindByName);
+            this.groupBoxFind.Controls.Add(this.buttonFind);
+            this.groupBoxFind.Controls.Add(this.label18);
+            this.groupBoxFind.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxFind.Location = new System.Drawing.Point(831, 6);
+            this.groupBoxFind.Name = "groupBoxFind";
+            this.groupBoxFind.Size = new System.Drawing.Size(381, 116);
+            this.groupBoxFind.TabIndex = 10;
+            this.groupBoxFind.TabStop = false;
+            this.groupBoxFind.Text = "Поиск конкурса";
+            // 
+            // textBoxFindByName
+            // 
+            this.textBoxFindByName.Location = new System.Drawing.Point(174, 30);
+            this.textBoxFindByName.Name = "textBoxFindByName";
+            this.textBoxFindByName.Size = new System.Drawing.Size(193, 27);
+            this.textBoxFindByName.TabIndex = 10;
+            // 
+            // buttonFind
+            // 
+            this.buttonFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonFind.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonFind.Location = new System.Drawing.Point(15, 68);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(354, 37);
+            this.buttonFind.TabIndex = 9;
+            this.buttonFind.Text = "Найти";
+            this.buttonFind.UseVisualStyleBackColor = false;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(13, 29);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(90, 25);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Название";
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonUpdate.Location = new System.Drawing.Point(13, 15);
+            this.buttonUpdate.Location = new System.Drawing.Point(6, 335);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(356, 37);
+            this.buttonUpdate.Size = new System.Drawing.Size(253, 37);
             this.buttonUpdate.TabIndex = 9;
             this.buttonUpdate.Text = "Обновить данные";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -186,7 +223,7 @@
             this.groupBoxDelCompetition.Controls.Add(this.buttonDelCompetition);
             this.groupBoxDelCompetition.Controls.Add(this.label13);
             this.groupBoxDelCompetition.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxDelCompetition.Location = new System.Drawing.Point(831, 129);
+            this.groupBoxDelCompetition.Location = new System.Drawing.Point(830, 250);
             this.groupBoxDelCompetition.Name = "groupBoxDelCompetition";
             this.groupBoxDelCompetition.Size = new System.Drawing.Size(381, 128);
             this.groupBoxDelCompetition.TabIndex = 6;
@@ -215,7 +252,7 @@
             // 
             this.buttonDelCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonDelCompetition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDelCompetition.Location = new System.Drawing.Point(13, 79);
+            this.buttonDelCompetition.Location = new System.Drawing.Point(13, 85);
             this.buttonDelCompetition.Name = "buttonDelCompetition";
             this.buttonDelCompetition.Size = new System.Drawing.Size(356, 37);
             this.buttonDelCompetition.TabIndex = 9;
@@ -240,7 +277,7 @@
             this.groupBoxFilterCompetition.Controls.Add(this.comboBoxYearCompetition);
             this.groupBoxFilterCompetition.Controls.Add(this.label15);
             this.groupBoxFilterCompetition.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxFilterCompetition.Location = new System.Drawing.Point(831, 6);
+            this.groupBoxFilterCompetition.Location = new System.Drawing.Point(831, 128);
             this.groupBoxFilterCompetition.Name = "groupBoxFilterCompetition";
             this.groupBoxFilterCompetition.Size = new System.Drawing.Size(381, 116);
             this.groupBoxFilterCompetition.TabIndex = 5;
@@ -261,6 +298,9 @@
             // 
             // comboBoxYearCompetition
             // 
+            this.comboBoxYearCompetition.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboBoxYearCompetition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYearCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxYearCompetition.FormattingEnabled = true;
             this.comboBoxYearCompetition.Location = new System.Drawing.Point(175, 26);
             this.comboBoxYearCompetition.Name = "comboBoxYearCompetition";
@@ -310,8 +350,9 @@
             this.dataGridViewCompetition.RowHeadersVisible = false;
             this.dataGridViewCompetition.RowHeadersWidth = 51;
             this.dataGridViewCompetition.RowTemplate.Height = 29;
-            this.dataGridViewCompetition.Size = new System.Drawing.Size(819, 361);
+            this.dataGridViewCompetition.Size = new System.Drawing.Size(819, 319);
             this.dataGridViewCompetition.TabIndex = 4;
+            this.dataGridViewCompetition.SelectionChanged += new System.EventHandler(this.dataGridViewCompetition_SelectionChanged);
             // 
             // IDCompetition
             // 
@@ -372,10 +413,11 @@
             this.groupBoxDeleteParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxDeleteParticipant.Location = new System.Drawing.Point(1844, 193);
             this.groupBoxDeleteParticipant.Name = "groupBoxDeleteParticipant";
-            this.groupBoxDeleteParticipant.Size = new System.Drawing.Size(381, 128);
+            this.groupBoxDeleteParticipant.Size = new System.Drawing.Size(0, 0);
             this.groupBoxDeleteParticipant.TabIndex = 3;
             this.groupBoxDeleteParticipant.TabStop = false;
             this.groupBoxDeleteParticipant.Text = "Удаление конкурсанта";
+            this.groupBoxDeleteParticipant.Visible = false;
             // 
             // numericUpDownIDDel
             // 
@@ -417,10 +459,11 @@
             this.groupBoxFilterParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxFilterParticipant.Location = new System.Drawing.Point(1844, 6);
             this.groupBoxFilterParticipant.Name = "groupBoxFilterParticipant";
-            this.groupBoxFilterParticipant.Size = new System.Drawing.Size(381, 174);
+            this.groupBoxFilterParticipant.Size = new System.Drawing.Size(0, 0);
             this.groupBoxFilterParticipant.TabIndex = 2;
             this.groupBoxFilterParticipant.TabStop = false;
             this.groupBoxFilterParticipant.Text = "Фильтрация";
+            this.groupBoxFilterParticipant.Visible = false;
             // 
             // buttonFilterParticipant
             // 
@@ -475,21 +518,22 @@
             this.CreateEditCompetition.Location = new System.Drawing.Point(4, 29);
             this.CreateEditCompetition.Name = "CreateEditCompetition";
             this.CreateEditCompetition.Padding = new System.Windows.Forms.Padding(3);
-            this.CreateEditCompetition.Size = new System.Drawing.Size(1217, 388);
+            this.CreateEditCompetition.Size = new System.Drawing.Size(1217, 383);
             this.CreateEditCompetition.TabIndex = 1;
             this.CreateEditCompetition.Text = "Добавить/редактировать конкурс";
             this.CreateEditCompetition.UseVisualStyleBackColor = true;
             // 
             // groupBoxCreateEditCompetition
             // 
+            this.groupBoxCreateEditCompetition.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxEditCompetition);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxAddWinner);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxDelParticipant);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxAddParticipant);
             this.groupBoxCreateEditCompetition.Controls.Add(this.groupBoxCreateCompetition);
-            this.groupBoxCreateEditCompetition.Location = new System.Drawing.Point(6, 3);
+            this.groupBoxCreateEditCompetition.Location = new System.Drawing.Point(6, 6);
             this.groupBoxCreateEditCompetition.Name = "groupBoxCreateEditCompetition";
-            this.groupBoxCreateEditCompetition.Size = new System.Drawing.Size(1205, 375);
+            this.groupBoxCreateEditCompetition.Size = new System.Drawing.Size(1205, 371);
             this.groupBoxCreateEditCompetition.TabIndex = 3;
             this.groupBoxCreateEditCompetition.TabStop = false;
             // 
@@ -504,7 +548,7 @@
             this.groupBoxEditCompetition.Controls.Add(this.label17);
             this.groupBoxEditCompetition.Controls.Add(this.textBoxEditNameCompetition);
             this.groupBoxEditCompetition.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxEditCompetition.Location = new System.Drawing.Point(448, 16);
+            this.groupBoxEditCompetition.Location = new System.Drawing.Point(449, 16);
             this.groupBoxEditCompetition.Name = "groupBoxEditCompetition";
             this.groupBoxEditCompetition.Size = new System.Drawing.Size(424, 184);
             this.groupBoxEditCompetition.TabIndex = 7;
@@ -697,7 +741,7 @@
             this.groupBoxDelParticipant.Controls.Add(this.label7);
             this.groupBoxDelParticipant.Controls.Add(this.buttonDelParticipant);
             this.groupBoxDelParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxDelParticipant.Location = new System.Drawing.Point(448, 215);
+            this.groupBoxDelParticipant.Location = new System.Drawing.Point(449, 206);
             this.groupBoxDelParticipant.Name = "groupBoxDelParticipant";
             this.groupBoxDelParticipant.Size = new System.Drawing.Size(424, 151);
             this.groupBoxDelParticipant.TabIndex = 4;
@@ -782,7 +826,7 @@
             this.groupBoxAddParticipant.Controls.Add(this.label12);
             this.groupBoxAddParticipant.Controls.Add(this.buttonAddParticipant);
             this.groupBoxAddParticipant.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxAddParticipant.Location = new System.Drawing.Point(6, 215);
+            this.groupBoxAddParticipant.Location = new System.Drawing.Point(6, 206);
             this.groupBoxAddParticipant.Name = "groupBoxAddParticipant";
             this.groupBoxAddParticipant.Size = new System.Drawing.Size(424, 151);
             this.groupBoxAddParticipant.TabIndex = 3;
@@ -952,7 +996,7 @@
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(1038, 444);
+            this.button4.Location = new System.Drawing.Point(1038, 439);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(192, 37);
             this.button4.TabIndex = 17;
@@ -965,7 +1009,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(575, 444);
+            this.button3.Location = new System.Drawing.Point(575, 439);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(269, 37);
             this.button3.TabIndex = 16;
@@ -978,7 +1022,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(291, 444);
+            this.button2.Location = new System.Drawing.Point(291, 439);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(269, 37);
             this.button2.TabIndex = 15;
@@ -991,7 +1035,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(9, 444);
+            this.button1.Location = new System.Drawing.Point(9, 439);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(269, 37);
             this.button1.TabIndex = 14;
@@ -1003,7 +1047,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 493);
+            this.ClientSize = new System.Drawing.Size(1243, 488);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -1017,7 +1061,8 @@
             this.Resize += new System.EventHandler(this.CompetitionForm_Resize);
             this.tabControlCompetition.ResumeLayout(false);
             this.SeeDelCompetition.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxFind.ResumeLayout(false);
+            this.groupBoxFind.PerformLayout();
             this.groupBoxDelCompetition.ResumeLayout(false);
             this.groupBoxDelCompetition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelIDCompetition)).EndInit();
@@ -1069,17 +1114,6 @@
         private Label label6;
         private Label label5;
         private TabPage CreateEditCompetition;
-        private GroupBox groupBoxCreateEditCompetition;
-        private GroupBox groupBoxAddParticipant;
-        private NumericUpDown numericUpDownAddIDCompetitionParticipant;
-        private Label label12;
-        private Button buttonAddParticipant;
-        private GroupBox groupBoxCreateCompetition;
-        private Button buttonCreateCompetition;
-        private DateTimePicker dateTimePicker1;
-        private Label label4;
-        private Label label1;
-        private TextBox textBoxNameCompetition;
         private Button button4;
         private Button button3;
         private Button button2;
@@ -1092,38 +1126,52 @@
         private Button buttonFilterCompetition;
         private ComboBox comboBoxYearCompetition;
         private Label label15;
-        private GroupBox groupBoxDelParticipant;
-        private NumericUpDown numericUpDownDelIDParticipant;
-        private Label label3;
-        private NumericUpDown numericUpDownDelIDCompetitionParticipant;
-        private Label label7;
-        private Button buttonDelParticipant;
-        private NumericUpDown numericUpDownAddIDParticipant;
-        private Label label2;
-        private GroupBox groupBoxAddWinner;
-        private NumericUpDown numericUpDownAddIDWinner;
-        private Label label10;
-        private NumericUpDown numericUpDownAddIDCompetitionWinner;
-        private Label label11;
-        private Button buttonAddWinner;
-        private GroupBox groupBoxEditCompetition;
-        private Button buttonEditCompetition;
-        private DateTimePicker dateTimePicker2;
-        private Label label16;
-        private Label label17;
-        private TextBox textBoxEditNameCompetition;
-        private NumericUpDown numericUpDownMinAge;
-        private Label label8;
-        private NumericUpDown numericUpDownEditID;
-        private Label label9;
         private DataGridViewTextBoxColumn IDCompetition;
         private DataGridViewTextBoxColumn nameCompetition;
         private DataGridViewTextBoxColumn dateCompetition;
         private DataGridViewTextBoxColumn MinAge;
         private DataGridViewTextBoxColumn IDParticipant;
         private DataGridViewTextBoxColumn IDWinner;
-        private Button buttonLoad;
-        private GroupBox groupBox1;
         private Button buttonUpdate;
+        private GroupBox groupBoxFind;
+        private Button buttonFind;
+        private Label label18;
+        private TextBox textBoxFindByName;
+        private GroupBox groupBoxCreateEditCompetition;
+        private GroupBox groupBoxEditCompetition;
+        private Button buttonLoad;
+        private NumericUpDown numericUpDownEditID;
+        private Label label9;
+        private Button buttonEditCompetition;
+        private DateTimePicker dateTimePicker2;
+        private Label label16;
+        private Label label17;
+        private TextBox textBoxEditNameCompetition;
+        private GroupBox groupBoxAddWinner;
+        private NumericUpDown numericUpDownAddIDWinner;
+        private Label label10;
+        private NumericUpDown numericUpDownAddIDCompetitionWinner;
+        private Label label11;
+        private Button buttonAddWinner;
+        private GroupBox groupBoxDelParticipant;
+        private NumericUpDown numericUpDownDelIDParticipant;
+        private Label label3;
+        private NumericUpDown numericUpDownDelIDCompetitionParticipant;
+        private Label label7;
+        private Button buttonDelParticipant;
+        private GroupBox groupBoxAddParticipant;
+        private NumericUpDown numericUpDownAddIDParticipant;
+        private Label label2;
+        private NumericUpDown numericUpDownAddIDCompetitionParticipant;
+        private Label label12;
+        private Button buttonAddParticipant;
+        private GroupBox groupBoxCreateCompetition;
+        private NumericUpDown numericUpDownMinAge;
+        private Label label8;
+        private Button buttonCreateCompetition;
+        private DateTimePicker dateTimePicker1;
+        private Label label4;
+        private Label label1;
+        private TextBox textBoxNameCompetition;
     }
 }

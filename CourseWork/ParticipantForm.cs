@@ -24,6 +24,10 @@ namespace CourseWork
             await updateFromDataBase();
         }
 
+        /// <summary>
+        /// Обновление генерируемых компонентов из базы данных
+        /// </summary>
+        /// <returns></returns>
         private async Task updateFromDataBase()
         {
             DataBaseContext db = new DataBaseContext();
@@ -34,6 +38,9 @@ namespace CourseWork
             updateTableParticipants();
         }
 
+        /// <summary>
+        /// Обновление выпадающего списка с конкурсами
+        /// </summary>
         private void updateCompetitionComboBox()
         {
             string chosen = string.IsNullOrEmpty(comboBoxCompitition.Text) ? "Все" : comboBoxCompitition.Text;
@@ -46,6 +53,9 @@ namespace CourseWork
             comboBoxCompitition.Text = chosen;
         }
 
+        /// <summary>
+        /// Обновление выпадающего списка с годами рождения участников
+        /// </summary>
         private void updateYearComboBox()
         {
             string chosen = string.IsNullOrEmpty(comboBoxYear.Text) ? "Любой" : comboBoxYear.Text;
@@ -63,6 +73,9 @@ namespace CourseWork
             comboBoxYear.Text = chosen;
         }
 
+        /// <summary>
+        /// Обновление таблицы конкурсантов с выбранной фильтрацией
+        /// </summary>
         private void updateTableParticipants()
         {
             string chosenCompetition = comboBoxCompitition.Text;
@@ -147,6 +160,11 @@ namespace CourseWork
             forms[3].Show();
         }
 
+        /// <summary>
+        /// Создание нового конкурсанта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonCreateParticipant_Click(object sender, EventArgs e)
         {
             string _surname = textBoxSurname.Text;
@@ -215,6 +233,11 @@ namespace CourseWork
                 e.KeyChar = '\0';
         }
 
+        /// <summary>
+        /// Редактирование конкурсанта по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDEdit.Value;
@@ -264,6 +287,11 @@ namespace CourseWork
 
         }
 
+        /// <summary>
+        /// Удаление конкурсанта по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonDeleteParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDDel.Value;
@@ -283,6 +311,11 @@ namespace CourseWork
             await updateFromDataBase();
         }
 
+        /// <summary>
+        /// Загрузить текущие данные конкурсанта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownIDEdit.Value;
@@ -319,6 +352,11 @@ namespace CourseWork
             this.dataGridViewParticipant.ClearSelection();
         }
 
+        /// <summary>
+        /// Поиск конкурсанта по фамилии
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
             string strFind = textBoxFindBySurname.Text.ToLower();

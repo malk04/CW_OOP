@@ -31,6 +31,11 @@ namespace CourseWork
         {
             await updateFromDataBase();
         }
+
+        /// <summary>
+        /// Обновление всех генерируемых компонентов из базы данных
+        /// </summary>
+        /// <returns></returns>
         private async Task updateFromDataBase()
         {
             DataBaseContext db = new DataBaseContext();
@@ -39,6 +44,9 @@ namespace CourseWork
             updateTableCompetitions();
         }
 
+        /// <summary>
+        /// Обновление выпадающего списка с выбором года проведения конкурсов
+        /// </summary>
         private void updateYearComboBox()
         {
             string chosen = string.IsNullOrEmpty(comboBoxYearCompetition.Text) ? "Любой" : comboBoxYearCompetition.Text;
@@ -56,6 +64,9 @@ namespace CourseWork
             comboBoxYearCompetition.Text = chosen;
         }
 
+        /// <summary>
+        /// Обновление таблицы конкурсов с выбранной фильтрацией
+        /// </summary>
         private void updateTableCompetitions()
         {
             string chosenYear = comboBoxYearCompetition.Text;
@@ -132,6 +143,11 @@ namespace CourseWork
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// Создание нового конкурса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonCreateCompetition_Click(object sender, EventArgs e)
         {
             CultureInfo provider = new CultureInfo("en-US");
@@ -158,6 +174,11 @@ namespace CourseWork
             }
         }
 
+        /// <summary>
+        /// Редактирование конкурса по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonEditCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditID.Value;
@@ -203,6 +224,11 @@ namespace CourseWork
             }
         }
 
+        /// <summary>
+        /// Удаление конкурса по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonDelCompetition_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDCompetition.Value;
@@ -222,6 +248,11 @@ namespace CourseWork
             MessageBox(0, "Конкурс удален", "Успешно", 0);
         }
 
+        /// <summary>
+        /// Добавление участника в конкурс
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonAddParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownAddIDCompetitionParticipant.Value;
@@ -271,6 +302,11 @@ namespace CourseWork
             MessageBox(0, "Участник добавлен в конкурс", "Успешно", 0);
         }
 
+        /// <summary>
+        /// Удаление участника из конкурса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonDelParticipant_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
@@ -319,6 +355,11 @@ namespace CourseWork
             MessageBox(0, "Участник удален из конкурса", "Успешно", 0);
         }
 
+        /// <summary>
+        /// Добавление/редактирование победителя конкурса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonAddWinner_Click(object sender, EventArgs e)
         {
             int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
@@ -363,6 +404,11 @@ namespace CourseWork
             MessageBox(0, "Победитель конкурса добавлен/изменен", "Успешно", 0);
         }
 
+        /// <summary>
+        /// Загрузка текущих данных конкурса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditID.Value;
@@ -397,6 +443,11 @@ namespace CourseWork
             this.dataGridViewCompetition.ClearSelection();
         }
 
+        /// <summary>
+        /// Поиск конкурса по названию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
             string strFind = textBoxFindByName.Text.ToLower();

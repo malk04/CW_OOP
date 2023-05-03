@@ -35,6 +35,10 @@ namespace CourseWork
             await updateFromDataBase();
         }
 
+        /// <summary>
+        /// Обновление генерируемых компонентов из базы данных
+        /// </summary>
+        /// <returns></returns>
         private async Task updateFromDataBase()
         {
             DataBaseContext db = new DataBaseContext();
@@ -44,6 +48,9 @@ namespace CourseWork
             updateTablePoems();
         }
 
+        /// <summary>
+        /// Обновление выпадающего списка с авторами
+        /// </summary>
         private void updateAvtorComboBox()
         {
             string chosen = string.IsNullOrEmpty(comboBoxAvtor.Text) ? "Все" : comboBoxAvtor.Text;
@@ -56,6 +63,9 @@ namespace CourseWork
             comboBoxAvtor.Text = chosen;
         }
 
+        /// <summary>
+        /// Обновление выпадающего списка с годами написания стихотворений
+        /// </summary>
         private void updateYearComboBox()
         {
             string chosen = string.IsNullOrEmpty(comboBoxYearWrite.Text) ? "Любой" : comboBoxYearWrite.Text;
@@ -73,6 +83,9 @@ namespace CourseWork
             comboBoxYearWrite.Text = chosen;
         }
 
+        /// <summary>
+        /// Обновление таблицы стихотворений с выбранной фильтрацией
+        /// </summary>
         private void updateTablePoems()
         {
             string chosenAvtor = comboBoxAvtor.Text;
@@ -158,6 +171,11 @@ namespace CourseWork
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// Создание нового стихотворения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonCreateParticipant_Click(object sender, EventArgs e)
         {
             CultureInfo provider = new CultureInfo("en-US");
@@ -203,6 +221,11 @@ namespace CourseWork
             }
         }
 
+        /// <summary>
+        /// Редактирование стихотворения по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonEditParticipant_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditId.Value;
@@ -239,6 +262,11 @@ namespace CourseWork
             }
         }
 
+        /// <summary>
+        /// Вывод текста стихотворения по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPrintPoem_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownViewId.Value;
@@ -256,6 +284,11 @@ namespace CourseWork
             textBoxPrintPoem.Text = poem.Text;
         }
 
+        /// <summary>
+        /// Удаление стихотворения по id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void buttonDelPoem_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownDelIDPoem.Value;
@@ -275,6 +308,11 @@ namespace CourseWork
             MessageBox(0, "Стихотворение удалено", "Успешно", 0);
         }
 
+        /// <summary>
+        /// Загрузить текущие данные стихотворения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             int _id = (int)numericUpDownEditId.Value;
@@ -308,6 +346,11 @@ namespace CourseWork
             this.dataGridViewPoem.ClearSelection();
         }
 
+        /// <summary>
+        /// Поиск стихотворения по названию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
             string strFind = textBoxFindByName.Text.ToLower();

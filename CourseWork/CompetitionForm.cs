@@ -158,7 +158,7 @@ namespace CourseWork
 
             if (!string.IsNullOrEmpty(_name))
             {
-                Competition competitionNew = new Competition(_name, _date, minAge, null);
+                Competition competitionNew = new Competition(_name, _date, minAge);
                 competitionNew.AddToDataBase();
                 await updateFromDataBase();
 
@@ -309,7 +309,7 @@ namespace CourseWork
         /// <param name="e"></param>
         private async void buttonDelParticipant_Click(object sender, EventArgs e)
         {
-            int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
+            int _idComp = (int)numericUpDownAddIDCompetitionParticipant.Value;
             Competition competition;
             try
             {
@@ -362,7 +362,7 @@ namespace CourseWork
         /// <param name="e"></param>
         private async void buttonAddWinner_Click(object sender, EventArgs e)
         {
-            int _idComp = (int)numericUpDownDelIDCompetitionParticipant.Value;
+            int _idComp = (int)numericUpDownAddIDCompetitionWinner.Value;
             Competition competition;
             try
             {
@@ -374,7 +374,7 @@ namespace CourseWork
                 return;
             }
 
-            int _idPar = (int)numericUpDownAddIDParticipant.Value;
+            int _idPar = (int)numericUpDownAddIDWinner.Value;
             Participant participant;
             try
             {

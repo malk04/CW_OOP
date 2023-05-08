@@ -51,12 +51,11 @@ namespace CourseWork.Entities
         /// <param name="date"> Дата и время проведения </param>
         /// <param name="minAge"> Минимальный возраст участников </param>
         /// <param name="winnerId"> Id победителя </param>
-        public Competition(string name, DateTime date, int minAge, int? winnerId)
+        public Competition(string name, DateTime date, int minAge)
         {
             Name = name;
             Date = date;
             MinAge = minAge;
-            WinnerId = winnerId;
             Participants = new List<Participant>();
         }
 

@@ -27,8 +27,8 @@ namespace CourseWork
 
         private void NavigationForm_Resize(object sender, EventArgs e)
         {
-            groupBoxNavigation.Top = Height / 2 - groupBoxNavigation.Height / 2;
-            groupBoxNavigation.Left = Width / 2 - groupBoxNavigation.Width / 2;
+            groupBoxNavigation.Top = Height / 2 - groupBoxNavigation.Height / 2 - 5;
+            groupBoxNavigation.Left = Width / 2 - groupBoxNavigation.Width / 2 - 5;
         }
 
         private void button1_Click(object sender, EventArgs e)

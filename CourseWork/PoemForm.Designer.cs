@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPoem = new System.Windows.Forms.TabControl();
             this.SeeDelPoem = new System.Windows.Forms.TabPage();
+            this.labelForFilters = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.groupBoxFind = new System.Windows.Forms.GroupBox();
             this.textBoxFindByName = new System.Windows.Forms.TextBox();
             this.buttonFind = new System.Windows.Forms.Button();
@@ -128,6 +131,8 @@
             // 
             // SeeDelPoem
             // 
+            this.SeeDelPoem.Controls.Add(this.labelForFilters);
+            this.SeeDelPoem.Controls.Add(this.buttonReset);
             this.SeeDelPoem.Controls.Add(this.groupBoxFind);
             this.SeeDelPoem.Controls.Add(this.buttonUpdate);
             this.SeeDelPoem.Controls.Add(this.dataGridViewPoem);
@@ -142,6 +147,29 @@
             this.SeeDelPoem.TabIndex = 0;
             this.SeeDelPoem.Text = "Просмотр/удаление стихотворений";
             this.SeeDelPoem.UseVisualStyleBackColor = true;
+            // 
+            // labelForFilters
+            // 
+            this.labelForFilters.AutoSize = true;
+            this.labelForFilters.BackColor = System.Drawing.Color.Transparent;
+            this.labelForFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelForFilters.Location = new System.Drawing.Point(534, 449);
+            this.labelForFilters.Name = "labelForFilters";
+            this.labelForFilters.Size = new System.Drawing.Size(0, 20);
+            this.labelForFilters.TabIndex = 12;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.buttonReset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonReset.Location = new System.Drawing.Point(265, 440);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(253, 37);
+            this.buttonReset.TabIndex = 11;
+            this.buttonReset.Text = "Сбросить фильтрацию/поиск";
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // groupBoxFind
             // 
@@ -207,6 +235,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPoem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPoem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewPoem.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewPoem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -224,6 +253,14 @@
             this.themePoem,
             this.yearPoem,
             this.avtorPoem});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPoem.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPoem.EnableHeadersVisualStyles = false;
             this.dataGridViewPoem.Location = new System.Drawing.Point(5, 6);
             this.dataGridViewPoem.Name = "dataGridViewPoem";
@@ -296,6 +333,11 @@
             // 
             this.numericUpDownDelIDPoem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownDelIDPoem.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownDelIDPoem.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownDelIDPoem.Minimum = new decimal(new int[] {
             1,
             0,
@@ -593,9 +635,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownViewId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownViewId.Location = new System.Drawing.Point(181, 39);
+            this.numericUpDownViewId.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownViewId.Name = "numericUpDownViewId";
             this.numericUpDownViewId.Size = new System.Drawing.Size(413, 27);
             this.numericUpDownViewId.TabIndex = 11;
+            this.numericUpDownViewId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label9
             // 
@@ -674,6 +726,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownEditId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownEditId.Location = new System.Drawing.Point(181, 39);
+            this.numericUpDownEditId.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownEditId.Minimum = new decimal(new int[] {
             1,
             0,
@@ -795,6 +852,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAvtorID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownAvtorID.Location = new System.Drawing.Point(181, 104);
+            this.numericUpDownAvtorID.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownAvtorID.Minimum = new decimal(new int[] {
             1,
             0,
@@ -942,6 +1004,7 @@
             this.Resize += new System.EventHandler(this.PoemForm_Resize);
             this.tabControlPoem.ResumeLayout(false);
             this.SeeDelPoem.ResumeLayout(false);
+            this.SeeDelPoem.PerformLayout();
             this.groupBoxFind.ResumeLayout(false);
             this.groupBoxFind.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPoem)).EndInit();
@@ -1035,5 +1098,7 @@
         private Button buttonFind;
         private Label label8;
         private TextBox textBoxFindByName;
+        private Button buttonReset;
+        private Label labelForFilters;
     }
 }

@@ -48,5 +48,14 @@ namespace CourseWork
         {
             timer1.Stop();
         }
+
+        private void InformationForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                timer1.Stop();
+                this.Close();
+            }
+        }
     }
 }

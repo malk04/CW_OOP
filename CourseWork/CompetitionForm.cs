@@ -18,14 +18,13 @@ namespace CourseWork
     {
         private List<Form>? forms;
         private IEnumerable<Competition>? competitions;
+        private IEnumerable<Competition>? foundCompetitions;
+        private IEnumerable<Competition>? filterCompetitions;
 
         public CompetitionForm()
         {
             InitializeComponent();
         }
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
 
         private async void CompetitionForm_Load(object sender, EventArgs e)
         {
@@ -40,6 +39,7 @@ namespace CourseWork
         {
             DataBaseContext db = new DataBaseContext();
             competitions = await db.Competitions.Include(c => c.Participants).AsNoTracking().ToListAsync();
+            textBoxFindByName.Text = "";
             updateYearComboBox();
             updateTableCompetitions();
         }
@@ -65,14 +65,41 @@ namespace CourseWork
         }
 
         /// <summary>
+        /// Сброс фильтрации и поиска
+        /// </summary>
+        /// <returns></returns>
+        private void resetFilters()
+        {
+            foundCompetitions?.ToList().Clear();
+            foundCompetitions = null;
+            filterCompetitions?.ToList().Clear();
+            filterCompetitions = null;
+            textBoxFindByName.Text = "";
+            comboBoxYearCompetition.Text = "Любой";
+            updateTableCompetitions();
+        }
+
+        /// <summary>
         /// Обновление таблицы конкурсов с выбранной фильтрацией
         /// </summary>
         private void updateTableCompetitions()
         {
+            if (filterCompetitions != null)
+            {
+                filterCompetitions.ToList().Clear();
+            }
+
             string chosenYear = comboBoxYearCompetition.Text;
             List<Competition> competitionsForTable = new List<Competition>();
 
-            competitionsForTable = competitions.ToList();
+            if (foundCompetitions == null)
+            {
+                competitionsForTable = competitions.ToList();
+            }
+            else
+            {
+                competitionsForTable = foundCompetitions.ToList();
+            }
 
             if (chosenYear != "Любой")
             {
@@ -100,6 +127,18 @@ namespace CourseWork
                 dataGridViewCompetition.Rows[i].Cells[4].Value = participantIds;
                 dataGridViewCompetition.Rows[i].Cells[5].Value = competition.WinnerId.ToString();
                 i++;
+            }
+
+            if (chosenYear != "Любой")
+            {
+                labelForFilters.Text = "Найдено совпадений: " + competitionsForTable.Count;
+                filterCompetitions = competitionsForTable;
+            }
+            else
+            {
+                labelForFilters.Text = "";
+                filterCompetitions?.ToList().Clear();
+                filterCompetitions = null;
             }
         }
 
@@ -165,11 +204,11 @@ namespace CourseWork
                 textBoxNameCompetition.Text = "";
                 dateTimePicker1.Text = DateTime.Now.ToString();
                 numericUpDownMinAge.Value = 0;
-                MessageBox(0, "Конкурс добавлен", "Успешно", 0);
+                MessageBox.Show("Конкурс добавлен", "Успешно", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox(0, "Заполните поле 'Название'", "Найдено пустое поле", 0);
+                MessageBox.Show("Заполните поле 'Название'", "Найдено пустое поле", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -189,7 +228,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -201,7 +240,7 @@ namespace CourseWork
             {
                 if ((competition.Date - _date).TotalDays >= 1)
                 {
-                    MessageBox(0, "При переносе конкурса на более раннюю дату возраст уже добавленных участников может не соответствовать минимальному возрасту.", "Предупреждение", 0);
+                    MessageBox.Show("При переносе конкурса на более раннюю дату возраст уже добавленных участников может не соответствовать минимальному возрасту.", "Предупреждение", MessageBoxButtons.OK);
                 }
 
                 using (DataBaseContext db = new DataBaseContext())
@@ -215,11 +254,11 @@ namespace CourseWork
 
                 textBoxEditNameCompetition.Text = "";
                 dateTimePicker2.Text = DateTime.Now.ToString();
-                MessageBox(0, "Конкурс отредактирован", "Успешно", 0);
+                MessageBox.Show("Конкурс отредактирован", "Успешно", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox(0, "Заполните поле 'Название'", "Найдено пустое поле", 0);
+                MessageBox.Show("Заполните поле 'Название'", "Найдено пустое поле", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -239,13 +278,13 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             competition.DeleteFromDataBase();
             await updateFromDataBase();
-            MessageBox(0, "Конкурс удален", "Успешно", 0);
+            MessageBox.Show("Конкурс удален", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -263,7 +302,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_idComp} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -275,20 +314,20 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idPar} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             if (competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
-                MessageBox(0, $"Конкурсант с id: {_idPar} уже добавлен в конкурс с id: {_idComp}", "Ошибка", 0);
+                MessageBox.Show($"Конкурсант с id: {_idPar} уже добавлен в конкурс с id: {_idComp}", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
 
             decimal DaysInAYear = 365.242M;
             if ((decimal)(competition.Date - participant.DateOfBirth).TotalDays / DaysInAYear < competition.MinAge)
             {
-                MessageBox(0, $"Возраст конкурсанта с id: {_idPar} меньше допустимого. Минимальный возраст для конкурса с id: {_idComp} = {competition.MinAge}", "Ошибка", 0);
+                MessageBox.Show($"Возраст конкурсанта с id: {_idPar} меньше допустимого. Минимальный возраст для конкурса с id: {_idComp} = {competition.MinAge}", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
 
@@ -299,7 +338,7 @@ namespace CourseWork
                 db.SaveChanges();
             }
             await updateFromDataBase();
-            MessageBox(0, "Участник добавлен в конкурс", "Успешно", 0);
+            MessageBox.Show("Участник добавлен в конкурс", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -317,7 +356,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_idComp} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -329,13 +368,13 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idPar} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             if (!competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
-                MessageBox(0, $"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
 
@@ -352,7 +391,7 @@ namespace CourseWork
             }
 
             await updateFromDataBase();
-            MessageBox(0, "Участник удален из конкурса", "Успешно", 0);
+            MessageBox.Show("Участник удален из конкурса", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -370,7 +409,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_idComp} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_idComp} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -382,13 +421,13 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_idPar} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idPar} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             if (!competition.Participants.ToList().Exists(x => x.ParticipantId == participant.ParticipantId))
             {
-                MessageBox(0, $"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idPar} нет в списке участников конкурса с id: {_idComp}", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
 
@@ -401,7 +440,7 @@ namespace CourseWork
             }
 
             await updateFromDataBase();
-            MessageBox(0, "Победитель конкурса добавлен/изменен", "Успешно", 0);
+            MessageBox.Show("Победитель конкурса добавлен/изменен", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -419,7 +458,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурса с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурса с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
            
@@ -435,7 +474,7 @@ namespace CourseWork
         private async void buttonUpdate_Click(object sender, EventArgs e)
         {
             await updateFromDataBase();
-            MessageBox(0, "Загружены последние данные", "", 0);
+            MessageBox.Show("Загружены последние данные", "", MessageBoxButtons.OK);
         }
 
         private void dataGridViewCompetition_SelectionChanged(object sender, EventArgs e)
@@ -450,18 +489,32 @@ namespace CourseWork
         /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
+            if (foundCompetitions != null)
+            {
+                foundCompetitions.ToList().Clear();
+            }
+
             string strFind = textBoxFindByName.Text.ToLower();
             List<Competition> competitionsForTable = new List<Competition>();
 
-            if (!string.IsNullOrEmpty(strFind))
-            {
-                competitionsForTable = competitions.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
-            }
-            else
+            if (filterCompetitions == null)
             {
                 competitionsForTable = competitions.ToList();
             }
+            else
+            {
+                competitionsForTable = filterCompetitions.ToList();
+            }
 
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                competitionsForTable = competitionsForTable.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
+                foundCompetitions = competitionsForTable;
+            }
+            else
+            {
+                foundCompetitions = null;
+            }
 
             dataGridViewCompetition.RowCount = 0;
             int i = 0;
@@ -484,6 +537,17 @@ namespace CourseWork
                 dataGridViewCompetition.Rows[i].Cells[5].Value = competition.WinnerId.ToString();
                 i++;
             }
+            labelForFilters.Text = "Найдено совпадений: " + competitionsForTable.Count;
+        }
+
+        /// <summary>
+        /// Сбросить фильтрацию/поиск
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            resetFilters();
         }
     }
 }

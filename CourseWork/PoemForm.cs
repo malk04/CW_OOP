@@ -18,6 +18,8 @@ namespace CourseWork
     {
         private List<Form>? forms;
         private IEnumerable<Poem>? poems;
+        private IEnumerable<Poem>? foundPoems;
+        private IEnumerable<Poem>? filterPoems;
 
         public PoemForm()
         {
@@ -25,10 +27,6 @@ namespace CourseWork
             comboBoxTheme.SelectedIndex = 0;
             comboBoxPoemTheme.SelectedIndex = 0;
         }
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr MessageBox(int hWnd, String text, String caption, uint type);
-
 
         private async void PoemForm_Load(object sender, EventArgs e)
         {
@@ -43,8 +41,26 @@ namespace CourseWork
         {
             DataBaseContext db = new DataBaseContext();
             poems = await db.Poems.Include(p => p.Participant).AsNoTracking().ToListAsync();
+            textBoxFindByName.Text = "";
             updateAvtorComboBox();
             updateYearComboBox();
+            updateTablePoems();
+        }
+
+        /// <summary>
+        /// Сброс фильтрации и поиска
+        /// </summary>
+        /// <returns></returns>
+        private void resetFilters()
+        {
+            foundPoems?.ToList().Clear();
+            foundPoems = null;
+            filterPoems?.ToList().Clear();
+            filterPoems = null;
+            textBoxFindByName.Text = "";
+            comboBoxAvtor.Text = "Все";
+            comboBoxYearWrite.Text = "Любой";
+            comboBoxTheme.Text = "Все";
             updateTablePoems();
         }
 
@@ -56,9 +72,14 @@ namespace CourseWork
             string chosen = string.IsNullOrEmpty(comboBoxAvtor.Text) ? "Все" : comboBoxAvtor.Text;
             comboBoxAvtor.Items.Clear();
             comboBoxAvtor.Items.Add("Все");
+            SortedSet<string> avtors = new SortedSet<string>();
             foreach (var poem in poems)
             {
-                comboBoxAvtor.Items.Add("id: " + poem.ParticipantId.ToString() + ". " + poem.Participant.Surname + " " + poem.Participant.Name + " " + poem.Participant.SecondName);
+                avtors.Add("id: " + poem.ParticipantId.ToString() + ". " + poem.Participant.Surname + " " + poem.Participant.Name + " " + poem.Participant.SecondName);
+            }
+            foreach (var avtor in avtors)
+            {
+                comboBoxAvtor.Items.Add(avtor);
             }
             comboBoxAvtor.Text = chosen;
         }
@@ -88,12 +109,25 @@ namespace CourseWork
         /// </summary>
         private void updateTablePoems()
         {
+            if (filterPoems != null)
+            {
+                filterPoems.ToList().Clear();
+            }
+            
             string chosenAvtor = comboBoxAvtor.Text;
             string chosenYear = comboBoxYearWrite.Text;
             string chosenTheme = comboBoxTheme.Text;
             List<Poem> poemsForTable = new List<Poem>();
 
-            poemsForTable = poems.ToList();
+            if (foundPoems == null)
+            {
+                poemsForTable = poems.ToList();
+            }
+            else
+            {
+                poemsForTable = foundPoems.ToList();
+            }
+            
             if (chosenAvtor != "Все")
             {
                 chosenAvtor = chosenAvtor.Remove(0, 4);
@@ -125,6 +159,17 @@ namespace CourseWork
                 dataGridViewPoem.Rows[i].Cells[3].Value = poem.Year.ToString("yyyy");
                 dataGridViewPoem.Rows[i].Cells[4].Value = poem.ParticipantId.ToString();
                 i++;
+            }
+
+            if (chosenAvtor != "Все" || chosenYear != "Любой" || chosenTheme != "Все")
+            {
+                labelForFilters.Text = "Найдено совпадений: " + poemsForTable.Count;
+                filterPoems = poemsForTable;
+            } else
+            {
+                labelForFilters.Text = "";
+                filterPoems?.ToList().Clear();
+                filterPoems = null;
             }
         }
 
@@ -192,7 +237,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_idAvtor} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_idAvtor} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -200,7 +245,7 @@ namespace CourseWork
             {
                 if (_year.Year > DateTime.Now.Year)
                 {
-                    MessageBox(0, "Нельзя добавить ещё не написанное стихотворение. Проверьте введенный год написания.", "Невозможно создать объект", 0);
+                    MessageBox.Show("Нельзя добавить ещё не написанное стихотворение. Проверьте введенный год написания.", "Невозможно создать объект", MessageBoxButtons.OK);
                     return;
                 }
                 Poem poemNew = new Poem(_name, _theme, _year, _text, _idAvtor);
@@ -212,11 +257,11 @@ namespace CourseWork
                 numericUpDownAvtorID.Value = 1;
                 dateTimePicker1.Text = DateTime.Now.ToString();
                 textBoxTextCreate.Text = "";
-                MessageBox(0, "Стихотворение добавлено", "Успешно", 0);
+                MessageBox.Show("Стихотворение добавлено", "Успешно", MessageBoxButtons.OK);
             } 
             else
             {
-                MessageBox(0, "Заполните все поля в окне 'Добавить стихотворение'", "Найдено пустое поле", 0);
+                MessageBox.Show("Заполните все поля в окне 'Добавить стихотворение'", "Найдено пустое поле", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -236,7 +281,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Стихотворения с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -253,11 +298,11 @@ namespace CourseWork
                 await updateFromDataBase();
 
                 textBoxEditName.Text = "";
-                MessageBox(0, "Название стихотворения отредактировано", "Успешно", 0);
+                MessageBox.Show("Название стихотворения отредактировано", "Успешно", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox(0, "Заполните поле 'Название'", "Найдено пустое поле", 0);
+                MessageBox.Show("Заполните поле 'Название'", "Найдено пустое поле", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -277,7 +322,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Стихотворения с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -299,13 +344,13 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Стихотворения с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             poem.DeleteFromDataBase();
             await updateFromDataBase();
-            MessageBox(0, "Стихотворение удалено", "Успешно", 0);
+            MessageBox.Show("Стихотворение удалено", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -323,7 +368,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Стихотворения с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Стихотворения с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -338,7 +383,7 @@ namespace CourseWork
         private async void buttonUpdate_Click(object sender, EventArgs e)
         {
             await updateFromDataBase();
-            MessageBox(0, "Загружены последние данные", "", 0);
+            MessageBox.Show("Загружены последние данные", "", MessageBoxButtons.OK);
         }
 
         private void dataGridViewPoem_SelectionChanged(object sender, EventArgs e)
@@ -353,16 +398,31 @@ namespace CourseWork
         /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
+            if (foundPoems != null)
+            {
+                foundPoems.ToList().Clear();
+            }
+
             string strFind = textBoxFindByName.Text.ToLower();
             List<Poem> poemsForTable = new List<Poem>();
 
-            if (!string.IsNullOrEmpty(strFind))
+            if (filterPoems == null)
             {
-                poemsForTable = poems.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
+                poemsForTable = poems.ToList();
             }
             else
             {
-                poemsForTable = poems.ToList();
+                poemsForTable = filterPoems.ToList();
+            }
+
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                poemsForTable = poemsForTable.Where(x => x.Name.ToLower().Contains(strFind)).ToList();
+                foundPoems = poemsForTable;
+            } 
+            else
+            {
+                foundPoems = null;
             }
 
             dataGridViewPoem.RowCount = 0;
@@ -378,6 +438,17 @@ namespace CourseWork
                 dataGridViewPoem.Rows[i].Cells[4].Value = poem.ParticipantId.ToString();
                 i++;
             }
+            labelForFilters.Text = "Найдено совпадений: " + poemsForTable.Count;
+        }
+
+        /// <summary>
+        /// Сбросить фильтрацию/поиск
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            resetFilters();
         }
     }
 }

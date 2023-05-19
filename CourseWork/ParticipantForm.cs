@@ -9,15 +9,14 @@ namespace CourseWork
     {
         private List<Form>? forms;
         private IEnumerable<Participant>? participants;
+        private IEnumerable<Participant>? foundParticipants;
+        private IEnumerable<Participant>? filterParticipants;
         private IEnumerable<Competition>? competitions;
 
         public ParticipantForm()
         {
             InitializeComponent();
         }
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr MessageBox(int hWnd, string text, string caption, uint type);
 
         private async void ParticipantForm_Load(object sender, EventArgs e)
         {
@@ -33,6 +32,7 @@ namespace CourseWork
             DataBaseContext db = new DataBaseContext();
             participants = await db.Participants.Include(p => p.Poems).AsNoTracking().ToListAsync();
             competitions = await db.Competitions.AsNoTracking().ToListAsync();
+            textBoxFindBySurname.Text = "";
             updateCompetitionComboBox();
             updateYearComboBox();
             updateTableParticipants();
@@ -74,15 +74,44 @@ namespace CourseWork
         }
 
         /// <summary>
+        /// Сброс фильтрации и поиска
+        /// </summary>
+        /// <returns></returns>
+        private void resetFilters()
+        {
+            foundParticipants?.ToList().Clear();
+            foundParticipants = null;
+            filterParticipants?.ToList().Clear();
+            filterParticipants = null;
+            textBoxFindBySurname.Text = "";
+            comboBoxCompitition.Text = "Все";
+            comboBoxYear.Text = "Любой";
+            updateTableParticipants();
+        }
+
+        /// <summary>
         /// Обновление таблицы конкурсантов с выбранной фильтрацией
         /// </summary>
         private void updateTableParticipants()
         {
+            if (filterParticipants != null)
+            {
+                filterParticipants.ToList().Clear();
+            }
+
             string chosenCompetition = comboBoxCompitition.Text;
             string chosenYear = comboBoxYear.Text;
             List<Participant> participantsForTable = new List<Participant>();
 
-            participantsForTable = participants.ToList();
+            if (foundParticipants == null)
+            {
+                participantsForTable = participants.ToList();
+            }
+            else
+            {
+                participantsForTable = foundParticipants.ToList();
+            }
+            
             if (chosenCompetition != "Все")
             {
                 chosenCompetition = chosenCompetition.Remove(0, 4);
@@ -117,6 +146,18 @@ namespace CourseWork
                 dataGridViewParticipant.Rows[i].Cells[4].Value = participant.DateOfBirth.ToString("dd/MM/yyyy");
                 dataGridViewParticipant.Rows[i].Cells[5].Value = poemIds;
                 i++;
+            }
+
+            if (chosenCompetition != "Все" || chosenYear != "Любой")
+            {
+                labelForFilters.Text = "Найдено совпадений: " + participantsForTable.Count;
+                filterParticipants = participantsForTable;
+            }
+            else
+            {
+                labelForFilters.Text = "";
+                filterParticipants?.ToList().Clear();
+                filterParticipants = null;
             }
         }
 
@@ -176,7 +217,7 @@ namespace CourseWork
             {
                 if (DateTime.Compare(_birhday, DateTime.Today) > 0)
                 {
-                    MessageBox(0, "Добавление ещё не рожденного человека. Проверьте введенную дату рождения.", "Невозможно создать объект", 0);
+                    MessageBox.Show("Добавление ещё не рожденного человека. Проверьте введенную дату рождения.", "Невозможно создать объект", MessageBoxButtons.OK);
                     return;
                 }
 
@@ -188,11 +229,12 @@ namespace CourseWork
                 textBoxName.Text = "";
                 textBoxSecondName.Text = "";
                 dateTimePicker1.Text = DateTime.Now.ToString();
-                MessageBox(0, "Конкурсант добавлен", "Успешно", 0);
+                MessageBox.Show("Конкурсант добавлен", "Успешно", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox(0, "Заполните все поля в окне 'Добавить конкурсанта'", "Найдено пустое поле", 0);
+
+                MessageBox.Show("Заполните все поля в окне 'Добавить конкурсанта'", "Найдено пустое поле", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -248,7 +290,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -260,12 +302,12 @@ namespace CourseWork
 
             if (DateTime.Compare(_birhday, DateTime.Today) > 0)
             {
-                MessageBox(0, "Выбрана ещё не наступившая дата. Проверьте введенную дату рождения.", "Невозможно редактировать объект", 0);
+                MessageBox.Show("Выбрана ещё не наступившая дата. Проверьте введенную дату рождения.", "Невозможно редактировать объект", MessageBoxButtons.OK);
                 return;
             }
             else if (DateTime.Compare(_birhday, DateTime.Today) == 0)
             {
-                MessageBox(0, "Выбрана сегодняшняя дата. Вы уверены, что дата рождения введена верно?", "Предупреждение", 0);
+                MessageBox.Show("Выбрана сегодняшняя дата. Вы уверены, что дата рождения введена верно?", "Предупреждение", MessageBoxButtons.OK);
             }
 
             using (DataBaseContext db = new DataBaseContext())
@@ -283,8 +325,7 @@ namespace CourseWork
             textBoxNameEdit.Text = "";
             textBoxSecondNameEdit.Text = "";
             dateTimePicker2.Text = DateTime.Now.ToString();
-            MessageBox(0, "Конкурсант отредактирован", "Успешно", 0);
-
+            MessageBox.Show("Конкурсант отредактирован", "Успешно", MessageBoxButtons.OK);
         }
 
         /// <summary>
@@ -302,12 +343,12 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
             participant.DeleteFromDataBase();
-            MessageBox(0, "Конкурсант удален", "Успешно", 0);
+            MessageBox.Show("Конкурсант удален", "Успешно", MessageBoxButtons.OK);
             await updateFromDataBase();
         }
 
@@ -326,7 +367,7 @@ namespace CourseWork
             }
             catch (InvalidOperationException)
             {
-                MessageBox(0, $"Конкурсанта с id: {_id} не существует", "Объект не найден", 0);
+                MessageBox.Show($"Конкурсанта с id: {_id} не существует", "Объект не найден", MessageBoxButtons.OK);
                 return;
             }
 
@@ -344,7 +385,7 @@ namespace CourseWork
         private async void buttonUpdate_Click(object sender, EventArgs e)
         {
             await updateFromDataBase();
-            MessageBox(0, "Загружены последние данные", "", 0);
+            MessageBox.Show("Загружены последние данные", "", MessageBoxButtons.OK);
         }
 
         private void dataGridViewParticipant_SelectionChanged(object sender, EventArgs e)
@@ -359,16 +400,31 @@ namespace CourseWork
         /// <param name="e"></param>
         private void buttonFind_Click(object sender, EventArgs e)
         {
+            if (foundParticipants != null)
+            {
+                foundParticipants.ToList().Clear();
+            }
+
             string strFind = textBoxFindBySurname.Text.ToLower();
             List<Participant> participantsForTable = new List<Participant>();
 
-            if (!string.IsNullOrEmpty(strFind))
+            if (filterParticipants == null)
             {
-                participantsForTable = participants.Where(x => x.Surname.ToLower().Contains(strFind)).ToList();
+                participantsForTable = participants.ToList();
             }
             else
             {
-                participantsForTable = participants.ToList();
+                participantsForTable = filterParticipants.ToList();
+            }
+
+            if (!string.IsNullOrEmpty(strFind))
+            {
+                participantsForTable = participantsForTable.Where(x => x.Surname.ToLower().Contains(strFind)).ToList();
+                foundParticipants = participantsForTable;
+            }
+            else
+            {
+                foundParticipants = null;
             }
 
             dataGridViewParticipant.RowCount = 0;
@@ -392,6 +448,17 @@ namespace CourseWork
                 dataGridViewParticipant.Rows[i].Cells[5].Value = poemIds;
                 i++;
             }
+            labelForFilters.Text = "Найдено совпадений: " + participantsForTable.Count;
+        }
+
+        /// <summary>
+        /// Сбросить фильтрацию/поиск
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            resetFilters();
         }
     }
 }

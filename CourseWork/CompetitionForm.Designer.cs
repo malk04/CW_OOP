@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCompetition = new System.Windows.Forms.TabControl();
             this.SeeDelCompetition = new System.Windows.Forms.TabPage();
+            this.labelForFilters = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.groupBoxFind = new System.Windows.Forms.GroupBox();
             this.textBoxFindByName = new System.Windows.Forms.TextBox();
             this.buttonFind = new System.Windows.Forms.Button();
@@ -79,12 +82,12 @@
             this.numericUpDownAddIDCompetitionWinner = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.buttonAddWinner = new System.Windows.Forms.Button();
-            this.buttonDelParticipant = new System.Windows.Forms.Button();
             this.groupBoxAddParticipant = new System.Windows.Forms.GroupBox();
             this.numericUpDownAddIDParticipant = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDownAddIDCompetitionParticipant = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
+            this.buttonDelParticipant = new System.Windows.Forms.Button();
             this.buttonAddParticipant = new System.Windows.Forms.Button();
             this.groupBoxCreateCompetition = new System.Windows.Forms.GroupBox();
             this.numericUpDownMinAge = new System.Windows.Forms.NumericUpDown();
@@ -137,6 +140,8 @@
             // 
             // SeeDelCompetition
             // 
+            this.SeeDelCompetition.Controls.Add(this.labelForFilters);
+            this.SeeDelCompetition.Controls.Add(this.buttonReset);
             this.SeeDelCompetition.Controls.Add(this.groupBoxFind);
             this.SeeDelCompetition.Controls.Add(this.buttonUpdate);
             this.SeeDelCompetition.Controls.Add(this.groupBoxDelCompetition);
@@ -151,6 +156,29 @@
             this.SeeDelCompetition.TabIndex = 0;
             this.SeeDelCompetition.Text = "Просмотр/удаление конкурса";
             this.SeeDelCompetition.UseVisualStyleBackColor = true;
+            // 
+            // labelForFilters
+            // 
+            this.labelForFilters.AutoSize = true;
+            this.labelForFilters.BackColor = System.Drawing.Color.Transparent;
+            this.labelForFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelForFilters.Location = new System.Drawing.Point(533, 344);
+            this.labelForFilters.Name = "labelForFilters";
+            this.labelForFilters.Size = new System.Drawing.Size(0, 20);
+            this.labelForFilters.TabIndex = 18;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.buttonReset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonReset.Location = new System.Drawing.Point(265, 335);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(253, 37);
+            this.buttonReset.TabIndex = 11;
+            this.buttonReset.Text = "Сбросить фильтрацию/поиск";
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // groupBoxFind
             // 
@@ -226,6 +254,11 @@
             // 
             this.numericUpDownDelIDCompetition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownDelIDCompetition.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownDelIDCompetition.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownDelIDCompetition.Minimum = new decimal(new int[] {
             1,
             0,
@@ -317,16 +350,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCompetition.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCompetition.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCompetition.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewCompetition.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCompetition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCompetition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCompetition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCompetition,
@@ -335,6 +369,14 @@
             this.MinAge,
             this.IDParticipant,
             this.IDWinner});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCompetition.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCompetition.EnableHeadersVisualStyles = false;
             this.dataGridViewCompetition.Location = new System.Drawing.Point(6, 9);
             this.dataGridViewCompetition.Name = "dataGridViewCompetition";
@@ -348,9 +390,9 @@
             // 
             // IDCompetition
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            this.IDCompetition.DefaultCellStyle = dataGridViewCellStyle2;
             this.IDCompetition.FillWeight = 50F;
             this.IDCompetition.HeaderText = "ID";
             this.IDCompetition.MinimumWidth = 6;
@@ -563,6 +605,11 @@
             this.numericUpDownEditID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownEditID.Location = new System.Drawing.Point(213, 32);
+            this.numericUpDownEditID.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownEditID.Minimum = new decimal(new int[] {
             1,
             0,
@@ -658,14 +705,19 @@
             // 
             this.numericUpDownAddIDWinner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownAddIDWinner.Location = new System.Drawing.Point(175, 64);
+            this.numericUpDownAddIDWinner.Location = new System.Drawing.Point(213, 64);
+            this.numericUpDownAddIDWinner.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownAddIDWinner.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numericUpDownAddIDWinner.Name = "numericUpDownAddIDWinner";
-            this.numericUpDownAddIDWinner.Size = new System.Drawing.Size(230, 27);
+            this.numericUpDownAddIDWinner.Size = new System.Drawing.Size(192, 27);
             this.numericUpDownAddIDWinner.TabIndex = 12;
             this.numericUpDownAddIDWinner.Value = new decimal(new int[] {
             1,
@@ -687,14 +739,19 @@
             // 
             this.numericUpDownAddIDCompetitionWinner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownAddIDCompetitionWinner.Location = new System.Drawing.Point(175, 34);
+            this.numericUpDownAddIDCompetitionWinner.Location = new System.Drawing.Point(213, 34);
+            this.numericUpDownAddIDCompetitionWinner.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownAddIDCompetitionWinner.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numericUpDownAddIDCompetitionWinner.Name = "numericUpDownAddIDCompetitionWinner";
-            this.numericUpDownAddIDCompetitionWinner.Size = new System.Drawing.Size(230, 27);
+            this.numericUpDownAddIDCompetitionWinner.Size = new System.Drawing.Size(192, 27);
             this.numericUpDownAddIDCompetitionWinner.TabIndex = 10;
             this.numericUpDownAddIDCompetitionWinner.Value = new decimal(new int[] {
             1,
@@ -724,18 +781,6 @@
             this.buttonAddWinner.UseVisualStyleBackColor = false;
             this.buttonAddWinner.Click += new System.EventHandler(this.buttonAddWinner_Click);
             // 
-            // buttonDelParticipant
-            // 
-            this.buttonDelParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonDelParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDelParticipant.Location = new System.Drawing.Point(212, 108);
-            this.buttonDelParticipant.Name = "buttonDelParticipant";
-            this.buttonDelParticipant.Size = new System.Drawing.Size(194, 37);
-            this.buttonDelParticipant.TabIndex = 8;
-            this.buttonDelParticipant.Text = "Удалить участника";
-            this.buttonDelParticipant.UseVisualStyleBackColor = false;
-            this.buttonDelParticipant.Click += new System.EventHandler(this.buttonDelParticipant_Click);
-            // 
             // groupBoxAddParticipant
             // 
             this.groupBoxAddParticipant.Controls.Add(this.numericUpDownAddIDParticipant);
@@ -757,6 +802,11 @@
             this.numericUpDownAddIDParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDParticipant.Location = new System.Drawing.Point(212, 64);
+            this.numericUpDownAddIDParticipant.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownAddIDParticipant.Minimum = new decimal(new int[] {
             1,
             0,
@@ -786,6 +836,11 @@
             this.numericUpDownAddIDCompetitionParticipant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownAddIDCompetitionParticipant.Location = new System.Drawing.Point(212, 32);
+            this.numericUpDownAddIDCompetitionParticipant.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownAddIDCompetitionParticipant.Minimum = new decimal(new int[] {
             1,
             0,
@@ -809,6 +864,18 @@
             this.label12.Size = new System.Drawing.Size(111, 25);
             this.label12.TabIndex = 9;
             this.label12.Text = "ID конкурса";
+            // 
+            // buttonDelParticipant
+            // 
+            this.buttonDelParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonDelParticipant.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDelParticipant.Location = new System.Drawing.Point(212, 108);
+            this.buttonDelParticipant.Name = "buttonDelParticipant";
+            this.buttonDelParticipant.Size = new System.Drawing.Size(194, 37);
+            this.buttonDelParticipant.TabIndex = 8;
+            this.buttonDelParticipant.Text = "Удалить участника";
+            this.buttonDelParticipant.UseVisualStyleBackColor = false;
+            this.buttonDelParticipant.Click += new System.EventHandler(this.buttonDelParticipant_Click);
             // 
             // buttonAddParticipant
             // 
@@ -980,6 +1047,7 @@
             this.Resize += new System.EventHandler(this.CompetitionForm_Resize);
             this.tabControlCompetition.ResumeLayout(false);
             this.SeeDelCompetition.ResumeLayout(false);
+            this.SeeDelCompetition.PerformLayout();
             this.groupBoxFind.ResumeLayout(false);
             this.groupBoxFind.PerformLayout();
             this.groupBoxDelCompetition.ResumeLayout(false);
@@ -1083,5 +1151,7 @@
         private Label label4;
         private Label label1;
         private TextBox textBoxNameCompetition;
+        private Button buttonReset;
+        private Label labelForFilters;
     }
 }

@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlParticipant = new System.Windows.Forms.TabControl();
             this.SeeDelParticipant = new System.Windows.Forms.TabPage();
+            this.labelForFilters = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.groupBoxFind = new System.Windows.Forms.GroupBox();
             this.textBoxFindBySurname = new System.Windows.Forms.TextBox();
@@ -113,6 +116,8 @@
             // 
             // SeeDelParticipant
             // 
+            this.SeeDelParticipant.Controls.Add(this.labelForFilters);
+            this.SeeDelParticipant.Controls.Add(this.buttonReset);
             this.SeeDelParticipant.Controls.Add(this.buttonUpdate);
             this.SeeDelParticipant.Controls.Add(this.groupBoxFind);
             this.SeeDelParticipant.Controls.Add(this.dataGridViewParticipant);
@@ -125,6 +130,29 @@
             this.SeeDelParticipant.TabIndex = 0;
             this.SeeDelParticipant.Text = "Просмотр/удаление участников";
             this.SeeDelParticipant.UseVisualStyleBackColor = true;
+            // 
+            // labelForFilters
+            // 
+            this.labelForFilters.AutoSize = true;
+            this.labelForFilters.BackColor = System.Drawing.Color.Transparent;
+            this.labelForFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelForFilters.Location = new System.Drawing.Point(534, 414);
+            this.labelForFilters.Name = "labelForFilters";
+            this.labelForFilters.Size = new System.Drawing.Size(0, 20);
+            this.labelForFilters.TabIndex = 14;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.buttonReset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonReset.Location = new System.Drawing.Point(265, 405);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(253, 37);
+            this.buttonReset.TabIndex = 10;
+            this.buttonReset.Text = "Сбросить фильтрацию/поиск";
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonUpdate
             // 
@@ -190,6 +218,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewParticipant.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewParticipant.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -208,6 +237,14 @@
             this.middleNameParticipant,
             this.DateOfBirthParticipant,
             this.idsOfPoemsParticipant});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewParticipant.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewParticipant.EnableHeadersVisualStyles = false;
             this.dataGridViewParticipant.Location = new System.Drawing.Point(3, 6);
             this.dataGridViewParticipant.Name = "dataGridViewParticipant";
@@ -358,6 +395,11 @@
             // 
             this.numericUpDownIDDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownIDDel.Location = new System.Drawing.Point(175, 37);
+            this.numericUpDownIDDel.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownIDDel.Minimum = new decimal(new int[] {
             1,
             0,
@@ -452,6 +494,11 @@
             // numericUpDownIDEdit
             // 
             this.numericUpDownIDEdit.Location = new System.Drawing.Point(213, 32);
+            this.numericUpDownIDEdit.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDownIDEdit.Minimum = new decimal(new int[] {
             1,
             0,
@@ -742,6 +789,7 @@
             this.Resize += new System.EventHandler(this.ParticipantForm_Resize);
             this.tabControlParticipant.ResumeLayout(false);
             this.SeeDelParticipant.ResumeLayout(false);
+            this.SeeDelParticipant.PerformLayout();
             this.groupBoxFind.ResumeLayout(false);
             this.groupBoxFind.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).EndInit();
@@ -817,5 +865,7 @@
         private NumericUpDown numericUpDownIDDel;
         private Button buttonDeleteParticipant;
         private Label label14;
+        private Button buttonReset;
+        private Label labelForFilters;
     }
 }

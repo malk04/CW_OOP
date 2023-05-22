@@ -28,8 +28,9 @@ namespace CourseWork
         /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=cw_oop.db");
-            base.OnConfiguring(optionsBuilder);
+            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var dbPath = Path.Combine(appDataPath, "CourseWork", "cw_oop.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
 
         /// <summary>

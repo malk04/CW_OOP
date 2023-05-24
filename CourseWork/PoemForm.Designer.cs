@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoemForm));
             this.tabControlPoem = new System.Windows.Forms.TabControl();
             this.SeeDelPoem = new System.Windows.Forms.TabPage();
             this.labelForFilters = new System.Windows.Forms.Label();
@@ -996,6 +997,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.tabControlPoem);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PoemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно стихотворений";
